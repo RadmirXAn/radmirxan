@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Тестирование возможностей Canvas">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="RadMirXAN">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<title>RadMirXAN</title>
+	<link rel="shortcut icon" href="./Images/0.png" type="image/png">
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html,
+		body {
+			background: #562396;/*url(../INDEX/IMG/bg.png);  Цвет фона и путь к файлу */
+			font-family: cambria;
+			color: #240152;/* Цвет текста */
+			height: 100%;
+		}
+		.header-bg {
+			background: url(./Images/7.jpg) repeat-x center bottom;
+			height: auto; /* Высота шапки */
+			text-align: center; /* Выравнивание по центру */			
+		}
+		.wrapper {
+			display: table;
+			height: 100%;
+			width: 800px;
+			margin: 0 auto;
+		}
+		.content {
+			display: table-row;
+			height: 100%;
+			
+		}		
+		.test {
+			display:block;
+		}
+		.footer-bg {
+			background: url(./Images/7.jpg) repeat-x center bottom;
+			height: auto; /* Высота шапки */
+			text-align: center; /* Выравнивание по центру */	
+		}
+  </style>
+	
+</head>
+
+
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="header-bg">
+				<font size="15" color="#000000" face="Arial">Это</font>
+				<font size="15" color="#FF0000" face="Arial">header</font>
+				<br>
+				<font size="15" color="#FF0000" face="Arial">HTML5 </font>
+				<font size="15" color="#000000" face="Arial">элемент </font>
+				<font size="15" color="#0000FF" face="Arial">CANVAS</font>
+			</div>
+		</header>
+	<div class="content">
+		<iframe allowfullscreen class="test" src="./frame.html" width="800" height="600" frameborder="0">
+			Ваш браузер не поддерживает плавающие фреймы!
+		</iframe>
+	</div>		
+		<footer>
+			<div class="footer-bg">
+			<font size="15" color="#000000" face="Arial">Это</font>
+			<font size="15" color="#FF0000" face="Arial">footer</font>
+			</div>
+		</footer>
+	</div>	
+</body>
+
+</html>
