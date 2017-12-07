@@ -13,7 +13,7 @@ function  Cursor(layer) {
 	}.bind(this);	
 	
 	this.start = function (){
-		_image_1 = new RadMirXAn_Image(RadMirXAnImage[_img_1], layer);
+        _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
 		_image_1.start();	
 		addEF(this.enterFrame);
 	}.bind(this);
@@ -23,5 +23,5 @@ function  Cursor(layer) {
 		removeEF(this.enterFrame);
 	}.bind(this);
 
-	IncludeImages(_CursorImages, this.start);
+    ImageLoader.load(_CursorImages, this.start);
 }

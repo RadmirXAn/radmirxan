@@ -61,7 +61,7 @@ function  FullScreenButton(layer) {
 	}.bind(this);
 
 	this.start = function (){
-		_animation_1 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_1 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		_animation_1.animation(FullScreenButton_Animation.fullScreen_off);
 		_animation_1.x = this.x;
 		_animation_1.y = this.y;
@@ -77,7 +77,7 @@ function  FullScreenButton(layer) {
 	}.bind(this);
 
 	Include(IncludeFullScreenButtonClasses, function(){
-		IncludeImages(_FullScreenImages, this.start);
+        ImageLoader.load(_FullScreenImages, this.start);
 	}.bind(this));
 }
 

@@ -75,7 +75,7 @@ function  DragAndDrop(layer) {
 	}.bind(this);
 
 	this.start = function (){
-		_image_1 = new RadMirXAn_Image(RadMirXAnImage[_img_1], layer);
+        _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
 		_image_1.x = this.x;
 		_image_1.y = this.y;
 		_image_1.start();
@@ -91,12 +91,12 @@ function  DragAndDrop(layer) {
 		removeEF(this.enterFrame);
 	}.bind(this);
 
-	IncludeImages(_DragAndDropImages, this.start);
+    ImageLoader.load(_DragAndDropImages, this.start);
 }
 
 Object.defineProperty(DragAndDrop, "x", {
   get: function() {
-    return _this.x;
+    return this.x;
   },
   set: function(value) {
      this.setX(value);
@@ -105,7 +105,7 @@ Object.defineProperty(DragAndDrop, "x", {
 
 Object.defineProperty(DragAndDrop, "y", {
   get: function() {
-    return _this.y;
+    return this.y;
   },
   set: function(value) {
      this.setY(value);

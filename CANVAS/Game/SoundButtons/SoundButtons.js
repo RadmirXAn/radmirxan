@@ -185,37 +185,37 @@ function  SoundButtons(layer) {
 		//audio.currentTime = 25.0;
 		//audio.pause();
 		
-		_animation_1 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_1 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		_animation_1.animation(SoundButtons_Animation.playButton_off);
 		_animation_1.x = this.x;
 		_animation_1.y = this.y+80;
 		_animation_1.start();
 		
-		_animation_2 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_2 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		_animation_2.animation(SoundButtons_Animation.pauseButton_off);
 		_animation_2.x = this.x+80;
 		_animation_2.y = this.y+80;
 		_animation_2.start();
 		
-		_animation_3 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_3 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		_animation_3.animation(SoundButtons_Animation.stopButton_off);
 		_animation_3.x = this.x+160;
 		_animation_3.y = this.y+80;
 		_animation_3.start();
 		
-		_animation_4 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_4 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		_animation_4.animation(SoundButtons_Animation.loopButton_off);
 		_animation_4.x = this.x+240;
 		_animation_4.y = this.y+80;
 		_animation_4.start();
 		
-		_animation_5 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_5 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		//_animation_5.animation(SoundButtons_Animation.volume_on);
 		_animation_5.x = this.x;
 		_animation_5.y = this.y;
 		_animation_5.start();
 		
-		_animation_6 = new RadMirXAn_Animation(RadMirXAnImage[_img_1], layer);
+        _animation_6 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
 		//_animation_6.animation(SoundButtons_Animation.volume_off);
 		_animation_6.x = this.x;
 		_animation_6.y = this.y;
@@ -242,7 +242,7 @@ function  SoundButtons(layer) {
 	}.bind(this);
 
 	Include(IncludeSoundButtonsClasses, function(){
-		IncludeImages(_SoundButtonsImages, function(){
+        ImageLoader.load(_SoundButtonsImages, function(){
 			IncludeAudios(_SoundButtonsSounds, this.start);
 		}.bind(this));
 	}.bind(this));

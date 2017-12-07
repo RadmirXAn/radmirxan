@@ -9,7 +9,7 @@ let RMXClasses = [
 	'./RadmirXAn/FullScreen/RadMirXAn_FullScreen_On.js',
 	'./RadmirXAn/FullScreen/RadMirXAn_FullScreen_Off.js',
 	
-	'./RadmirXAn/Utils/RadMirXAn_ImageLoader.js',
+	'./RadmirXAn/Utils/ImageLoader/ImageLoader.js',
 	
 	'./RadmirXAn/Utils/RadMirXAn_AudioLoader.js',
 	
