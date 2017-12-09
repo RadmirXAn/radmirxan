@@ -111,7 +111,7 @@ function  Scot(layer) {
 	}.bind(this);	
 	
 	this.start = function (){
-        _animation_1 = new RadMirXAn_Animation(ImageLoader.getImage(_img_1), layer);
+        _animation_1 = new Canvas_Animation(ImageLoader.getImage(_img_1), layer);
 		_animation_1.animation(Scot_Animation.idle_right);
 		_animation_1.ms = 100;			
 		_animation_1.x = 0;
