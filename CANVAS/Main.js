@@ -31,8 +31,8 @@ function init(){
 function start(){
 	snake = new Snake(1);
 	scot = new Scot(4);	
-	draganddrop_1 = new DragAndDrop(3);
-	draganddrop_2 = new DragAndDrop(5);
+	draganddrop_1 = new DragAndDrop('./Images/2.png', 5);
+	draganddrop_2 = new DragAndDrop('./Images/8.png', 3);
 	draganddrop_2.x = 100;
 	draganddrop_2.y = 200;
 	fullScreenbutton = new FullScreenButton(6);

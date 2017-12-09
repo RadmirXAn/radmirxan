@@ -9,7 +9,7 @@ function  Background(layer) {
 	let _image_1;
 	//------
 	this.start = function (){
-        _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
+        _image_1 = new Canvas_Image(ImageLoader.getImage(_img_1), layer);
 		_image_1.start();
 	}.bind(this);
 

@@ -25,12 +25,14 @@ function removeMouseUp(func){
 }
 
 function onMouseUp(eventData){
+	stoppropagation = false;
 	for (index_onMouseUp_layer = MouseUplayers.length-1; index_onMouseUp_layer > -1; index_onMouseUp_layer--) {
 		if(MouseUplayers[index_onMouseUp_layer] == undefined){
 			continue;
 		}
 		for (index_onMouseUP_function = 0; index_onMouseUP_function < MouseUplayers[index_onMouseUp_layer].length; index_onMouseUP_function++) {
-			if(MouseUplayers[index_onMouseUp_layer][index_onMouseUP_function](eventData)==stoppropagation){
+			MouseUplayers[index_onMouseUp_layer][index_onMouseUP_function](eventData);
+			if(stoppropagation){
 				return;
 			}
 		}

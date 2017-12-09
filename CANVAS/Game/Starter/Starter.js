@@ -46,7 +46,7 @@ function  Starter(action, layer) {
 	}.bind(this);
 
 	this.start = function (){
-        _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
+        _image_1 = new Canvas_Image(ImageLoader.getImage(_img_1), layer);
 		_image_1.x = this.x;
 		_image_1.y = this.y;
 		_image_1.start();

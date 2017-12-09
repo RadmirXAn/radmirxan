@@ -1,5 +1,5 @@
 //Остановить распространение 1
-let stoppropagation = 'stoppropagation';
+let stoppropagation = true;
 //Остановить распространение 0
 
 //Для событий мыши 1

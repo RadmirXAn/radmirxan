@@ -1,11 +1,9 @@
-function  DragAndDrop(layer) {
+function  DragAndDrop(image_url, layer) {
 	//------
-	let _img_1 = './Images/2.png';
-
 	let _image_1;
 
 	let _DragAndDropImages = [
-		_img_1
+		image_url
 	];
 	//------
 	this.x = 0;
@@ -51,9 +49,6 @@ function  DragAndDrop(layer) {
 				_drag[0] = _image_1.hitTest(mouseX, mouseY);
 				_drag[1] = _image_1.x-mouseX;
 				_drag[2] = _image_1.y-mouseY;
-				if(_drag[0]){
-					return stoppropagation;
-				}
 				break;
 			}
 			case 2:{
@@ -75,7 +70,7 @@ function  DragAndDrop(layer) {
 	}.bind(this);
 
 	this.start = function (){
-        _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
+        _image_1 = new Canvas_Image(ImageLoader.getImage(image_url), layer);
 		_image_1.x = this.x;
 		_image_1.y = this.y;
 		_image_1.start();

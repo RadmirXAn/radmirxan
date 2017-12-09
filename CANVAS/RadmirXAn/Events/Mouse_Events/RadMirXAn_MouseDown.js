@@ -25,12 +25,14 @@ function removeMouseDown(func){
 }
 
 function onMouseDown(eventData){
+	stoppropagation = false;
 	for (index_onMouseDown_layer = MouseDownlayers.length-1; index_onMouseDown_layer > -1; index_onMouseDown_layer--) {
 		if(MouseDownlayers[index_onMouseDown_layer] == undefined){
 			continue;
 		}
 		for (index_onMouseDown_function = 0; index_onMouseDown_function < MouseDownlayers[index_onMouseDown_layer].length; index_onMouseDown_function++) {
-			if(MouseDownlayers[index_onMouseDown_layer][index_onMouseDown_function](eventData)==stoppropagation){
+			MouseDownlayers[index_onMouseDown_layer][index_onMouseDown_function](eventData);
+			if(stoppropagation){
 				return;
 			}
 		}

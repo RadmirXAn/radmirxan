@@ -13,7 +13,7 @@ function  Cursor(layer) {
 	}.bind(this);	
 	
 	this.start = function (){
-        _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
+        _image_1 = new Canvas_Image(ImageLoader.getImage(_img_1), layer);
 		_image_1.start();	
 		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
