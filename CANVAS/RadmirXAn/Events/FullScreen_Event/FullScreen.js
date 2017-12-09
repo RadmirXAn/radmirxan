@@ -1,6 +1,6 @@
-var FullScreen = (function () {		
-    let FullScreen_Singleton; 
+const FullScreen = (function () {		
     function FullScreen_Action() {
+		console.log('FullScreen: --------------------------------- init');
 		let FullScreen_Functions = [];
 		let FullScreen_IsFullScreen = false;
 		this.IsFullScreen = function(){
@@ -65,13 +65,9 @@ var FullScreen = (function () {
 			} else if (canvas.msRequestFullscreen){
 				canvas.msRequestFullscreen();
 			}else{
-				alert("Fullscreen API is not supported");
+				alert("FullScreen: API is not supported");
 			}
 		}
-    } 
-	if (!FullScreen_Singleton) {
-		console.log('FullScreen: --------------------------------- init');
-		FullScreen_Singleton = new FullScreen_Action();
-	}
-	return FullScreen_Singleton;
+    }
+	return new FullScreen_Action();
 })();

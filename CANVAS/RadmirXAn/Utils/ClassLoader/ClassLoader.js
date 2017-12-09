@@ -1,6 +1,6 @@
-var ClassLoader = (function () {
-    let ClassLoader_Singleton;
+const ClassLoader = (function () {
     function ClassLoader_Action() {
+		console.log('ClassLoader_Action: --------------------------------- init');
 		let ClassLoader_Included = {};
 		this.load = function (ClassLoader_URLs, ClassLoader_Callback) {
 			ClassLoader_NextObject(ClassLoader_URLs, ClassLoader_Callback, 0);
@@ -34,14 +34,10 @@ var ClassLoader = (function () {
 			}
 		}
     }
-	if (!ClassLoader_Singleton) {
-		console.log('ClassLoader: --------------------------------- init');
-		ClassLoader_Singleton = new ClassLoader_Action();
-	}
-	return ClassLoader_Singleton;
+	return new ClassLoader_Action();
 })();
 //----------------------------------------------------------------------------------------------------------------------
-var StartClasses = [
+const StartClasses = [
     './RadmirXAn/RadMirXAn_ReservedKeywords.js',
 
 	'./RadmirXAn/Canvas/RadMirXAn_Canvas.js',

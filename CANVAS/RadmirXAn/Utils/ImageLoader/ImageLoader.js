@@ -1,6 +1,6 @@
-var ImageLoader = (function () {
-    let ImageLoader_Singleton; 
+const ImageLoader = (function () {
     function ImageLoader_Action() {
+		console.log('ImageLoader: --------------------------------- init');
 		let ImageLoader_Included = {};
 		this.load = function (ImageLoader_URLs, ImageLoader_Callback) {
 			ImageLoader_NextObject(ImageLoader_URLs, ImageLoader_Callback, 0);
@@ -38,10 +38,6 @@ var ImageLoader = (function () {
 				ImageLoader_NextObject(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Index);
 			}
 		}
-    } 
-	if (!ImageLoader_Singleton) {
-		console.log('ImageLoader: --------------------------------- init');
-		ImageLoader_Singleton = new ImageLoader_Action();
-	}
-	return ImageLoader_Singleton;
+    }
+	return new ImageLoader_Action();
 })();

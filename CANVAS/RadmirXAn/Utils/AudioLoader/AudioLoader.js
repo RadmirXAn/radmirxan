@@ -1,6 +1,6 @@
-var AudioLoader = (function () {
-    let AudioLoader_Singleton; 
+const AudioLoader = (function () {
     function AudioLoader_Action() {
+		console.log('AudioLoader: --------------------------------- init');
 		let AudioLoader_Included = {};
 		this.load = function (AudioLoader_Urls, AudioLoader_Callback) {
 			NextObject(AudioLoader_Urls, AudioLoader_Callback, 0);
@@ -41,10 +41,6 @@ var AudioLoader = (function () {
 				NextObject(AudioLoader_Urls, AudioLoader_Callback, AudioLoader_Index);
 			}
 		}
-    } 
-	if (!AudioLoader_Singleton) {
-		console.log('AudioLoader: --------------------------------- init');
-		AudioLoader_Singleton = new AudioLoader_Action();
-	}
-	return AudioLoader_Singleton;
+    }
+	return new AudioLoader_Action();
 })();
