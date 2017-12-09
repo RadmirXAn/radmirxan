@@ -29,7 +29,7 @@ function  FullScreenButton(layer) {
 	}.bind(this);
 	//------
 	this.onFullScreen = function(eventData){
-		if (FullScreen) {
+		if (FullScreen.IsFullScreen()) {
 			_animation_1.animation(FullScreenButton_Animation.fullScreen_on);
 		}else{
 			_animation_1.animation(FullScreenButton_Animation.fullScreen_off);
@@ -40,10 +40,10 @@ function  FullScreenButton(layer) {
 		switch(eventData.which){
 			case 1:{
 				if(_animation_1.hitTest(mouseX, mouseY)){					
-					if(FullScreen){
-						FullScreenOff();												
+					if(FullScreen.IsFullScreen()){
+						FullScreen.Off();												
 					}else{
-						FullScreenOn();						
+						FullScreen.On();						
 					}
 					return stoppropagation;
 				}
@@ -67,13 +67,13 @@ function  FullScreenButton(layer) {
 		_animation_1.y = this.y;
 		_animation_1.start();
 		addMouseUp(this.onMouseUp);
-		addFullScreen(this.onFullScreen);
+		FullScreen.addFunction(this.onFullScreen);
 	}.bind(this);
 
 	this.stop = function (){
-		_animation_1.stop();		
+		_animation_1.stop();
 		removeMouseUp(this.onMouseUp);
-		removeFullScreen(this.onFullScreen);
+		FullScreen.removeFunction(this.onFullScreen);
 	}.bind(this);
 
 	ClassLoader.load(IncludeFullScreenButtonClasses, function(){

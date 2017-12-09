@@ -15,12 +15,12 @@ function  Cursor(layer) {
 	this.start = function (){
         _image_1 = new RadMirXAn_Image(ImageLoader.getImage(_img_1), layer);
 		_image_1.start();	
-		addEF(this.enterFrame);
+		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
 	this.stop = function (){
 		_image_1.stop();		
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 
     ImageLoader.load(_CursorImages, this.start);

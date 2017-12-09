@@ -18,10 +18,10 @@ function  RadMirXAn_Image(image, layer) {
 	}
 
 	this.start = function (){
-		addEF(this.enterFrame, layer);
+		EnterFrame.addFunction(this.enterFrame, layer);
 	}.bind(this);
 
 	this.stop = function (){
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 }

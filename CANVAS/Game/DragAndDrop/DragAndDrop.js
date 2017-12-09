@@ -81,14 +81,14 @@ function  DragAndDrop(layer) {
 		_image_1.start();
 		addMouseDown(this.onMouseDown, layer);
 		addMouseUp(this.onMouseUp, layer);
-		addEF(this.enterFrame);
+		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
 	this.stop = function (){
 		_image_1.stop();		
 		removeMouseDown(this.onMouseDown);
 		removeMouseUp(this.onMouseUp);
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 
     ImageLoader.load(_DragAndDropImages, this.start);

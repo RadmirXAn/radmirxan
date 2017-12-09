@@ -59,13 +59,13 @@ function  Snake(layer) {
 	this.start = function (){	
 		addMouseMove(this.onMouseMove);
 		addMouseDown(this.onMouseDown);
-		addEF(this.enterFrame, layer);
+		EnterFrame.addFunction(this.enterFrame, layer);
 	}.bind(this);
 
 	this.stop = function (){
 		removeMouseMove(this.onMouseMove);
 		removeMouseDown(this.onMouseDown);
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 	
 	this.start();

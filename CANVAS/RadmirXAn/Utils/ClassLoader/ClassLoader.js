@@ -1,69 +1,58 @@
 var ClassLoader = (function () {
-    var instance;
- 
-    function action() {
-		//Все загруженные классы будем хранить в объекте в формате URL:ScriptElement.
-		let Included = {};
-		//Загружаем скрипты из списка urls и после успешной загрузки выполняем функцию callback.
-		this.load = function (urls, callback) {
-			NextObject(urls, callback, 0);
+    let ClassLoader_Singleton;
+    function ClassLoader_Action() {
+		let ClassLoader_Included = {};
+		this.load = function (ClassLoader_URLs, ClassLoader_Callback) {
+			ClassLoader_NextObject(ClassLoader_URLs, ClassLoader_Callback, 0);
 		}
-		//Загружаем изображение если не загружено
-		let NextObject = function (urls, callback, index) {
-			var next = index + 1;
-			var url = urls[index];
-			console.log('ClassLoader: Загрузка файла [%d/%d:%s]', index, urls.length, url);
-			//проверяем загружался ли файл ранее
-			if (Included[url] === undefined) {
-				let script = document.createElement('script');
-				script.src = url;
-				document.getElementsByTagName('head')[0].appendChild(script);
-				script.onload = function () {
-					Next(urls, callback, next);
+		let ClassLoader_NextObject = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Index) {
+			let ClassLoader_NextIndex = ClassLoader_Index + 1;
+			let ClassLoader_URL = ClassLoader_URLs[ClassLoader_Index];
+			console.log('ClassLoader: Загрузка файла [%d/%d:%s]', ClassLoader_Index, ClassLoader_URLs.length, ClassLoader_URL);
+			if (ClassLoader_Included[ClassLoader_URL] === undefined) {
+				let ClassLoader_Script = document.createElement('script');
+				ClassLoader_Script.src = ClassLoader_URL;
+				document.getElementsByTagName('head')[0].appendChild(ClassLoader_Script);
+				ClassLoader_Script.onload = function () {
+					ClassLoader_Next(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_NextIndex);
 				}
-				script.onerror = function () {
-					console.error('ClassLoader: Ошибка при загрузке файла [%d/%d:%s]', index, urls.length, url);
+				ClassLoader_Script.onerror = function () {
+					console.error('ClassLoader: Ошибка при загрузке файла [%d/%d:%s]', ClassLoader_Index, ClassLoader_URLs.length, ClassLoader_URL);
 				}
-				Included[url] = script;
+				ClassLoader_Included[ClassLoader_URL] = ClassLoader_Script;
 			}
 			else {
-				Next(urls, callback, next);
+				ClassLoader_Next(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_NextIndex);
 			}
 		}
-		//Проверяем все ли из списка загружено
-		let Next = function (urls, callback, index) {
-			if (index == urls.length) {
-				callback();
+		let ClassLoader_Next = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Index) {
+			if (ClassLoader_Index == ClassLoader_URLs.length) {
+				ClassLoader_Callback();
 			}
 			else {
-				NextObject(urls, callback, index);
+				ClassLoader_NextObject(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Index);
 			}
 		}
     }
- 
-	if (!instance) {
-		instance = new action();
+	if (!ClassLoader_Singleton) {
+		console.log('ClassLoader: --------------------------------- init');
+		ClassLoader_Singleton = new ClassLoader_Action();
 	}
-	return instance;
-
+	return ClassLoader_Singleton;
 })();
-
-//Список подключаемых классов 1.
-let RMXClasses = [	
+//----------------------------------------------------------------------------------------------------------------------
+var StartClasses = [
     './RadmirXAn/RadMirXAn_ReservedKeywords.js',
-	
+
 	'./RadmirXAn/Canvas/RadMirXAn_Canvas.js',
 	'./RadmirXAn/Canvas/Image/RadMirXAn_Image.js',
 	'./RadmirXAn/Canvas/Animation/RadMirXAn_Animation.js',
 	
-	'./RadmirXAn/FullScreen/RadMirXAn_FullScreen_On.js',
-	'./RadmirXAn/FullScreen/RadMirXAn_FullScreen_Off.js',
-	
 	'./RadmirXAn/Utils/ImageLoader/ImageLoader.js',	
 	'./RadmirXAn/Utils/AudioLoader/AudioLoader.js',
 	
-	'./RadmirXAn/Events/FullScreen_Event/RadMirXAn_FullScreen.js',
-	'./RadmirXAn/Events/EnterFrame_Enets/RadMirXAn_EnterFrame.js',	
+	'./RadmirXAn/Events/FullScreen_Event/FullScreen.js',
+	'./RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',	
 	'./RadmirXAn/Events/Keyboard_Events/RadMirXAn_KeyDown.js',
 	'./RadmirXAn/Events/Keyboard_Events/RadMirXAn_KeyUp.js',	
 	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_ContextMenu.js',
@@ -73,8 +62,4 @@ let RMXClasses = [
 	
 	'./Main.js'
 ];
-//Список подключаемых классов 0.
-
-//Запускаем функцию подключения классов 1.
-ClassLoader.load(RMXClasses, function(){});
-//Запускаем функцию подключения классов 0.
+ClassLoader.load(StartClasses, function(){EnterFrame.start()});

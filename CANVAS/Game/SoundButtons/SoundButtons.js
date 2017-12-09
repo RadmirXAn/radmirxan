@@ -225,7 +225,7 @@ function  SoundButtons(layer) {
 		
 		addMouseUp(this.onMouseUp, layer);
 		addMouseDown(this.onMouseDown, layer);
-		addEF(this.enterFrame);
+		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
 	this.stop = function (){
@@ -238,7 +238,7 @@ function  SoundButtons(layer) {
 		_animation_6.stop();		
 		removeMouseUp(this.onMouseUp);
 		removeMouseDown(this.onMouseDown);
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 
 	ClassLoader.load(_IncludeSoundButtonsClasses, function(){

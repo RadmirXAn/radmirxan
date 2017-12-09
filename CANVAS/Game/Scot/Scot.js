@@ -119,14 +119,14 @@ function  Scot(layer) {
 		_animation_1.start();	
 		addKeyDown(this.onKeyDown);
 		addKeyUp(this.onKeyUp);
-		addEF(this.enterFrame);
+		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
 	this.stop = function (){
 		_animation_1.stop();
 		removeKeyDown(this.onKeyDown);
 		removeKeyUp(this.onKeyUp);
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 
 	ClassLoader.load(IncludeScotClasses, function(){

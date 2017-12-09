@@ -1,58 +1,50 @@
 var AudioLoader = (function () {
-    var instance;
- 
-    function action() {
-		//Все загруженные аудиозаписи будем хранить в объекте в формате URL:HTMLMediaElement.
-		let Included = {};
-		//Загружаем картинки из списка urls и после успешной загрузки выполняем функцию callback.
-		this.load = function (urls, callback) {
-			NextObject(urls, callback, 0);
+    let AudioLoader_Singleton; 
+    function AudioLoader_Action() {
+		let AudioLoader_Included = {};
+		this.load = function (AudioLoader_Urls, AudioLoader_Callback) {
+			NextObject(AudioLoader_Urls, AudioLoader_Callback, 0);
 		}
-		//Получаем объект HTMLMediaElement по его URL
-		this.getAudio = function (url) {
-			if (Included[url] === undefined) {
-				console.error('Ошибка при получение файла [%s]', url);
+		this.getAudio = function (AudioLoader_URL) {
+			if (AudioLoader_Included[AudioLoader_URL] === undefined) {
+				console.error('Ошибка при получение файла [%s]', AudioLoader_URL);
 			}
-			return Included[url];
+			return AudioLoader_Included[AudioLoader_URL];
 		}
-		//Загружаем аудио если не загружено
-		let NextObject = function (urls, callback, index) {
-			var next = index + 1;
-			var url = urls[index];
-			console.log('AudioLoader: Загрузка файла [%d/%d:%s]', index, urls.length, url);
-			//проверяем загружался ли файл ранее
-			if (Included[url] === undefined) {
-				let audio = new Audio();
-				audio.src = url;
+		let NextObject = function (AudioLoader_Urls, AudioLoader_Callback, AudioLoader_Index) {
+			let AudioLoader_NextIndex = AudioLoader_Index + 1;
+			let AudioLoader_URL = AudioLoader_Urls[AudioLoader_Index];
+			console.log('AudioLoader: Загрузка файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_Urls.length, AudioLoader_URL);
+			if (AudioLoader_Included[AudioLoader_URL] === undefined) {
+				let AudioLoader_Audio = new Audio();
+				AudioLoader_Audio.src = AudioLoader_URL;
 				
-				audio.onloadeddata = function() 
+				AudioLoader_Audio.onloadeddata = function() 
 				{
-					Next(urls, callback, next);
+					AudioLoader_Next(AudioLoader_Urls, AudioLoader_Callback, AudioLoader_NextIndex);
 				}
-				audio.addEventListener('error' , function() 
+				AudioLoader_Audio.addEventListener('error' , function() 
 				{
-					console.error('AudioLoader: Ошибка при загрузке файла [%d/%d:%s]', index, urls.length, url);
+					console.error('AudioLoader: Ошибка при загрузке файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_Urls.length, AudioLoader_URL);
 				});
-				Included[url] = audio;
+				AudioLoader_Included[AudioLoader_URL] = AudioLoader_Audio;
 			}
 			else {
-				Next(urls, callback, next);
+				AudioLoader_Next(AudioLoader_Urls, AudioLoader_Callback, AudioLoader_NextIndex);
 			}
 		}
-		//Проверяем все ли из списка загружено
-		let Next = function (urls, callback, index) {
-			if (index == urls.length) {
-				callback();
+		let AudioLoader_Next = function (AudioLoader_Urls, AudioLoader_Callback, AudioLoader_Index) {
+			if (AudioLoader_Index == AudioLoader_Urls.length) {
+				AudioLoader_Callback();
 			}
 			else {
-				NextObject(urls, callback, index);
+				NextObject(AudioLoader_Urls, AudioLoader_Callback, AudioLoader_Index);
 			}
 		}
-    }
- 
-	if (!instance) {
-		instance = new action();
+    } 
+	if (!AudioLoader_Singleton) {
+		console.log('AudioLoader: --------------------------------- init');
+		AudioLoader_Singleton = new AudioLoader_Action();
 	}
-	return instance;
-
+	return AudioLoader_Singleton;
 })();

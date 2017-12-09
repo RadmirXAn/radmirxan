@@ -1,55 +1,47 @@
 var ImageLoader = (function () {
-    var instance;
- 
-    function action() {
-		//Все загруженные изображения будем хранить в объекте в формате URL:HTMLImageElement.
-		let Included = {};
-		//Загружаем картинки из списка urls и после успешной загрузки выполняем функцию callback.
-		this.load = function (urls, callback) {
-			NextObject(urls, callback, 0);
+    let ImageLoader_Singleton; 
+    function ImageLoader_Action() {
+		let ImageLoader_Included = {};
+		this.load = function (ImageLoader_URLs, ImageLoader_Callback) {
+			ImageLoader_NextObject(ImageLoader_URLs, ImageLoader_Callback, 0);
 		}
-		//Получаем объект HTMLImageElement по его URL
-		this.getImage = function (url) {
-			if (Included[url] === undefined) {
-				console.error('Ошибка при получение файла [%s]', url);
+		this.getImage = function (ImageLoader_URL) {
+			if (ImageLoader_Included[ImageLoader_URL] === undefined) {
+				console.error('Ошибка при получение файла [%s]', ImageLoader_URL);
 			}
-			return Included[url];
+			return ImageLoader_Included[ImageLoader_URL];
 		}
-		//Загружаем изображение если не загружено
-		let NextObject = function (urls, callback, index) {
-			var next = index + 1;
-			var url = urls[index];
-			console.log('ImageLoader: Загрузка файла [%d/%d:%s]', index, urls.length, url);
-			//проверяем загружался ли файл ранее
-			if (Included[url] === undefined) {
-				var img = new Image();
-				img.src = url;
-				img.onload = function () {
-					Next(urls, callback, next);
+		let ImageLoader_NextObject = function (ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Index) {
+			let ImageLoader_NextIndex = ImageLoader_Index + 1;
+			let ImageLoader_URL = ImageLoader_URLs[ImageLoader_Index];
+			console.log('ImageLoader: Загрузка файла [%d/%d:%s]', ImageLoader_Index, ImageLoader_URLs.length, ImageLoader_URL);
+			if (ImageLoader_Included[ImageLoader_URL] === undefined) {
+				let ImageLoader_Img = new Image();
+				ImageLoader_Img.src = ImageLoader_URL;
+				ImageLoader_Img.onload = function () {
+					ImageLoader_Next(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_NextIndex);
 				}
-				img.onerror = function () {
-					console.error('ImageLoader: Ошибка при загрузке файла [%d/%d:%s]', index, urls.length, url);
+				ImageLoader_Img.onerror = function () {
+					console.error('ImageLoader: Ошибка при загрузке файла [%d/%d:%s]', ImageLoader_Index, ImageLoader_URLs.length, ImageLoader_URL);
 				}
-				Included[url] = img;
+				ImageLoader_Included[ImageLoader_URL] = ImageLoader_Img;
 			}
 			else {
-				Next(urls, callback, next);
+				ImageLoader_Next(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_NextIndex);
 			}
 		}
-		//Проверяем все ли из списка загружено
-		let Next = function (urls, callback, index) {
-			if (index == urls.length) {
-				callback();
+		let ImageLoader_Next = function (ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Index) {
+			if (ImageLoader_Index == ImageLoader_URLs.length) {
+				ImageLoader_Callback();
 			}
 			else {
-				NextObject(urls, callback, index);
+				ImageLoader_NextObject(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Index);
 			}
 		}
-    }
- 
-	if (!instance) {
-		instance = new action();
+    } 
+	if (!ImageLoader_Singleton) {
+		console.log('ImageLoader: --------------------------------- init');
+		ImageLoader_Singleton = new ImageLoader_Action();
 	}
-	return instance;
-
+	return ImageLoader_Singleton;
 })();

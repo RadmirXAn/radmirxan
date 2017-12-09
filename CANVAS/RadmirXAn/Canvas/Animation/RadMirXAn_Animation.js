@@ -13,6 +13,7 @@ function  RadMirXAn_Animation(image, layer) {
 	this.y = 0;
 	this.ms = 0;
 	this.currentFrame = 0;
+	this.time = EnterFrame.getTime();
 	this.lastTime = 0;
 	
 	this.animation = function(val){
@@ -21,6 +22,7 @@ function  RadMirXAn_Animation(image, layer) {
 	}.bind(this);
 
 	this.enterFrame = function(){
+		time = EnterFrame.getTime();
 		ax = this.x;
 		ay = this.y;
 		if( ((time - this.lastTime) > this.ms)){
@@ -52,10 +54,10 @@ function  RadMirXAn_Animation(image, layer) {
 	}
 	
 	this.start = function (){
-		addEF(this.enterFrame, layer);
+		EnterFrame.addFunction(this.enterFrame, layer);
 	}.bind(this);
 
 	this.stop = function (){
-		removeEF(this.enterFrame);
+		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 }
