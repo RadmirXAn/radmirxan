@@ -129,7 +129,7 @@ function  Scot(layer) {
 		removeEF(this.enterFrame);
 	}.bind(this);
 
-	Include(IncludeScotClasses, function(){
+	ClassLoader.load(IncludeScotClasses, function(){
         ImageLoader.load(_ScotImages, this.start);
 	}.bind(this));
 }

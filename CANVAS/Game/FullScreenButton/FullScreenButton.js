@@ -76,7 +76,7 @@ function  FullScreenButton(layer) {
 		removeFullScreen(this.onFullScreen);
 	}.bind(this);
 
-	Include(IncludeFullScreenButtonClasses, function(){
+	ClassLoader.load(IncludeFullScreenButtonClasses, function(){
         ImageLoader.load(_FullScreenImages, this.start);
 	}.bind(this));
 }

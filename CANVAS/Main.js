@@ -8,7 +8,7 @@ let MainClasses = [
 	'./Game/FullScreenButton/FullScreenButton.js',
 	'./Game/SoundButtons/SoundButtons.js'
 ];
-Include(MainClasses, init);
+ClassLoader.load(MainClasses, init);
 
 var starter;
 var snake;

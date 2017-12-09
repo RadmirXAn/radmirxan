@@ -21,7 +21,7 @@ function  SoundButtons(layer) {
 		_sound_1
 	];
 	//------
-	let IncludeSoundButtonsClasses = [	
+	let _IncludeSoundButtonsClasses = [	
 		'./Game/SoundButtons/SoundButtons_Animation.js'
 	];
 	//------
@@ -175,7 +175,7 @@ function  SoundButtons(layer) {
 	}.bind(this);
 
 	this.start = function (){
-		audio = RadMirXAnAudio[_sound_1];
+		audio = AudioLoader.getAudio(_sound_1);
 		audio.addEventListener('ended', this.audioEnded);
 		//audio.play();
 		audio.volume = 0.5;
@@ -241,9 +241,9 @@ function  SoundButtons(layer) {
 		removeEF(this.enterFrame);
 	}.bind(this);
 
-	Include(IncludeSoundButtonsClasses, function(){
+	ClassLoader.load(_IncludeSoundButtonsClasses, function(){
         ImageLoader.load(_SoundButtonsImages, function(){
-			IncludeAudios(_SoundButtonsSounds, this.start);
+			AudioLoader.load(_SoundButtonsSounds, this.start);
 		}.bind(this));
 	}.bind(this));
 }
