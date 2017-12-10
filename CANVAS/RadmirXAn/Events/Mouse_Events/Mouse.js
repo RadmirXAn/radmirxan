@@ -1,22 +1,15 @@
 const Mouse = (function(){
 	function Mouse_Action() {
-		//Остановить распространение 1
 		this.stoppropagation = true;
-		//Остановить распространение 0
-		//События происходят когда выводим контекстное меню на объектом Canvas.getVisible() 1.
 		let onContextMenu = function(eventData){
 			return false;
 		}
 		Canvas.getVisible().oncontextmenu = onContextMenu;
-		//События происходят когда выводим контекстное меню на объектом Canvas.getVisible() 0.
-		//События происходят когда отжимаем кнопку мыши над объектом Canvas.getVisible() 1.
-		//Для событий отжатия кнопок мыши 1
 		let Mouse_Uplayers = [];
 		let Mouse_UpFunctions = [];
 		let Mouse_UpFunctionsLayer = [];
 		let Mouse_IndexUplayer = 0;
 		let Mouse_OnUpFunctions = 0;
-		//Для событий отжатия кнопок мыши 0
 		this.addUpFunction = function(Mouse_Function, Mouse_Layer){
 			if(Mouse_Layer == undefined){
 				Mouse_Layer = 0;
@@ -30,7 +23,6 @@ const Mouse = (function(){
 				Mouse_Uplayers[Mouse_Layer].push(Mouse_Function);	
 			}
 		}
-
 		this.removeUpFunction = function(Mouse_Function){	
 			let Mouse_Index = Mouse_UpFunctions.indexOf(Mouse_Function);
 			if(Mouse_Index != -1){
@@ -41,7 +33,6 @@ const Mouse = (function(){
 				Mouse_UpFunctionsLayer.splice(Mouse_Index, 1);
 			}
 		}
-
 		let Mouse_OnUp = function(eventData){
 			stoppropagation = false;
 			for (Mouse_IndexUplayer = Mouse_Uplayers.length-1; Mouse_IndexUplayer > -1; Mouse_IndexUplayer--) {
@@ -56,17 +47,12 @@ const Mouse = (function(){
 				}
 			}
 		}
-
 		Canvas.getVisible().onmouseup = Mouse_OnUp;
-		//События происходят когда отжимаем кнопку мыши над объектом Canvas.getVisible() 0.
-		//События происходят когда нажимаем кнопку мыши над объектом Canvas.getVisible() 1.
-		//Для событий нажатия кнопок мыши 1
 		let Mouse_Downlayers = [];
 		let Mouse_DownFunctions = [];
 		let MouseDownfunctionsLayer = [];
 		let Mouse_IndexDownLayer = 0;
 		let Mouse_OnDownFunctions = 0;
-		//Для событий нажатия кнопок мыши 0
 		this.addDownFunction = function(Mouse_Function, Mouse_Layer){
 			if(Mouse_Layer == undefined){
 				Mouse_Layer = 0;
@@ -80,7 +66,6 @@ const Mouse = (function(){
 				Mouse_Downlayers[Mouse_Layer].push(Mouse_Function);	
 			}
 		}
-
 		this.removeDownFunction = function(Mouse_Function){
 			let Mouse_Index = Mouse_DownFunctions.indexOf(Mouse_Function);
 			if(Mouse_Index != -1){
@@ -91,7 +76,6 @@ const Mouse = (function(){
 				MouseDownfunctionsLayer.splice(Mouse_Index, 1);
 			}
 		}
-
 		let Mouse_OnDown = function(eventData){
 			stoppropagation = false;
 			for (Mouse_IndexDownLayer = Mouse_Downlayers.length-1; Mouse_IndexDownLayer > -1; Mouse_IndexDownLayer--) {
@@ -106,11 +90,7 @@ const Mouse = (function(){
 				}
 			}
 		}
-
 		Canvas.getVisible().onmousedown = Mouse_OnDown;
-		//События происходят когда нажимаем кнопку мыши над объектом Canvas.getVisible() 0.
-		//События происходят когда водим курсором мыши по объекту Canvas.getVisible() 1.
-		//Для событий перемешения курсора мыши 1
 		let Mouse_MoveFunctions = [];
 		let Mouse_X = 0;
 		let Mouse_Y = 0;
@@ -120,20 +100,17 @@ const Mouse = (function(){
 		this.getY = function(){
 			return Mouse_Y;
 		}
-		//Для событий перемешения курсора мыши 0
 		this.addMoveFunction = function(Mouse_Function){
 			if(Mouse_MoveFunctions.indexOf(Mouse_Function) == -1){
 				Mouse_MoveFunctions.push(Mouse_Function);
 			}
 		}
-
 		this.removeMoveFunction = function(Mouse_Function){
 			let Mouse_Index = Mouse_MoveFunctions.indexOf(Mouse_Function);
 			if(Mouse_Index != -1){
 				Mouse_MoveFunctions.splice(Mouse_Index, 1);
 			}
 		}
-
 		let Mouse_OnMove = function(eventData){
 			let Mouse_Rect = Canvas.getVisible().getBoundingClientRect();
 			Mouse_X = eventData.clientX - Mouse_Rect.left;
@@ -144,9 +121,7 @@ const Mouse = (function(){
 				}
 			);
 		}
-
 		Canvas.getVisible().onmousemove = Mouse_OnMove;
-		//События происходят когда водим курсором мыши по объекту Canvas.getVisible() 0.
 	}
 	return new Mouse_Action();
 })();
