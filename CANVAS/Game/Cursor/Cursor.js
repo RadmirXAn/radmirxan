@@ -8,8 +8,8 @@ function  Cursor(layer) {
 	];
 	//------
 	this.enterFrame = function(){
-		_image_1.x = mouseX;
-		_image_1.y = mouseY;		
+		_image_1.x = Mouse.getX();
+		_image_1.y = Mouse.getY();		
 	}.bind(this);	
 	
 	this.start = function (){

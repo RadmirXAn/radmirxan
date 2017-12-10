@@ -46,9 +46,9 @@ function  DragAndDrop(image_url, layer) {
 		switch(eventData.which){
 			case 1:{
 				//console.log('onMouseDown левая кнопка');
-				_drag[0] = _image_1.hitTest(mouseX, mouseY);
-				_drag[1] = _image_1.x-mouseX;
-				_drag[2] = _image_1.y-mouseY;
+				_drag[0] = _image_1.hitTest(Mouse.getX(), Mouse.getY());
+				_drag[1] = _image_1.x-Mouse.getX();
+				_drag[2] = _image_1.y-Mouse.getY();
 				break;
 			}
 			case 2:{
@@ -64,8 +64,8 @@ function  DragAndDrop(image_url, layer) {
 
 	this.enterFrame = function(){
 		if(_drag[0]==true){
-			_image_1.x = mouseX + _drag[1];
-			_image_1.y = mouseY + _drag[2];
+			_image_1.x = Mouse.getX() + _drag[1];
+			_image_1.y = Mouse.getY() + _drag[2];
 		}
 	}.bind(this);
 
@@ -74,15 +74,15 @@ function  DragAndDrop(image_url, layer) {
 		_image_1.x = this.x;
 		_image_1.y = this.y;
 		_image_1.start();
-		addMouseDown(this.onMouseDown, layer);
-		addMouseUp(this.onMouseUp, layer);
+		Mouse.addDownFunction(this.onMouseDown, layer);
+		Mouse.addUpFunction(this.onMouseUp, layer);
 		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
 	this.stop = function (){
 		_image_1.stop();		
-		removeMouseDown(this.onMouseDown);
-		removeMouseUp(this.onMouseUp);
+		Mouse.removeDownFunction(this.onMouseDown);
+		Mouse.removeUpFunction(this.onMouseUp);
 		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 

@@ -29,7 +29,7 @@ function  Starter(action, layer) {
 	this.onMouseDown = function(eventData){
 		switch(eventData.which){
 			case 1:{
-				if(_image_1.hitTest(mouseX, mouseY)){
+				if(_image_1.hitTest(Mouse.getX(), Mouse.getY())){
 					this.stop();
 				}
 				break;
@@ -50,13 +50,13 @@ function  Starter(action, layer) {
 		_image_1.x = this.x;
 		_image_1.y = this.y;
 		_image_1.start();
-		addMouseDown(this.onMouseDown, layer);
+		Mouse.addDownFunction(this.onMouseDown, layer);
 	}.bind(this);
 
 	this.stop = function (){
 		action();
 		_image_1.stop();		
-		removeMouseDown(this.onMouseDown);
+		Mouse.removeDownFunction(this.onMouseDown);
 	}.bind(this);
 
     ImageLoader.load(_StarterImages, this.start);

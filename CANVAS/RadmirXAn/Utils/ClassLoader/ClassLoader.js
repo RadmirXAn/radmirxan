@@ -38,8 +38,6 @@ const ClassLoader = (function () {
 })();
 //----------------------------------------------------------------------------------------------------------------------
 const StartClasses = [
-    './RadmirXAn/RadMirXAn_ReservedKeywords.js',
-
 	'./RadmirXAn/Canvas/Canvas.js',
 	'./RadmirXAn/Canvas/Image/Canvas_Image.js',
 	'./RadmirXAn/Canvas/Animation/Canvas_Animation.js',
@@ -50,10 +48,7 @@ const StartClasses = [
 	'./RadmirXAn/Events/FullScreen_Event/FullScreen.js',
 	'./RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',	
 	'./RadmirXAn/Events/Keyboard_Events/Keyboard.js',
-	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_ContextMenu.js',
-	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_MouseUp.js',
-	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_MouseDown.js',
-	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_MouseMove.js',
+	'./RadmirXAn/Events/Mouse_Events/Mouse.js',
 	
 	'./Main.js'
 ];

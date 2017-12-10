@@ -105,8 +105,8 @@ function  SoundButtons(layer) {
 	
 	this.enterFrame = function(){	
 		if(drag){
-			if( (this.x < mouseX) && (mouseX < this.x+320) ){
-				audio.volume = (mouseX-this.x)/320;
+			if( (this.x < Mouse.getX()) && (Mouse.getX() < this.x+320) ){
+				audio.volume = (Mouse.getX()-this.x)/320;
 				volume(audio.volume);
 			}
 		}
@@ -132,26 +132,26 @@ function  SoundButtons(layer) {
 	this.onMouseDown = function(eventData){
 		switch(eventData.which){
 			case 1:{
-				if( (this.x < mouseX) && (mouseX < this.x+320) && (this.y < mouseY) && (mouseY < this.y+80) ){
+				if( (this.x < Mouse.getX()) && (Mouse.getX() < this.x+320) && (this.y < Mouse.getY()) && (Mouse.getY() < this.y+80) ){
 					drag = true;
-				}else if( (this.x < mouseX) && (mouseX < this.x+320) && (this.y+80 < mouseY) && (mouseY < this.y+160) ){
-					if(_animation_1.hitTest(mouseX, mouseY)){
+				}else if( (this.x < Mouse.getX()) && (Mouse.getX() < this.x+320) && (this.y+80 < Mouse.getY()) && (Mouse.getY() < this.y+160) ){
+					if(_animation_1.hitTest(Mouse.getX(), Mouse.getY())){
 						_animation_1.animation(SoundButtons_Animation.playButton_on);
 						_animation_2.animation(SoundButtons_Animation.pauseButton_off);
 						_animation_3.animation(SoundButtons_Animation.stopButton_off);
 						audio.play();
-					}else if(_animation_2.hitTest(mouseX, mouseY)){
+					}else if(_animation_2.hitTest(Mouse.getX(), Mouse.getY())){
 						_animation_1.animation(SoundButtons_Animation.playButton_off);
 						_animation_2.animation(SoundButtons_Animation.pauseButton_on);
 						_animation_3.animation(SoundButtons_Animation.stopButton_off);
 						audio.pause();
-					}else if(_animation_3.hitTest(mouseX, mouseY)){
+					}else if(_animation_3.hitTest(Mouse.getX(), Mouse.getY())){
 						_animation_1.animation(SoundButtons_Animation.playButton_off);
 						_animation_2.animation(SoundButtons_Animation.pauseButton_off);
 						_animation_3.animation(SoundButtons_Animation.stopButton_on);
 						audio.pause();
 						audio.currentTime = 0.0;
-					}else if(_animation_4.hitTest(mouseX, mouseY)){
+					}else if(_animation_4.hitTest(Mouse.getX(), Mouse.getY())){
 						if(audio.loop){
 							audio.loop = false;
 							_animation_4.animation(SoundButtons_Animation.loopButton_off);
@@ -223,8 +223,8 @@ function  SoundButtons(layer) {
 		
 		volume(audio.volume);
 		
-		addMouseUp(this.onMouseUp, layer);
-		addMouseDown(this.onMouseDown, layer);
+		Mouse.addUpFunction(this.onMouseUp, layer);
+		Mouse.addDownFunction(this.onMouseDown, layer);
 		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
@@ -236,8 +236,8 @@ function  SoundButtons(layer) {
 		_animation_4.stop();
 		_animation_5.stop();
 		_animation_6.stop();		
-		removeMouseUp(this.onMouseUp);
-		removeMouseDown(this.onMouseDown);
+		Mouse.removeUpFunction(this.onMouseUp);
+		Mouse.removeDownFunction(this.onMouseDown);
 		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 

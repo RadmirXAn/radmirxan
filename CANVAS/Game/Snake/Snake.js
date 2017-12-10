@@ -36,7 +36,7 @@ function  Snake(layer) {
 	}.bind(this);
 
 	this.onMouseMove = function(eventData){
-		_points.push({x:mouseX, y:mouseY});
+		_points.push({x:Mouse.getX(), y:Mouse.getY()});
 		if(_points.length>50){
 			_points.shift();
 		}	
@@ -48,7 +48,7 @@ function  Snake(layer) {
 	
 	this.enterFrame = function(){
 		if(_pause){
-			_points.push({x:mouseX, y:mouseY});
+			_points.push({x:Mouse.getX(), y:Mouse.getY()});
 			if(_points.length>100){
 				_points.shift();
 			}
@@ -57,14 +57,14 @@ function  Snake(layer) {
 	}.bind(this);	
 	
 	this.start = function (){	
-		addMouseMove(this.onMouseMove);
-		addMouseDown(this.onMouseDown);
+		Mouse.addMoveFunction(this.onMouseMove);
+		Mouse.addDownFunction(this.onMouseDown);
 		EnterFrame.addFunction(this.enterFrame, layer);
 	}.bind(this);
 
 	this.stop = function (){
-		removeMouseMove(this.onMouseMove);
-		removeMouseDown(this.onMouseDown);
+		Mouse.removeMoveFunction(this.onMouseMove);
+		Mouse.removeDownFunction(this.onMouseDown);
 		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 	
