@@ -28,13 +28,13 @@ const FullScreen = (function () {
 		let FullScreen_CurrentElement = function() {
 			return (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || false);
 		}
-		if (canvas.requestFullscreen) {
+		if (Canvas.getVisible().requestFullscreen) {
 			document.addEventListener("fullscreenchange", FullScreen_OnFullScreen);
-		} else if (canvas.mozRequestFullScreen) {
+		} else if (Canvas.getVisible().mozRequestFullScreen) {
 			document.addEventListener("mozfullscreenchange", FullScreen_OnFullScreen);
-		} else if (canvas.webkitRequestFullScreen) {
+		} else if (Canvas.getVisible().webkitRequestFullScreen) {
 			document.addEventListener("webkitfullscreenchange", FullScreen_OnFullScreen);
-		} else if (canvas.msRequestFullscreen){
+		} else if (Canvas.getVisible().msRequestFullscreen){
 			document.addEventListener("MSFullscreenChange", FullScreen_OnFullScreen);
 		}else{
 			alert("Fullscreen API is not supported");
@@ -51,19 +51,19 @@ const FullScreen = (function () {
 			}
 		}
 		this.On = function(){	
-			if (canvas.requestFullscreen) {
-				canvas.requestFullscreen();
-			} else if (canvas.mozRequestFullScreen) {
-				canvas.mozRequestFullScreen();
-			} else if (canvas.webkitRequestFullScreen) {
+			if (Canvas.getVisible().requestFullscreen) {
+				Canvas.getVisible().requestFullscreen();
+			} else if (Canvas.getVisible().mozRequestFullScreen) {
+				Canvas.getVisible().mozRequestFullScreen();
+			} else if (Canvas.getVisible().webkitRequestFullScreen) {
 				if (typeof Element !== "undefined" && typeof Element.ALLOW_KEYBOARD_INPUT !== "undefined"){
-					canvas.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+					Canvas.getVisible().webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
 				}
 				else{
-					canvas.webkitRequestFullScreen();
+					Canvas.getVisible().webkitRequestFullScreen();
 				}
-			} else if (canvas.msRequestFullscreen){
-				canvas.msRequestFullscreen();
+			} else if (Canvas.getVisible().msRequestFullscreen){
+				Canvas.getVisible().msRequestFullscreen();
 			}else{
 				alert("FullScreen: API is not supported");
 			}

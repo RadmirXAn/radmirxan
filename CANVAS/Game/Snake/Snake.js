@@ -3,15 +3,15 @@ function  Snake(layer) {
 	let _pause = false;
 	
 	this.drawCross = function (x, y){
-		context2D.beginPath();
+		Canvas.getVisibleContext().beginPath();
 
-		context2D.moveTo(-50+x, 0+y);
-		context2D.lineTo(50+x, 0+y);
+		Canvas.getVisibleContext().moveTo(-50+x, 0+y);
+		Canvas.getVisibleContext().lineTo(50+x, 0+y);
 
-		context2D.moveTo(0+x, -50+y);
-		context2D.lineTo(0+x, 50+y);
+		Canvas.getVisibleContext().moveTo(0+x, -50+y);
+		Canvas.getVisibleContext().lineTo(0+x, 50+y);
 
-		context2D.stroke();
+		Canvas.getVisibleContext().stroke();
 	}.bind(this);
 
 	this.onMouseDown = function(eventData){

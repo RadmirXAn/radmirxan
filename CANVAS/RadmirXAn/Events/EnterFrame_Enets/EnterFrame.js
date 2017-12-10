@@ -1,6 +1,6 @@
 var EnterFrame = (function () {
-    let EnterFrame_Singleton;
     function EnterFrame_Action() {
+		console.log('EnterFrame: --------------------------------- init');
 		let EnterFrame_Timer;
 		let EnterFrame_StartTime = -1;
 		let EnterFrame_SustemTime = -1;	
@@ -40,7 +40,7 @@ var EnterFrame = (function () {
 		let EnterFrame_index_function = 0;
 		let EnterFrame_action = function(){
 			EnterFrame_SustemTime = (new Date()).getTime();
-			context2D.clearRect(0, 0, canvas.width, canvas.height);			
+			Canvas.getVisibleContext().clearRect(0, 0, Canvas.width(), Canvas.height());			
 			for (EnterFrame_index_layer = 0; EnterFrame_index_layer < EnterFrame_Layers.length; EnterFrame_index_layer++) {
 				if(EnterFrame_Layers[EnterFrame_index_layer] == undefined){
 					continue;
@@ -61,9 +61,5 @@ var EnterFrame = (function () {
 			cancelanimationframe(EnterFrame_Timer);
 		}
     }
-	if (!EnterFrame_Singleton) {
-		console.log('EnterFrame: --------------------------------- init');
-		EnterFrame_Singleton = new EnterFrame_Action();
-	}
-	return EnterFrame_Singleton;
+	return new EnterFrame_Action();
 })();

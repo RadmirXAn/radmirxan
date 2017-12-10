@@ -1,4 +1,4 @@
-//События происходят когда отжимаем кнопку мыши над объектом Canvas 1.
+//События происходят когда отжимаем кнопку мыши над объектом Canvas.getVisible() 1.
 function addMouseUp(func, layer){
 	if(layer == undefined){
 		layer = 0;
@@ -39,5 +39,5 @@ function onMouseUp(eventData){
 	}
 }
 
-canvas.onmouseup = onMouseUp;
-//События происходят когда отжимаем кнопку мыши над объектом Canvas 0.
+Canvas.getVisible().onmouseup = onMouseUp;
+//События происходят когда отжимаем кнопку мыши над объектом Canvas.getVisible() 0.

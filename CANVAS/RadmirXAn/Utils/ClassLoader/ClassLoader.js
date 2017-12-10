@@ -40,7 +40,7 @@ const ClassLoader = (function () {
 const StartClasses = [
     './RadmirXAn/RadMirXAn_ReservedKeywords.js',
 
-	'./RadmirXAn/Canvas/RadMirXAn_Canvas.js',
+	'./RadmirXAn/Canvas/Canvas.js',
 	'./RadmirXAn/Canvas/Image/Canvas_Image.js',
 	'./RadmirXAn/Canvas/Animation/Canvas_Animation.js',
 	

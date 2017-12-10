@@ -1,4 +1,4 @@
-//События происходят когда нажимаем кнопку мыши над объектом Canvas 1.
+//События происходят когда нажимаем кнопку мыши над объектом Canvas.getVisible() 1.
 function addMouseDown(func, layer){
 	if(layer == undefined){
 		layer = 0;
@@ -39,5 +39,5 @@ function onMouseDown(eventData){
 	}
 }
 
-canvas.onmousedown = onMouseDown;
-//События происходят когда нажимаем кнопку мыши над объектом Canvas 0.
+Canvas.getVisible().onmousedown = onMouseDown;
+//События происходят когда нажимаем кнопку мыши над объектом Canvas.getVisible() 0.

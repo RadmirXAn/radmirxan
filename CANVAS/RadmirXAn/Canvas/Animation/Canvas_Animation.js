@@ -34,7 +34,7 @@ const Canvas_Animation = function(image, layer) {
 			ax += frame.dx;
 			ay += frame.dy;
 		}
-		context2D.drawImage(image, dx, dy, dw, dh, ax, ay, dw, dh);
+		Canvas.getVisibleContext().drawImage(image, dx, dy, dw, dh, ax, ay, dw, dh);
 	}.bind(this);	
 	this.hitTest = function(x, y){
 		let hit = false;

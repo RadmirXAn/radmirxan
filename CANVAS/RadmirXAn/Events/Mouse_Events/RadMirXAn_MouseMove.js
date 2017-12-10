@@ -1,4 +1,4 @@
-//События происходят когда водим курсором мыши по объекту Canvas 1.
+//События происходят когда водим курсором мыши по объекту Canvas.getVisible() 1.
 function addMouseMove(func){
 	if(MouseMovefunctions.indexOf(func) == -1){
 		MouseMovefunctions.push(func);
@@ -13,7 +13,7 @@ function removeMouseMove(func){
 }
 
 function onMouseMove(eventData){
-	let rect = canvas.getBoundingClientRect();
+	let rect = Canvas.getVisible().getBoundingClientRect();
 	mouseX = eventData.clientX - rect.left;
 	mouseY = eventData.clientY - rect.top;
 	MouseMovefunctions.forEach(
@@ -23,5 +23,5 @@ function onMouseMove(eventData){
 	);
 }
 
-canvas.onmousemove = onMouseMove;
-//События происходят когда водим курсором мыши по объекту Canvas 0.
+Canvas.getVisible().onmousemove = onMouseMove;
+//События происходят когда водим курсором мыши по объекту Canvas.getVisible() 0.
