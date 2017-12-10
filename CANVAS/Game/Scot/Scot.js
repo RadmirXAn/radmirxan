@@ -48,17 +48,17 @@ function  Scot(layer) {
 			case 39:
 			case 40:
 			{				
-				if(!keyCode[37] && !keyCode[38] && !keyCode[39] && !keyCode[40]){
+				if(!Keyboard.getKeyCodeStatus(37) && !Keyboard.getKeyCodeStatus(38) && !Keyboard.getKeyCodeStatus(39) && !Keyboard.getKeyCodeStatus(40)){
 					_action = 'idle';					
-				}else if(keyCode[37]){
+				}else if(Keyboard.getKeyCodeStatus(37)){
 					_action = 'run_left';
 					_direction = 'left';
-				}else if(keyCode[39]){
+				}else if(Keyboard.getKeyCodeStatus(39)){
 					_action = 'run_right';
 					_direction = 'right';
-				}else if(keyCode[40]){
+				}else if(Keyboard.getKeyCodeStatus(40)){
 					_action = 'run_down';
-				}else if(keyCode[38]){
+				}else if(Keyboard.getKeyCodeStatus(38)){
 					_action = 'run_up';
 				}
 				setScotAnimation();
@@ -117,15 +117,15 @@ function  Scot(layer) {
 		_animation_1.x = 0;
 		_animation_1.y = 0;
 		_animation_1.start();	
-		addKeyDown(this.onKeyDown);
-		addKeyUp(this.onKeyUp);
+		Keyboard.addKeyDownFunction(this.onKeyDown);
+		Keyboard.addKeyUpFunction(this.onKeyUp);
 		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
 
 	this.stop = function (){
 		_animation_1.stop();
-		removeKeyDown(this.onKeyDown);
-		removeKeyUp(this.onKeyUp);
+		Keyboard.removeKeyDownFunction(this.onKeyDown);
+		Keyboard.removeKeyUpFunction(this.onKeyUp);
 		EnterFrame.removeFunction(this.enterFrame);
 	}.bind(this);
 

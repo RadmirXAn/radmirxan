@@ -49,8 +49,7 @@ const StartClasses = [
 	
 	'./RadmirXAn/Events/FullScreen_Event/FullScreen.js',
 	'./RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',	
-	'./RadmirXAn/Events/Keyboard_Events/RadMirXAn_KeyDown.js',
-	'./RadmirXAn/Events/Keyboard_Events/RadMirXAn_KeyUp.js',	
+	'./RadmirXAn/Events/Keyboard_Events/Keyboard.js',
 	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_ContextMenu.js',
 	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_MouseUp.js',
 	'./RadmirXAn/Events/Mouse_Events/RadMirXAn_MouseDown.js',
