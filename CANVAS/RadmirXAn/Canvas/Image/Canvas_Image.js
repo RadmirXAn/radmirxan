@@ -1,8 +1,10 @@
-const Canvas_Image = function(image, layer) {	
+const Canvas_Image = function(Canvas_Image_Image, Canvas_Image_Layer) {
+	let image = Canvas_Image_Image;
+	let context = Canvas.getVisibleContext();
 	this.x = 0;
 	this.y = 0;
 	this.enterFrame = function(){	
-		Canvas.getVisibleContext().drawImage(image, this.x, this.y);
+		context.drawImage(image, this.x, this.y);
 	}.bind(this);	
 	this.hitTest = function(x, y){
 		let hit = false;
@@ -23,8 +25,11 @@ const Canvas_Image = function(image, layer) {
 		}			
 		return hit;
 	}
+	this.setImage = function(Canvas_Image_Image){
+		image = Canvas_Image_Image;
+	}.bind(this);
 	this.start = function (){
-		EnterFrame.addFunction(this.enterFrame, layer);
+		EnterFrame.addFunction(this.enterFrame, Canvas_Image_Layer);
 	}.bind(this);
 	this.stop = function (){
 		EnterFrame.removeFunction(this.enterFrame);

@@ -6,7 +6,8 @@ let MainClasses = [
 	'./Game/Background/Background.js',
 	'./Game/DragAndDrop/DragAndDrop.js',
 	'./Game/FullScreenButton/FullScreenButton.js',
-	'./Game/SoundButtons/SoundButtons.js'
+	'./Game/SoundButtons/SoundButtons.js',
+	'./Game/Hypnotized/Hypnotized.js'
 ];
 ClassLoader.load(MainClasses, init);
 
@@ -19,6 +20,7 @@ var draganddrop_1;
 var draganddrop_2;
 var fullScreenbutton;
 var saoundbuttons;
+var hypnotized;
 
 function init(){
 	background = new Background(0);
@@ -29,6 +31,7 @@ function init(){
 }
 
 function start(){
+	hypnotized = new Hypnotized(4);
 	snake = new Snake(1);
 	scot = new Scot(4);	
 	draganddrop_1 = new DragAndDrop('./Images/2.png', 5);

@@ -41,6 +41,7 @@ const StartClasses = [
 	'./RadmirXAn/Canvas/Canvas.js',
 	'./RadmirXAn/Canvas/Image/Canvas_Image.js',
 	'./RadmirXAn/Canvas/Animation/Canvas_Animation.js',
+	'./RadmirXAn/Canvas/TimeLapseAnimation/Canvas_TimeLapseAnimation.js',
 	
 	'./RadmirXAn/Utils/ImageLoader/ImageLoader.js',	
 	'./RadmirXAn/Utils/AudioLoader/AudioLoader.js',
