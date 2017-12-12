@@ -1,13 +1,13 @@
 const Hypnotized = function(layer) {
 	//------
-	let _img_1 = './Animations/0/1.png';
-	let _img_2 = './Animations/0/3.png';
-	let _img_3 = './Animations/0/5.png';
-	let _img_4 = './Animations/0/7.png';
-	let _img_5 = './Animations/0/9.png';
-	let _img_6 = './Animations/0/11.png';
-	let _img_7 = './Animations/0/13.png';
-	let _img_8 = './Animations/0/15.png';
+	let _img_1 = './Images/Hypnotized/0/1.png';
+	let _img_2 = './Images/Hypnotized/0/3.png';
+	let _img_3 = './Images/Hypnotized/0/5.png';
+	let _img_4 = './Images/Hypnotized/0/7.png';
+	let _img_5 = './Images/Hypnotized/0/9.png';
+	let _img_6 = './Images/Hypnotized/0/11.png';
+	let _img_7 = './Images/Hypnotized/0/13.png';
+	let _img_8 = './Images/Hypnotized/0/15.png';
 
 	let _animation_1;
 	
@@ -21,6 +21,9 @@ const Hypnotized = function(layer) {
 		_img_7,
 		_img_8
 	];
+	
+	let x = 0;
+	let y = 0;
 	//------
 	this.enterFrame = function(){
 
@@ -39,8 +42,10 @@ const Hypnotized = function(layer) {
 			ImageLoader.getImage(_img_8)
 		];
 		
-        _animation_1 = new Canvas_TimeLapseAnimation(_HypnotizedImagesList, layer);
-		_animation_1.ms = 24;
+        _animation_1 = new Animation(_HypnotizedImagesList, layer);
+		_animation_1.frameRate = 24;
+		_animation_1.x = x;
+		_animation_1.y = y;
 		_animation_1.start();	
 		EnterFrame.addFunction(this.enterFrame);
 	}.bind(this);
@@ -51,4 +56,27 @@ const Hypnotized = function(layer) {
 	}.bind(this);
 
     ImageLoader.load(_HypnotizedImages, this.start);
+	//------
+	Object.defineProperty(this, "x", { 
+		set: function (value) {
+			x = value;
+			if(_animation_1!=undefined){
+				_animation_1.x = value;
+			}
+		},
+		get: function () {
+			return x;
+		}
+	});
+	Object.defineProperty(this, "y", { 
+		set: function (value) {
+			y = value;
+			if(_animation_1!=undefined){
+				_animation_1.y = value;
+			}			
+		},
+		get: function () {
+			return y;
+		}
+	});
 }

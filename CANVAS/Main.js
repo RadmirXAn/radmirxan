@@ -32,6 +32,8 @@ function init(){
 
 function start(){
 	hypnotized = new Hypnotized(4);
+	hypnotized.x = 223;
+	hypnotized.y = 143;
 	snake = new Snake(1);
 	scot = new Scot(4);	
 	draganddrop_1 = new DragAndDrop('./Images/2.png', 5);

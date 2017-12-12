@@ -1,6 +1,8 @@
 const Canvas_Image = function(Canvas_Image_Image, Canvas_Image_Layer) {
 	let image = Canvas_Image_Image;
 	let context = Canvas.getVisibleContext();
+	let width = image.width;
+	let height = image.height;
 	this.x = 0;
 	this.y = 0;
 	this.enterFrame = function(){	
@@ -10,7 +12,7 @@ const Canvas_Image = function(Canvas_Image_Image, Canvas_Image_Layer) {
 		let hit = false;
 		let _mX =  x - this.x;
 		let _mY =  y - this.y;
-		if((0<_mX && _mX<image.width) &&  (0<_mY && _mY<image.height)){
+		if((0<_mX && _mX<width) &&  (0<_mY && _mY<height)){
 			Canvas.getUnVisibleContext().clearRect(0, 0, Canvas.width(), Canvas.height());
 			Canvas.getUnVisibleContext().drawImage(image, 0, 0);
 			let pixel = Canvas.getUnVisibleContext().getImageData(_mX, _mY, 1, 1);
@@ -25,9 +27,14 @@ const Canvas_Image = function(Canvas_Image_Image, Canvas_Image_Layer) {
 		}			
 		return hit;
 	}
-	this.setImage = function(Canvas_Image_Image){
-		image = Canvas_Image_Image;
-	}.bind(this);
+	Object.defineProperty(this, "Image", { 
+		set: function (value) {
+			image = value;
+			width = image.width;
+			height = image.height;
+		},
+		get: function () { return image; }
+	});
 	this.start = function (){
 		EnterFrame.addFunction(this.enterFrame, Canvas_Image_Layer);
 	}.bind(this);

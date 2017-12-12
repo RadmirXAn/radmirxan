@@ -19,7 +19,7 @@ const Keyboard = (function(){
 			}
 		}
 		let Keyboard_OnKeyDown = function(Keyboard_Event){
-			console.log('Keyboard: OnKeyDown = ' + Keyboard_Event.Keyboard_KeyCode);
+			console.log('Keyboard: OnKeyDown = ' + Keyboard_Event.keyCode);
 			Keyboard_KeyCode[Keyboard_Event.keyCode]=true;
 			Keyboard_KeyDownFunctions.forEach(
 				function(Keyboard_Item, Keyboard_Index, Keyboard_Array) {

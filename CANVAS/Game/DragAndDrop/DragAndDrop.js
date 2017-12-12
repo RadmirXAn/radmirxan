@@ -46,9 +46,13 @@ function  DragAndDrop(image_url, layer) {
 		switch(eventData.which){
 			case 1:{
 				//console.log('onMouseDown левая кнопка');
-				_drag[0] = _image_1.hitTest(Mouse.getX(), Mouse.getY());
-				_drag[1] = _image_1.x-Mouse.getX();
-				_drag[2] = _image_1.y-Mouse.getY();
+				let _mX =  Mouse.getX() - _image_1.x;
+				let _mY =  Mouse.getY() - _image_1.y;
+				if((0<_mX && _mX<_image_1.width) &&  (0<_mY && _mY<_image_1.height)){
+					_drag[0] = _image_1.getPixel(_mX, _mY)[3]!=0;
+					_drag[1] = _image_1.x-Mouse.getX();
+					_drag[2] = _image_1.y-Mouse.getY();
+				}
 				break;
 			}
 			case 2:{
@@ -70,7 +74,7 @@ function  DragAndDrop(image_url, layer) {
 	}.bind(this);
 
 	this.start = function (){
-        _image_1 = new Canvas_Image(ImageLoader.getImage(image_url), layer);
+        _image_1 = new Bitmap(ImageLoader.getImage(image_url), layer);
 		_image_1.x = this.x;
 		_image_1.y = this.y;
 		_image_1.start();
