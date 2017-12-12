@@ -1,6 +1,6 @@
 const Mouse = (function(){
 	function Mouse_Action() {
-		this.stoppropagation = true;
+		let stoppropagation = true;
 		let onContextMenu = function(eventData){
 			return false;
 		}
@@ -41,11 +41,14 @@ const Mouse = (function(){
 				}
 				for (Mouse_OnUpFunctions = 0; Mouse_OnUpFunctions < Mouse_Uplayers[Mouse_IndexUplayer].length; Mouse_OnUpFunctions++) {
 					Mouse_Uplayers[Mouse_IndexUplayer][Mouse_OnUpFunctions](eventData);
-					if(stoppropagation){
+					if(stoppropagation==true){
 						return;
 					}
 				}
 			}
+		}
+		this.stopPropagation = function(){
+			stoppropagation = true;
 		}
 		Canvas.getVisible().onmouseup = Mouse_OnUp;
 		let Mouse_Downlayers = [];
@@ -84,7 +87,7 @@ const Mouse = (function(){
 				}
 				for (Mouse_OnDownFunctions = 0; Mouse_OnDownFunctions < Mouse_Downlayers[Mouse_IndexDownLayer].length; Mouse_OnDownFunctions++) {
 					Mouse_Downlayers[Mouse_IndexDownLayer][Mouse_OnDownFunctions](eventData);
-					if(stoppropagation){
+					if(stoppropagation==true){
 						return;
 					}
 				}

@@ -1,4 +1,4 @@
-function  DragAndDrop(image_url, layer) {
+const DragAndDrop = function(image_url, layer) {
 	//------
 	let _image_1;
 
@@ -6,17 +6,17 @@ function  DragAndDrop(image_url, layer) {
 		image_url
 	];
 	//------
-	this.x = 0;
+	let x = 0;
 	let setX = function(value){
-		this.x = value;
+		x = value;
 		if(_image_1!=undefined){
 			_image_1.x = value;
 		}
 	}.bind(this);
 	
-	this.y = 0;
+	let y = 0;
 	let setY = function(value){
-		this.y = value;
+		y = value;
 		if(_image_1!=undefined){
 			_image_1.y = value;
 		}
@@ -50,6 +50,9 @@ function  DragAndDrop(image_url, layer) {
 				let _mY =  Mouse.getY() - _image_1.y;
 				if((0<_mX && _mX<_image_1.width) &&  (0<_mY && _mY<_image_1.height)){
 					_drag[0] = _image_1.getPixel(_mX, _mY)[3]!=0;
+					if(_drag[0]==true){
+						Mouse.stopPropagation();
+					}
 					_drag[1] = _image_1.x-Mouse.getX();
 					_drag[2] = _image_1.y-Mouse.getY();
 				}
@@ -91,22 +94,22 @@ function  DragAndDrop(image_url, layer) {
 	}.bind(this);
 
     ImageLoader.load(_DragAndDropImages, this.start);
+	//----------------------------
+	Object.defineProperty(this, "x", {
+	  get: function() {
+		return x;
+	  },
+	  set: function(value) {
+		 setX(value);
+	  }
+	});
+
+	Object.defineProperty(this, "y", {
+	  get: function() {
+		return y;
+	  },
+	  set: function(value) {
+		 setY(value);
+	  }
+	});
 }
-
-Object.defineProperty(DragAndDrop, "x", {
-  get: function() {
-    return this.x;
-  },
-  set: function(value) {
-     this.setX(value);
-  }
-});
-
-Object.defineProperty(DragAndDrop, "y", {
-  get: function() {
-    return this.y;
-  },
-  set: function(value) {
-     this.setY(value);
-  }
-});

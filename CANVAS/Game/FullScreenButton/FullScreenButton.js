@@ -45,7 +45,7 @@ function  FullScreenButton(layer) {
 					}else{
 						FullScreen.On();						
 					}
-					return stoppropagation;
+					Mouse.stopPropagation();
 				}
 				break;
 			}

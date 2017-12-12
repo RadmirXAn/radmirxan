@@ -20,7 +20,7 @@ const Canvas_Image = function(Canvas_Image_Image, Canvas_Image_Layer) {
 			//let rgba = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + (data[3] / 255) + ')';
 			if(data[3]!=0){
 				hit = true;
-				stoppropagation = true;
+				Mouse.stopPropagation();
 			}else{
 				hit = false;
 			}
