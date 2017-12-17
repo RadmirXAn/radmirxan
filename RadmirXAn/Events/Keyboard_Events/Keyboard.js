@@ -1,18 +1,19 @@
 const Keyboard = (function(){
 	function Keyboard_Action() {
+		let current = this;
 		console.log('Keyboard: --------------------------------- init');
 		let Keyboard_KeyCode = [];
-		this.getKeyCodeStatus = function(Keyboard_Code){
+		current.getKeyCodeStatus = function(Keyboard_Code){
 			return Keyboard_KeyCode[Keyboard_Code];
 		}
 		let Keyboard_KeyDownFunctions = [];
 		let Keyboard_KeyUpFunctions = [];
-		this.addKeyDownFunction = function(Keyboard_Functions){
+		current.addKeyDownFunction = function(Keyboard_Functions){
 			if(Keyboard_KeyDownFunctions.indexOf(Keyboard_Functions) == -1){
 				Keyboard_KeyDownFunctions.push(Keyboard_Functions);
 			}
 		}
-		this.removeKeyDownFunction = function(Keyboard_Functions){
+		current.removeKeyDownFunction = function(Keyboard_Functions){
 			let Keyboard_Index = Keyboard_KeyDownFunctions.indexOf(Keyboard_Functions);
 			if(Keyboard_Index != -1){
 				Keyboard_KeyDownFunctions.splice(Keyboard_Index, 1);
@@ -28,12 +29,12 @@ const Keyboard = (function(){
 			);
 		}
 		document.onkeydown = Keyboard_OnKeyDown;
-		this.addKeyUpFunction = function(Keyboard_Functions){
+		current.addKeyUpFunction = function(Keyboard_Functions){
 			if(Keyboard_KeyUpFunctions.indexOf(Keyboard_Functions) == -1){
 				Keyboard_KeyUpFunctions.push(Keyboard_Functions);
 			}
 		}
-		this.removeKeyUpFunction = function(Keyboard_Functions){
+		current.removeKeyUpFunction = function(Keyboard_Functions){
 			let Keyboard_Index = Keyboard_KeyUpFunctions.indexOf(Keyboard_Functions);
 			if(Keyboard_Index != -1){
 				Keyboard_KeyUpFunctions.splice(Keyboard_Index, 1);

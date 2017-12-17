@@ -1,11 +1,12 @@
 const ImageLoader = (function () {
     function ImageLoader_Action() {
+		let current = this;
 		console.log('ImageLoader: --------------------------------- init');
 		let ImageLoader_Included = {};
-		this.load = function (ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress) {
+		current.load = function (ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress) {
 			ImageLoader_Next(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress, 0);
 		}
-		this.getImage = function (ImageLoader_URL) {
+		current.getImage = function (ImageLoader_URL) {
 			if (ImageLoader_Included[ImageLoader_URL] === undefined) {
 				console.error('Ошибка при получение файла [%s]', ImageLoader_URL);
 			}

@@ -1,20 +1,21 @@
 var EnterFrame = (function () {
     function EnterFrame_Action() {
+		let current = this;
 		console.log('EnterFrame: --------------------------------- init');
 		let EnterFrame_Timer;
 		let EnterFrame_StartTime = -1;
 		let EnterFrame_SustemTime = -1;	
-		this.getStartTime = function(){
+		current.getStartTime = function(){
 			return EnterFrame_StartTime;
 		}		
-		this.getTime = function(){
+		current.getTime = function(){
 			return EnterFrame_SustemTime;
 		}
 		let EnterFrame_Layers = [];
 		let EnterFrame_Functions = [];
 		let EnterFrame_FunctionLayer = [];
 		let EnterFrame_MaxFunctions = 0;
-		this.addFunction = function(EnterFrame_Function, EnterFrame_Layer){
+		current.addFunction = function(EnterFrame_Function, EnterFrame_Layer){
 			if(EnterFrame_Layer == undefined){
 				EnterFrame_Layer = 0;
 			}
@@ -27,11 +28,11 @@ var EnterFrame = (function () {
 				EnterFrame_Layers[EnterFrame_Layer].push(EnterFrame_Function);
 				EnterFrame_MaxFunctions = EnterFrame_Layers.length - 1;
 			}else{
-				this.removeFunction(EnterFrame_Function);
-				this.addFunction(EnterFrame_Function, EnterFrame_Layer);
+				current.removeFunction(EnterFrame_Function);
+				current.addFunction(EnterFrame_Function, EnterFrame_Layer);
 			}
-		}.bind(this);
-		this.removeFunction = function(EnterFrame_Function){
+		};
+		current.removeFunction = function(EnterFrame_Function){
 			let EnterFrame_Index = EnterFrame_Functions.indexOf(EnterFrame_Function);	
 			if(EnterFrame_Index != -1){
 				EnterFrame_Functions.splice(EnterFrame_Index, 1);
@@ -56,13 +57,13 @@ var EnterFrame = (function () {
 			}			
 			EnterFrame_Timer = requestAnimationFrame(EnterFrame_action);
 		};
-		this.start = function(){
+		current.start = function(){
 			if(EnterFrame_StartTime==-1){
 				EnterFrame_StartTime = (new Date()).getTime();
 			}
 			EnterFrame_action();
 		}
-		this.stop = function(){
+		current.stop = function(){
 			cancelanimationframe(EnterFrame_Timer);
 		}
     }

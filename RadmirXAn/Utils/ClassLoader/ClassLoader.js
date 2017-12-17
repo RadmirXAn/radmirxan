@@ -1,8 +1,9 @@
 const ClassLoader = (function () {
     function ClassLoader_Action() {
+		let current = this;
 		console.log('ClassLoader_Action: --------------------------------- init');
 		let ClassLoader_Included = {};
-		this.load = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress) {
+		current.load = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress) {
 			ClassLoader_Next(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress, 0);
 		}
 		let ClassLoader_NextObject = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress, ClassLoader_Index) {

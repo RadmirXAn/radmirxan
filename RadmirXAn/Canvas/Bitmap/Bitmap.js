@@ -1,4 +1,5 @@
 const Bitmap = function(Image) {
+	let current = this;
 	let Bitmap_Index = 0;
 	let Bitmap_Started = false;
 	let Bitmap_Image = Image;
@@ -10,16 +11,16 @@ const Bitmap = function(Image) {
 	let y = 0;
 	let Bitmap_EnterFrame = function(){
 		Bitmap_Context.drawImage(Bitmap_Image, x, y);
-	}.bind(this);
-	this.start = function (){
+	};
+	current.start = function (){
 		EnterFrame.addFunction(Bitmap_EnterFrame, Bitmap_Index);
 		Bitmap_Started = true;
-	}.bind(this);
-	this.stop = function (){
+	};
+	current.stop = function (){
 		EnterFrame.removeFunction(Bitmap_EnterFrame);
 		Bitmap_Started = false;
-	}.bind(this);
-	this.getPixel = function(x, y){
+	};
+	current.getPixel = function(x, y){
 			Bitmap_Buff.clearRect(0, 0, Canvas.width(), Canvas.height());
 			Bitmap_Buff.drawImage(Bitmap_Image, 0, 0);
 			let pixel = Bitmap_Buff.getImageData(x, y, 1, 1);
@@ -27,7 +28,7 @@ const Bitmap = function(Image) {
 			//let data = pixel.data;
 			//let rgba = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + (data[3] / 255) + ')';
 	}
-	Object.defineProperty(this, "layer", {
+	Object.defineProperty(current, "layer", {
 		set: function(value){
 			Bitmap_Index = value;
 			if(Bitmap_Started==true){
@@ -38,7 +39,7 @@ const Bitmap = function(Image) {
 			return Bitmap_Index;
 		}
 	});
-	Object.defineProperty(this, "x", {
+	Object.defineProperty(current, "x", {
 		set: function(value){
 			x = value;
 		},
@@ -46,7 +47,7 @@ const Bitmap = function(Image) {
 			return x;
 		}
 	});
-	Object.defineProperty(this, "y", {
+	Object.defineProperty(current, "y", {
 		set: function(value){
 			y = value;
 		},
@@ -54,17 +55,17 @@ const Bitmap = function(Image) {
 			return y;
 		}
 	});
-	Object.defineProperty(this, "width", {
+	Object.defineProperty(current, "width", {
 		get: function(){
 			return Bitmap_Width;
 		}
 	});
-	Object.defineProperty(this, "height", {
+	Object.defineProperty(current, "height", {
 		get: function(){
 			return Bitmap_Height;
 		}
 	});
-	Object.defineProperty(this, "image", {
+	Object.defineProperty(current, "image", {
 		set: function(value){
 			Bitmap_Image = value;
 			Bitmap_Width = Bitmap_Image.width;

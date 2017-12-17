@@ -1,11 +1,12 @@
 const AudioLoader = (function () {
     function AudioLoader_Action() {
+		let current = this;
 		console.log('AudioLoader: --------------------------------- init');
 		let AudioLoader_Included = {};
-		this.load = function (AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress) {
+		current.load = function (AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress) {
 			AudioLoader_Next(AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress, 0);
 		}
-		this.getAudio = function (AudioLoader_URL) {
+		current.getAudio = function (AudioLoader_URL) {
 			if (AudioLoader_Included[AudioLoader_URL] === undefined) {
 				console.error('Ошибка при получение файла [%s]', AudioLoader_URL);
 			}

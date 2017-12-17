@@ -1,4 +1,5 @@
 const Preloader = function() {
+	let current = this;
 	let Preloader_ImageURL_0 = './RadmirXAn/Preloader/Images/0.png';
 	let Preloader_ImageURL_1 = './RadmirXAn/Preloader/Images/1.jpg';
 	let Preloader_ImageURLs = [
@@ -25,7 +26,7 @@ const Preloader = function() {
 				break;
 			}
 		}		
-	}.bind(this);
+	};
 
 	let Preloader_EnterFrame = function(){
 		

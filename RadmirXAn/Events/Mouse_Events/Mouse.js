@@ -1,5 +1,6 @@
 const Mouse = (function(){
 	function Mouse_Action() {
+		let current = this;
 		let stoppropagation = true;
 		let onContextMenu = function(eventData){
 			return false;
@@ -10,7 +11,7 @@ const Mouse = (function(){
 		let Mouse_UpFunctionsLayer = [];
 		let Mouse_IndexUplayer = 0;
 		let Mouse_OnUpFunctions = 0;
-		this.addUpFunction = function(Mouse_Function, Mouse_Layer){
+		current.addUpFunction = function(Mouse_Function, Mouse_Layer){
 			if(Mouse_Layer == undefined){
 				Mouse_Layer = 0;
 			}
@@ -23,7 +24,7 @@ const Mouse = (function(){
 				Mouse_Uplayers[Mouse_Layer].push(Mouse_Function);	
 			}
 		}
-		this.removeUpFunction = function(Mouse_Function){	
+		current.removeUpFunction = function(Mouse_Function){	
 			let Mouse_Index = Mouse_UpFunctions.indexOf(Mouse_Function);
 			if(Mouse_Index != -1){
 				Mouse_UpFunctions.splice(Mouse_Index, 1);
@@ -47,7 +48,7 @@ const Mouse = (function(){
 				}
 			}
 		}
-		this.stopPropagation = function(){
+		current.stopPropagation = function(){
 			stoppropagation = true;
 		}
 		Canvas.getVisible().onmouseup = Mouse_OnUp;
@@ -56,7 +57,7 @@ const Mouse = (function(){
 		let MouseDownfunctionsLayer = [];
 		let Mouse_IndexDownLayer = 0;
 		let Mouse_OnDownFunctions = 0;
-		this.addDownFunction = function(Mouse_Function, Mouse_Layer){
+		current.addDownFunction = function(Mouse_Function, Mouse_Layer){
 			if(Mouse_Layer == undefined){
 				Mouse_Layer = 0;
 			}
@@ -69,7 +70,7 @@ const Mouse = (function(){
 				Mouse_Downlayers[Mouse_Layer].push(Mouse_Function);	
 			}
 		}
-		this.removeDownFunction = function(Mouse_Function){
+		current.removeDownFunction = function(Mouse_Function){
 			let Mouse_Index = Mouse_DownFunctions.indexOf(Mouse_Function);
 			if(Mouse_Index != -1){
 				Mouse_DownFunctions.splice(Mouse_Index, 1);
@@ -97,18 +98,18 @@ const Mouse = (function(){
 		let Mouse_MoveFunctions = [];
 		let Mouse_X = 0;
 		let Mouse_Y = 0;
-		this.getX = function(){
+		current.getX = function(){
 			return Mouse_X;
 		}
-		this.getY = function(){
+		current.getY = function(){
 			return Mouse_Y;
 		}
-		this.addMoveFunction = function(Mouse_Function){
+		current.addMoveFunction = function(Mouse_Function){
 			if(Mouse_MoveFunctions.indexOf(Mouse_Function) == -1){
 				Mouse_MoveFunctions.push(Mouse_Function);
 			}
 		}
-		this.removeMoveFunction = function(Mouse_Function){
+		current.removeMoveFunction = function(Mouse_Function){
 			let Mouse_Index = Mouse_MoveFunctions.indexOf(Mouse_Function);
 			if(Mouse_Index != -1){
 				Mouse_MoveFunctions.splice(Mouse_Index, 1);

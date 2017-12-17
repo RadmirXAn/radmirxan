@@ -13,5 +13,7 @@ const Images = [
 	"./Game/Resources/Images/Animations/0/11.png",
 	"./Game/Resources/Images/Animations/0/12.png",
 	"./Game/Resources/Images/Animations/0/13.png",
-	"./Game/Resources/Images/Animations/0/14.png"
+	"./Game/Resources/Images/Animations/0/14.png",
+	
+	"./Game/Resources/Images/Background/0.jpg"
 ];
