@@ -52,6 +52,7 @@ const StartClasses = [
 	'./RadmirXAn/Events/Keyboard_Events/Keyboard.js',
 	'./RadmirXAn/Events/Mouse_Events/Mouse.js',
 	
-	'./Main.js'
+	'./RadmirXAn/Cursor/Cursor.js',
+	'./RadmirXAn/Preloader/Preloader.js'
 ];
 ClassLoader.load(StartClasses, function(){EnterFrame.start()});
