@@ -11,9 +11,7 @@ const Animation = function(Bitmap_List){
 	let interval = 0;
 	let x = 0;
 	let y = 0;
-	let Animation_Action = function(){
-		Animation_Bitmap.image = Animation_List[currentFrame];
-	}
+	let Animation_Action = function(){};
 	let Animation_EnterFrame = function(){
 		time = EnterFrame.getTime();
 		if( ((time - lastTime) >= interval)){
@@ -26,6 +24,9 @@ const Animation = function(Bitmap_List){
 	current.start = function (){
 		Animation_Bitmap.start();
 		Animation_Bitmap.layer = Animation_Index;
+		Animation_Action = function(){
+			Animation_Bitmap.image = Animation_List[currentFrame];
+		}
 		EnterFrame.addFunction(Animation_EnterFrame, Animation_Index);
 		Animation_Started = true;
 	};
@@ -35,10 +36,11 @@ const Animation = function(Bitmap_List){
 		Animation_Started = false;
 	};
 	//--------------------------
-	current.playAndStop = function(){
+	current.playAndStop = function(callBack){
 		Animation_Action = function(){
 			if(currentFrame==(frames_count-1)){
 				current.stop();
+				callBack();
 			};
 			Animation_Bitmap.image = Animation_List[currentFrame];
 		}

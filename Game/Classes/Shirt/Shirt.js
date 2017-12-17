@@ -1,11 +1,12 @@
 const Shirt = function(index){
     function Shirt_Action() {
 		let current = this;
-		let Shirt_Index = index;
+		let Shirt_Index = 0;
 		let x = 0;
 		let y = 0;
-		let Shirt_Calback = function(){return false;};
-		console.log('Shirt_Action: --------------------------------- init('+Shirt_Index+')');
+		let Shirt_ClickCalback = function(){return false;};
+		let Shirt_AnimationStopCalback = function(){return false;};
+		console.log('Shirt_Action: --------------------------------- init('+index+')');
 		
 		let ImagesList = [
 			ImageLoader.getImage(Images[0]),
@@ -34,23 +35,14 @@ const Shirt = function(index){
 		Shirt_OnMouseDown = function(eventData){
 			switch(eventData.which){
 				case 1:{
-					//console.log('onMouseDown левая кнопка');
 					let _mX =  Mouse.getX() - x;
 					let _mY =  Mouse.getY() - y;
 					if((0<_mX && _mX<50) &&  (0<_mY && _mY<50)){
-						if(Shirt_Calback()==true){							
+						if(Shirt_ClickCalback(index)==true){							
 							_animation_1.setList(ImagesList);
-							_animation_1.playAndStop();
+							_animation_1.playAndStop(function(){Shirt_AnimationStopCalback(index)});
 						}						
 					}
-					break;
-				}
-				case 2:{
-					//console.log('onMouseDown средняя кнопка');
-					break;
-				}
-				case 3:{
-					//console.log('onMouseDown правая кнопка');
 					break;
 				}
 			}		
@@ -58,13 +50,25 @@ const Shirt = function(index){
 		//--------------------
 		Mouse.addDownFunction(Shirt_OnMouseDown, 0);
 		//--------------------
-		Object.defineProperty(current, "calback", {
+		current.show = function(){
+			_animation_1.setList([ImagesList[0]]);
+			_animation_1.start();
+		};
+		//--------------------
+		Object.defineProperty(current, "animationStop", {
 			set: function(value){
-				Shirt_Calback = value;
-
+				Shirt_AnimationStopCalback = value;
 			},
 			get: function(){
-				return Shirt_Calback;
+				return Shirt_AnimationStopCalback;
+			}
+		});
+		Object.defineProperty(current, "clickCalback", {
+			set: function(value){
+				Shirt_ClickCalback = value;
+			},
+			get: function(){
+				return Shirt_ClickCalback;
 			}
 		});
 		Object.defineProperty(current, "layer", {
