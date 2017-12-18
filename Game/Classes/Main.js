@@ -8,43 +8,47 @@ var Animated = 0;
 var Shirt_1 = -1;
 var Shirt_2 = -1;
 
-var BackGround = new Bitmap(ImageLoader.getImage(Images[15]));
+var BackGround = new Bitmap();
+BackGround.image = ImageLoader.getImage(Images.BackGround[0]);
 BackGround.layer = 2;
 BackGround.start();
 
-function clickCalback(index){
+function ClickCallBack(index){
 	console.log(index+' = '+ShirtsStatus[index]);
 	if(Clicked<2 && ShirtsStatus[index]!=true){
-		ShirtsStatus[index] = true;
 		Clicked++;
+		ShirtsStatus[index] = true;
+		Shirts[index].open();		
 		if(Shirt_1==-1){
 			Shirt_1 = index;
 		}else if(Shirt_2==-1){
 			Shirt_2 = index;
 		}
-		return true;
-	}else{
-		return false;
 	}
 }
 
-function animationStop(index){
+function OpennedCalback(index){
 	Animated++;
 	if(Animated>=2){
-		setTimeout(action, 1000);
+		setTimeout(action, 500);
 	}
 }
 
-function action(){
-	Shirts[Shirt_1].show();
+function action(){	
 	ShirtsStatus[Shirt_1]=false;
+	Shirts[Shirt_1].close();
 	Shirt_1 = -1;
-	Shirts[Shirt_2].show();
-	ShirtsStatus[Shirt_2]=false;	
+	
+	ShirtsStatus[Shirt_2]=false;
+	Shirts[Shirt_2].close();
 	Shirt_2 = -1;
 	
 	Clicked = 0;
-	Animated = 0;	
+	Animated = 0;
+}
+
+function ClosedCalback(index){
+	//ShirtsStatus[index]=false;
 }
 
 for(var i = 0; i<Max_X; i++){
@@ -54,8 +58,9 @@ for(var i = 0; i<Max_X; i++){
 		Shirts[index].x = (550-Max_X*50)/2+50*i;
 		Shirts[index].y = (400-Max_Y*50)/2+50*j;
 		Shirts[index].layer = 1;
-		Shirts[index].clickCalback = clickCalback;
-		Shirts[index].animationStop = animationStop;
+		Shirts[index].ClickCallBack = ClickCallBack;
+		Shirts[index].OpennedCalback = OpennedCalback;
+		Shirts[index].ClosedCalback = ClosedCalback;
 	}
 }
 console.log("Game is Runnning.");

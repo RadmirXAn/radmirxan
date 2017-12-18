@@ -1,4 +1,4 @@
-var EnterFrame = (function () {
+const EnterFrame = (function () {
     function EnterFrame_Action() {
 		let current = this;
 		console.log('EnterFrame: --------------------------------- init');

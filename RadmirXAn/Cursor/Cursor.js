@@ -13,7 +13,8 @@ const Cursor = function() {
 	};	
 	
 	Cursor_Start = function (){
-        Cursor_Image = new Bitmap(ImageLoader.getImage(Cursor_ImageURL));
+        Cursor_Image = new Bitmap();
+		Cursor_Image.image = ImageLoader.getImage(Cursor_ImageURL);
 		Cursor_Image.layer = Cursor_Layer;
 		Cursor_Image.start();	
 		EnterFrame.addFunction(Cursor_EnterFrame);

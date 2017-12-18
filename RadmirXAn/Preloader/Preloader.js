@@ -47,13 +47,15 @@ const Preloader = function() {
 	};
 	
 	Preloader_Start = function (){
-        Preloader_ImageLogo = new Bitmap(ImageLoader.getImage(Preloader_ImageURL_0));
+        Preloader_ImageLogo = new Bitmap();
+		Preloader_ImageLogo.image = ImageLoader.getImage(Preloader_ImageURL_0);
 		Preloader_ImageLogo.layer = 1;
 		Preloader_ImageLogo.x = Math.floor((Canvas.width()-Preloader_ImageLogo.width)/2);
 		Preloader_ImageLogo.y = Math.floor((Canvas.height()-Preloader_ImageLogo.height)/2);
 		Preloader_ImageLogo.start();
 		
-		Preloader_ImageBackground = new Bitmap(ImageLoader.getImage(Preloader_ImageURL_1));
+		Preloader_ImageBackground = new Bitmap();
+		Preloader_ImageBackground.image = ImageLoader.getImage(Preloader_ImageURL_1);
 		Preloader_ImageBackground.layer = 2;
 		Preloader_ImageBackground.start();
 		
@@ -84,7 +86,7 @@ const Preloader = function() {
 	let Preloader_LoadResources = function(){
 		AudioLoader.load(Sounds, function(){
 			Preloader_Step = 1;
-			ImageLoader.load(Images, function(){
+			ImageLoader.load(Images.All, function(){
 				Preloader_Step = 2;
 				ClassLoader.load(Classes, Preloader_Stop, Preloader_Progress);
 			}, Preloader_Progress);

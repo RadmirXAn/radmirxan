@@ -4,33 +4,17 @@ const Shirt = function(index){
 		let Shirt_Index = 0;
 		let x = 0;
 		let y = 0;
-		let Shirt_ClickCalback = function(){return false;};
-		let Shirt_AnimationStopCalback = function(){return false;};
-		console.log('Shirt_Action: --------------------------------- init('+index+')');
-		
-		let ImagesList = [
-			ImageLoader.getImage(Images[0]),
-			ImageLoader.getImage(Images[1]),
-			ImageLoader.getImage(Images[2]),
-			ImageLoader.getImage(Images[3]),
-			ImageLoader.getImage(Images[4]),
-			ImageLoader.getImage(Images[5]),
-			ImageLoader.getImage(Images[6]),
-			ImageLoader.getImage(Images[7]),
-			ImageLoader.getImage(Images[8]),
-			ImageLoader.getImage(Images[9]),
-			ImageLoader.getImage(Images[10]),
-			ImageLoader.getImage(Images[11]),
-			ImageLoader.getImage(Images[12]),
-			ImageLoader.getImage(Images[13]),
-			ImageLoader.getImage(Images[14])
-		];
-		
-		let _animation_1 = new Animation([ImagesList[0]]);
+		let Shirt_ClickCallBack = function(){return false;};
+		let Shirt_OpennedCalback = function(value){return false;};
+		let Shirt_ClosedCalback = function(value){return false;};
+		console.log('Shirt_Action: --------------------------------- init('+index+')');	
+		let _animation_1 = new Animation();
+		_animation_1.setList(Images.ShirtAnimation);
 		_animation_1.frameRate = 24;
 		_animation_1.x = x;
 		_animation_1.y = y;
 		_animation_1.start();
+		_animation_1.pause(0);
 		//--------------------
 		Shirt_OnMouseDown = function(eventData){
 			switch(eventData.which){
@@ -38,10 +22,7 @@ const Shirt = function(index){
 					let _mX =  Mouse.getX() - x;
 					let _mY =  Mouse.getY() - y;
 					if((0<_mX && _mX<50) &&  (0<_mY && _mY<50)){
-						if(Shirt_ClickCalback(index)==true){							
-							_animation_1.setList(ImagesList);
-							_animation_1.playAndStop(function(){Shirt_AnimationStopCalback(index)});
-						}						
+						Shirt_ClickCallBack(index);						
 					}
 					break;
 				}
@@ -50,25 +31,35 @@ const Shirt = function(index){
 		//--------------------
 		Mouse.addDownFunction(Shirt_OnMouseDown, 0);
 		//--------------------
-		current.show = function(){
-			_animation_1.setList([ImagesList[0]]);
-			_animation_1.start();
+		current.open = function(){
+			_animation_1.playAndPause(function(){Shirt_OpennedCalback(index)});
+		};
+		current.close = function(){
+			_animation_1.playReverseAndPause(function(){Shirt_ClosedCalback(index)});
 		};
 		//--------------------
-		Object.defineProperty(current, "animationStop", {
+		Object.defineProperty(current, "ClosedCalback", {
 			set: function(value){
-				Shirt_AnimationStopCalback = value;
+				Shirt_ClosedCalback = value;
 			},
 			get: function(){
-				return Shirt_AnimationStopCalback;
+				return Shirt_ClosedCalback;
 			}
 		});
-		Object.defineProperty(current, "clickCalback", {
+		Object.defineProperty(current, "OpennedCalback", {
 			set: function(value){
-				Shirt_ClickCalback = value;
+				Shirt_OpennedCalback = value;
 			},
 			get: function(){
-				return Shirt_ClickCalback;
+				return Shirt_OpennedCalback;
+			}
+		});
+		Object.defineProperty(current, "ClickCallBack", {
+			set: function(value){
+				Shirt_ClickCallBack = value;
+			},
+			get: function(){
+				return Shirt_ClickCallBack;
 			}
 		});
 		Object.defineProperty(current, "layer", {
