@@ -13,36 +13,36 @@ const Animation = function(){
 	let y = 0;
 	let Animation_Action = function(){};
 	let Animation_ActionDefault = function(){
-			currentFrame++;
-			if(currentFrame>=frames_count){
-				currentFrame = 0;
-			}
-			Animation_Bitmap.image = Animation_List[currentFrame];
+		currentFrame++;
+		if(currentFrame>=frames_count){
+			currentFrame = 0;
 		}
+		Animation_Bitmap.image = Animation_List[currentFrame];
+	};
 	let Animation_ActionReverseDefault = function(){
-			currentFrame--;
-			if(currentFrame<0){
-				currentFrame = frames_count-1;
-			}
-			Animation_Bitmap.image = Animation_List[currentFrame];
+		currentFrame--;
+		if(currentFrame<0){
+			currentFrame = frames_count-1;
 		}
+		Animation_Bitmap.image = Animation_List[currentFrame];
+	};
 	let Animation_EnterFrame = function(){
 		time = EnterFrame.getTime();
 		if( ((time - lastTime) >= interval)){
 			lastTime = time;			
 			Animation_Action();
 		}
-	}
+	};
 	current.start = function (){
 		Animation_Bitmap.start();
 		EnterFrame.addFunction(Animation_EnterFrame, Animation_Index);
 		Animation_Started = true;
-	}
+	};
 	current.stop = function (){
 		Animation_Bitmap.stop();
 		EnterFrame.removeFunction(Animation_EnterFrame);
 		Animation_Started = false;
-	}
+	};
 	//--------------------------
 	current.playWith = function(direction, startFrame){
 		currentFrame = startFrame;
@@ -54,7 +54,7 @@ const Animation = function(){
 		}else{
 			Animation_Action = function(){};
 		}		
-	}
+	};
 	current.playTo = function(direction, pauseFrame, callBack){		
 		if(direction>0){
 			Animation_Action = function(){
@@ -78,14 +78,14 @@ const Animation = function(){
 			current.playWith(0,pauseFrame);
 			callBack();
 		}
-	}
+	};
 	current.useList = function(Bitmap_List){
 		Animation_List = [];
 		frames_count = Bitmap_List.length;
 		for(let i = 0; i < Bitmap_List.length; i++){
 			Animation_List.push(ImageLoader.getImage(Bitmap_List[i]));
 		}
-	}
+	};
 	Object.defineProperty(current, "layer", {
 		set: function(value){
 			Animation_Index = value;

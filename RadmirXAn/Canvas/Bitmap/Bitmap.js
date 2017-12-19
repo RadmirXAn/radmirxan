@@ -3,11 +3,10 @@ const Bitmap = function() {
 	let current = this;
 	let Bitmap_Image;
 	let Bitmap_Layer = 0;
-	let Bitmap_Width = 0;
-	let Bitmap_Height = 0;
 	
 	let x = 0;
 	let y = 0;
+	
 	let Bitmap_Started = false;
 	
 	let Bitmap_Context = Canvas.getVisibleContext();
@@ -34,7 +33,7 @@ const Bitmap = function() {
 			return rgba = pixel.data;
 			//let data = pixel.data;
 			//let rgba = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + (data[3] / 255) + ')';
-	}
+	};
 	
 	Object.defineProperty(current, "layer", {
 		set: function(value){
