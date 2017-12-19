@@ -1,8 +1,8 @@
 console.log("Running Game.");
 var Shirts = [];
 var ShirtsStatus = [];
-var Max_X = 6;
-var Max_Y = 5;
+var Max_X = 5;
+var Max_Y = 3;
 var Clicked = 0;
 var Animated = 0;
 var Shirt_1 = -1;
