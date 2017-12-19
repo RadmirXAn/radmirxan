@@ -49,7 +49,7 @@ const Bitmap = function() {
 	
 	Object.defineProperty(current, "x", {
 		set: function(value){
-			x = value;
+			x = Math.floor(value);
 		},
 		get: function(){
 			return x;
@@ -58,7 +58,7 @@ const Bitmap = function() {
 	
 	Object.defineProperty(current, "y", {
 		set: function(value){
-			y = value;
+			y = Math.floor(value);
 		},
 		get: function(){
 			return y;
