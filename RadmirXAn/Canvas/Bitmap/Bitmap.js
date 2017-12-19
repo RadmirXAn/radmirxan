@@ -68,21 +68,19 @@ const Bitmap = function() {
 	
 	Object.defineProperty(current, "width", {
 		get: function(){
-			return Bitmap_Width;
+			return Bitmap_Image.width;
 		}
 	});
 	
 	Object.defineProperty(current, "height", {
 		get: function(){
-			return Bitmap_Height;
+			return Bitmap_Image.height;
 		}
 	});
 	
 	Object.defineProperty(current, "image", {
 		set: function(value){
 			Bitmap_Image = value;
-			Bitmap_Width = Bitmap_Image.width;
-			Bitmap_Height = Bitmap_Image.height;
 		},
 		get: function(){
 			return Bitmap_Image;

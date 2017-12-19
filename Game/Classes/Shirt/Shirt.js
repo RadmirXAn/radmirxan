@@ -8,13 +8,13 @@ const Shirt = function(index){
 		let Shirt_OpennedCalback = function(value){return false;};
 		let Shirt_ClosedCalback = function(value){return false;};
 		console.log('Shirt_Action: --------------------------------- init('+index+')');	
-		let _animation_1 = new Animation();
-		_animation_1.setList(Images.ShirtAnimation);
+		let _animation_1 = new Animation();		
+		_animation_1.useList(Images.ShirtAnimation);
 		_animation_1.frameRate = 24;
+		_animation_1.playWith(0,0);
 		_animation_1.x = x;
-		_animation_1.y = y;
-		_animation_1.start();
-		_animation_1.pause(0);
+		_animation_1.y = y;		
+		_animation_1.start();		
 		//--------------------
 		Shirt_OnMouseDown = function(eventData){
 			switch(eventData.which){
@@ -32,10 +32,10 @@ const Shirt = function(index){
 		Mouse.addDownFunction(Shirt_OnMouseDown, 0);
 		//--------------------
 		current.open = function(){
-			_animation_1.playAndPause(function(){Shirt_OpennedCalback(index)});
+			_animation_1.playTo(1, Images.ShirtAnimation.length-1,function(){Shirt_OpennedCalback(index)});
 		};
 		current.close = function(){
-			_animation_1.playReverseAndPause(function(){Shirt_ClosedCalback(index)});
+			_animation_1.playTo(-1, 0, function(){Shirt_ClosedCalback(index)});
 		};
 		//--------------------
 		Object.defineProperty(current, "ClosedCalback", {
