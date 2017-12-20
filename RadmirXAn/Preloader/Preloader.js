@@ -84,11 +84,11 @@ const Preloader = function() {
 	}
 	
 	let Preloader_LoadResources = function(){
-		AudioLoader.load(Sounds, function(){
+		AudioLoader.load(Sounds.All, function(){
 			Preloader_Step = 1;
 			ImageLoader.load(Images.All, function(){
 				Preloader_Step = 2;
-				ClassLoader.load(Classes, Preloader_Stop, Preloader_Progress);
+				ClassLoader.load(Classes.All, Preloader_Stop, Preloader_Progress);
 			}, Preloader_Progress);
 		}, Preloader_Progress);
 	}

@@ -40,20 +40,3 @@ const ClassLoader = (function () {
     }
 	return new ClassLoader_Action();
 })();
-//----------------------------------------------------------------------------------------------------------------------
-const StartClasses = [
-	'./RadmirXAn/Canvas/Canvas.js',
-	'./RadmirXAn/Canvas/Animation/Animation.js',
-	'./RadmirXAn/Canvas/Bitmap/Bitmap.js',
-
-	'./RadmirXAn/Utils/ImageLoader/ImageLoader.js',
-	'./RadmirXAn/Utils/AudioLoader/AudioLoader.js',
-	
-	'./RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',	
-	'./RadmirXAn/Events/Keyboard_Events/Keyboard.js',
-	'./RadmirXAn/Events/Mouse_Events/Mouse.js',
-	
-	'./RadmirXAn/Cursor/Cursor.js',
-	'./RadmirXAn/Preloader/Preloader.js'
-];
-ClassLoader.load(StartClasses, function(){EnterFrame.start()});
