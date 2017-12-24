@@ -1,0 +1,40 @@
+html {
+	height: 100%;
+}
+body {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #000000;
+	height: 100%;
+	margin:0px;
+	padding:0px;
+}
+
+.table-wrapper {
+    width: 550px;
+}
+
+.mytd {
+    width: 550px;
+    border: 0px solid black;
+}
+
+.mytable {
+    border-collapse: separate;
+	border-spacing: 0;
+    overflow: auto;
+    table-layout: fixed;
+	margin:auto;
+	width:550;
+	height:100%;	
+}
+
+.leftimg {
+	float:left; /* Выравнивание по левому краю */
+	margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+}
+
+.rightimg  {
+	float: right; /* Выравнивание по правому краю  */ 
+	margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+}

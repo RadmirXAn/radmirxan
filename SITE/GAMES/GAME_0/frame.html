@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="Тестирование возможностей Canvas">
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+		<meta name="author" content="RadMirXAN">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<meta http-equiv="Content-Script-Type" content="application/javascript">
+		<title>GAME</title>
+		<link rel="shortcut icon" href="./RadmirXAn/Preloader/Images/LOGO.png" type="image/png">		
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html { overflow:  hidden; }
+		</style>
+		<script type="application/javascript" src="./RadmirXAn/Utils/ClassLoader/ClassLoader.js"></script>
+	</head>
+	<body>
+		<canvas id="game" width="550" height="400">
+			<p>Ваш браузер не поддерживает рисование.</p>
+		</canvas>
+		<canvas id="game_hit" width="550" height="400" hidden="true">
+			<p>Ваш браузер не поддерживает рисование.</p>
+		</canvas>
+		<script type="application/javascript">
+			const StartClasses = [
+				'./RadmirXAn/Utils/ImageLoader/ImageLoader.js',
+				'./RadmirXAn/Utils/AudioLoader/AudioLoader.js',
+			
+				'./RadmirXAn/Canvas/Canvas.js',
+				'./RadmirXAn/Canvas/Bitmap/Bitmap.js',
+				'./RadmirXAn/Canvas/Animation/Animation.js',
+
+				'./RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',	
+				'./RadmirXAn/Events/Keyboard_Events/Keyboard.js',
+				'./RadmirXAn/Events/Mouse_Events/Mouse.js',
+				
+				'./RadmirXAn/Cursor/Cursor.js',
+				'./RadmirXAn/Preloader/Preloader.js'
+			];
+			ClassLoader.load(StartClasses, function(){EnterFrame.start()});
+		</script>
+	</body>
+</html>
