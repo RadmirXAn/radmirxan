@@ -1,6 +1,6 @@
 const Preloader = function() {
 	let current = this;
-	let Preloader_ImageURL_0 = './RadmirXAn/Preloader/Images/0.png';
+	let Preloader_ImageURL_0 = './RadmirXAn/Preloader/Images/LOGO.png';
 	let Preloader_ImageURL_1 = './RadmirXAn/Preloader/Images/1.jpg';
 	let Preloader_ImageURLs = [
 		Preloader_ImageURL_0,
@@ -34,12 +34,14 @@ const Preloader = function() {
 		let X = Canvas.width()*Preloader_Percent;
 		
 		Preloader_Context.beginPath();
-		Preloader_Context.strokeStyle = '#000000';
+		Preloader_Context.lineWidth = 4;
+		Preloader_Context.strokeStyle = '#ffffff';
 		Preloader_Context.moveTo(0, Y);
 		Preloader_Context.lineTo(X, Y);
 		Preloader_Context.stroke();
 		
 		Preloader_Context.beginPath();
+		Preloader_Context.lineWidth = 4;
 		Preloader_Context.strokeStyle = '#ff0000';
 		Preloader_Context.moveTo(X, Y);
 		Preloader_Context.lineTo(Canvas.width(), Y);		
