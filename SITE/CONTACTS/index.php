@@ -30,7 +30,7 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">
-							<a class='leftimg' href='?page=MENU'><img src='./SITE/IMG/BACK.png'></a>
+							<a class='leftimg' href='https://www.radmirxan.ru'><img src='./SITE/IMG/BACK.png'></a>
 							<h1 style="color:#ff0000">Нажмите стрелку чтобы вернуться к предыдущему списку.</h1>
 
 							<a class='btn btn-primary' href='https://vk.com/radmirxan'><img src='./SITE/CONTACTS/IMG/VK.png'></a>

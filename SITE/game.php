@@ -1,7 +1,19 @@
 <?php
+if($_SERVER['PHP_SELF']!='/game.php'){
+	if($_SERVER['HTTPS']){
+		header('Location: '.'https://'.$_SERVER['SERVER_NAME']);
+	}else{
+		header('Location: '.'http://'.$_SERVER['SERVER_NAME']);
+	}	
+	exit;
+}
 $gameID = (string)(@$_GET['game']);
-$gameURL = "./SITE/GAMES/GAME_".$gameID."/frame.html";
+$gamePath = "./SITE/GAMES/GAME_".$gameID;
+$gameURL = $gamePath."/frame.html";
 $gameICO = "./SITE/GAMES/IMG/".$gameID.".png";
+$gameDescriptionPath = $gamePath.'/description.txt';
+$gameDescription = @file_get_contents($gameDescriptionPath);
+if (!$gameDescription) $gameDescription = @file_get_contents('./SITE/DEFAULT/TXT/game_description.txt');
 echo <<<END
 	<!DOCTYPE html>
 	<html>
@@ -29,10 +41,10 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">
-							<a class="leftimg"><img src=$gameICO></a>
-							<h1 style="color:#ff0000">Название игры.</h1>
-							<p style="color:#ff0000">Описание игры. Найди пару. Кликакй и запоминай.</p>
-
+						
+							<a class="leftimg"><img src=$gameICO onerror="this.src='./SITE/DEFAULT/IMG/GAME_ICO.png'" ></a>
+							
+							$gameDescription
 							<iframe allowfullscreen class="test" src=$gameURL width="550" height="400" frameborder="0">
 								Ваш браузер не поддерживает плавающие фреймы!
 							</iframe>

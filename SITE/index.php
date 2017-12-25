@@ -1,4 +1,12 @@
 <?php
+if($_SERVER['PHP_SELF']!='/index.php'){
+	if($_SERVER['HTTPS']){
+		header('Location: '.'https://'.$_SERVER['SERVER_NAME']);
+	}else{
+		header('Location: '.'http://'.$_SERVER['SERVER_NAME']);
+	}	
+	exit;
+}
 echo <<<END
 	<!DOCTYPE html>
 	<html>
