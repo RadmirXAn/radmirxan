@@ -49,7 +49,7 @@ echo <<<END
 								Ваш браузер не поддерживает плавающие фреймы!
 							</iframe>
 
-							<a class="leftimg" href='?page=GAMES'><img src='./SITE/IMG/BACK.png'></a>
+							<a class="leftimg" href='https://www.radmirxan.ru?page=GAMES'><img src='./SITE/IMG/BACK.png'></a>
 							<h1 style="color:#ff0000">Нажмите стрелку чтобы вернуться к предыдущему списку.</h1>
 						</td>
 					</tr>
