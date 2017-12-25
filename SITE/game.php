@@ -1,5 +1,5 @@
 <?php
-if($_SERVER['PHP_SELF']!='/game.php'){
+if($_SERVER['PHP_SELF']!='/index.php'){
 	if($_SERVER['HTTPS']){
 		header('Location: '.'https://'.$_SERVER['SERVER_NAME']);
 	}else{
