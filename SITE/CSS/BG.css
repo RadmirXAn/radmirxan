@@ -10,31 +10,32 @@ body {
 	padding:0px;
 }
 
-.table-wrapper {
-    width: 550px;
-}
-
-.mytd {
+td {
     width: 550px;
     border: 0px solid black;
 }
 
-.mytable {
+table{
     border-collapse: separate;
 	border-spacing: 0;
     overflow: auto;
     table-layout: fixed;
 	margin:auto;
 	width:550;
-	height:100%;	
+	height:100%;
 }
 
 .leftimg {
-	float:left; /* Выравнивание по левому краю */
-	margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+	float:left;
+	margin: 0 7px 0 0;
 }
 
 .rightimg  {
-	float: right; /* Выравнивание по правому краю  */ 
-	margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+	float: right;
+	margin: 0 0 0 7px;
+}
+
+.lineimg  {
+	float: right;
+	margin: 20px 0 20px 0;
 }

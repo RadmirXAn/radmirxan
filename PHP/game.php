@@ -1,18 +1,11 @@
 <?php
-if($_SERVER['PHP_SELF']!='/index.php'){
-	if($_SERVER['HTTPS']){
-		header('Location: '.'https://'.$_SERVER['SERVER_NAME']);
-	}else{
-		header('Location: '.'http://'.$_SERVER['SERVER_NAME']);
-	}	
-	exit;
-}
 $gameID = (string)(@$_GET['game']);
 $gamePath = "./SITE/GAMES/GAME_".$gameID;
 $gameURL = $gamePath."/frame.html";
 $gameICO = "./SITE/GAMES/IMG/".$gameID.".png";
 $gameDescriptionPath = $gamePath.'/description.txt';
 $gameDescription = @file_get_contents($gameDescriptionPath);
+$gameBack = $SITE.'?page=GAMES';
 if (!$gameDescription) $gameDescription = @file_get_contents('./SITE/DEFAULT/TXT/game_description.txt');
 echo <<<END
 	<!DOCTYPE html>
@@ -43,14 +36,14 @@ echo <<<END
 						<td class="mytd">
 						
 							<a class="leftimg"><img src=$gameICO onerror="this.src='./SITE/DEFAULT/IMG/GAME_ICO.png'" ></a>
-							
 							$gameDescription
+							<img class='lineimg' src='./SITE/IMG/LINE.png'>
 							<iframe allowfullscreen class="test" src=$gameURL width="550" height="400" frameborder="0">
 								Ваш браузер не поддерживает плавающие фреймы!
 							</iframe>
-
-							<a class="leftimg" href='https://www.radmirxan.ru?page=GAMES'><img src='./SITE/IMG/BACK.png'></a>
-							<h1 style="color:#ff0000">Нажмите стрелку чтобы вернуться к предыдущему списку.</h1>
+							<img class='lineimg' src='./SITE/IMG/LINE.png'>
+							<a class="leftimg" href='$gameBack'><img src='./SITE/IMG/GAMES.png'></a>
+							<h1 style="color:#ff0000">Нажав эту кнопку можно вернуться к списку с играми.</h1>
 						</td>
 					</tr>
 			</table>
