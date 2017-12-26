@@ -36,6 +36,13 @@ table{
 }
 
 .lineimg  {
-	float: right;
 	margin: 20px 0 20px 0;
+}
+
+p{
+   color: #f00;
+}
+
+p white{
+   color: #fff;
 }

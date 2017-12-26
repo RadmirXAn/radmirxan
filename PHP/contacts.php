@@ -1,5 +1,5 @@
 <?php
-$gamesBack = $SITE;
+$contactsBack = $SITE;
 echo <<<END
 	<!DOCTYPE html>
 	<html>
@@ -31,7 +31,7 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">
-							<a class='leftimg' href='$gamesBack'><img src='./SITE/IMG/HOME.png'></a>
+							<a class='leftimg' href='$contactsBack'><img src='./SITE/IMG/CONTACTS.png'></a>
 							<h1 style="color:#ff0000">Здесь вы можете связаться со мной удобным для вас способом.</h1>
 							<img class='lineimg' src='./SITE/IMG/LINE.png'>
 							<a class='btn btn-primary' href='https://vk.com/radmirxan'><img src='./SITE/CONTACTS/IMG/VK.png'></a>

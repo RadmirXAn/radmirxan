@@ -34,16 +34,12 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">
-						
-							<a class="leftimg"><img src=$gameICO onerror="this.src='./SITE/DEFAULT/IMG/GAME_ICO.png'" ></a>
+							<a class="leftimg" href='$gameBack'><img src=$gameICO onerror="this.src='./SITE/DEFAULT/IMG/GAME_ICO.png'" ></a>
 							$gameDescription
 							<img class='lineimg' src='./SITE/IMG/LINE.png'>
 							<iframe allowfullscreen class="test" src=$gameURL width="550" height="400" frameborder="0">
 								Ваш браузер не поддерживает плавающие фреймы!
 							</iframe>
-							<img class='lineimg' src='./SITE/IMG/LINE.png'>
-							<a class="leftimg" href='$gameBack'><img src='./SITE/IMG/GAMES.png'></a>
-							<h1 style="color:#ff0000">Нажав эту кнопку можно вернуться к списку с играми.</h1>
 						</td>
 					</tr>
 			</table>

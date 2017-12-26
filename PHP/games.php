@@ -30,7 +30,7 @@ echo <<<END
 			<table>
 				<tr>
 					<td>
-						<a class='leftimg' href='$gamesBack'><img src='./SITE/IMG/HOME.png'></a>
+						<a class='leftimg' href='$gamesBack'><img src='./SITE/IMG/GAMES.png'></a>
 						<h1 style="color:#ff0000">Здесь вы можете поиграть в различные игры.</h1>
 						<img class='lineimg' src='./SITE/IMG/LINE.png'>
 						<a class='btn btn-primary' href='?page=GAMES&game=0'><img src='./SITE/GAMES/IMG/0.png'></a>

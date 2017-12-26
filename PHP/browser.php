@@ -1,4 +1,5 @@
 <?php
+$browserBack = $SITE;
 echo <<<END
 	<!DOCTYPE html>
 	<html>
@@ -22,24 +23,32 @@ echo <<<END
 				google_ad_client: "ca-pub-3942502673062513",
 				enable_page_level_ads: true
 			  });
-			</script>
-			
+			</script>			
 		</head>
 		<body>
-		
+
 			<table class="mytable">
 					<tr>
-						<td class="mytd">							
-							<a class='leftimg'><img src='./SITE/IMG/LOGO.png'></a>
-							<h1 style="color:#ff0000; font-size: 40pt">RadMirXAn.RU</h1>
+						<td>
+							<a class='leftimg' href='$browserBack'><img src='./SITE/IMG/BROWSER.png'></a>
+							<h1 style="color:#ff0000">СВЕДЕНИЯ О БРАУЗЕРЕ:</h1>
+							<p>Свойства объекта Navigator не могут служить основой для надежной идентификации броузера.</p>							
 							<img class='lineimg' src='./SITE/IMG/LINE.png'>
-							<a class='btn btn-primary' href='?page=GAMES'><img src='./SITE/IMG/GAMES.png'></a>
-							<a class='btn btn-primary' href='?page=CONTACTS'><img src='./SITE/IMG/CONTACTS.png'></a>
-							<a class='btn btn-primary' href='?page=BROWSER'><img src='./SITE/IMG/BROWSER.png'></a>							
+							<div id="info"></div>
 						</td>
 					</tr>
 			</table>
-		
+			
+			<script type="text/javascript">
+			window.onload = function() {
+				var info = '';
+				for(var key in navigator){
+					info += '<p>'+ key + ': <white>' + navigator[key]+'</white></p>';
+				}
+				document.getElementById('info').innerHTML = info;
+			}
+			</script>
+			
 		</body>
 	</html>
 END;
