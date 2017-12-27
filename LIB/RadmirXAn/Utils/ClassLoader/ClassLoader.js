@@ -12,7 +12,7 @@ const ClassLoader = (function () {
 			console.log('ClassLoader: Загрузка файла [%d/%d:%s]', ClassLoader_Index, ClassLoader_URLs.length, ClassLoader_URL);
 			if (ClassLoader_Included[ClassLoader_URL] === undefined) {
 				let ClassLoader_Script = document.createElement('script');
-				ClassLoader_Script.src = ClassLoader_URL;
+				ClassLoader_Script.src = ClassLoader_URL+antiCache;
 				document.getElementsByTagName('head')[0].appendChild(ClassLoader_Script);
 				ClassLoader_Script.onload = function () {
 					ClassLoader_Next(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress, ClassLoader_NextIndex);

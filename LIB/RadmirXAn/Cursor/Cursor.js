@@ -1,7 +1,7 @@
 const Cursor = function() {
 	let current = this;
 	let Cursor_Layer = 0;
-	let Cursor_ImageURL = './RadmirXAn/Cursor/Images/0.png';	
+	let Cursor_ImageURL = './LIB/RadmirXAn/Cursor/Images/0.png';	
 	let _CursorImages = [
 		Cursor_ImageURL
 	];

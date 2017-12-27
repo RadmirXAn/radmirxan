@@ -1,5 +1,5 @@
 <?php
-$browserBack = $SITE;
+$browserBack = $SITE."?".$TIME;
 echo <<<END
 	<!DOCTYPE html>
 	<html>
@@ -10,12 +10,11 @@ echo <<<END
 			<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 			<meta name="author" content="RadMirXAN">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-			<meta http-equiv="Content-Script-Type" content="application/javascript">
 			
 			<title>Главная</title>
 			
-			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png" type="image/png">		
-			<link rel="stylesheet" href="./SITE/CSS/BG.css">
+			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png?$TIME" type="image/png">		
+			<link rel="stylesheet" href="./SITE/CSS/BG.css?$TIME">
 			
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<script>
@@ -30,10 +29,10 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td>
-							<a class='leftimg' href='$browserBack'><img src='./SITE/IMG/BROWSER.png'></a>
+							<a class='leftimg' href='$browserBack'><img src='./SITE/IMG/BROWSER.png?$TIME'></a>
 							<h1 style="color:#ff0000">СВЕДЕНИЯ О БРАУЗЕРЕ:</h1>
 							<p>Свойства объекта Navigator не могут служить основой для надежной идентификации броузера.</p>							
-							<img class='lineimg' src='./SITE/IMG/LINE.png'>
+							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<div id="info"></div>
 						</td>
 					</tr>

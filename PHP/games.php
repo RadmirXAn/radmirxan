@@ -1,5 +1,5 @@
 <?php
-$gamesBack = $SITE;
+$gamesBack = $SITE."?".$TIME;
 echo <<<END
 	<!DOCTYPE html>
 	<html>
@@ -14,8 +14,8 @@ echo <<<END
 			
 			<title>Главная</title>
 			
-			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png" type="image/png">		
-			<link rel="stylesheet" href="./SITE/CSS/BG.css">
+			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png?$TIME" type="image/png">		
+			<link rel="stylesheet" href="./SITE/CSS/BG.css?$TIME">
 			
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<script>
@@ -30,10 +30,10 @@ echo <<<END
 			<table>
 				<tr>
 					<td>
-						<a class='leftimg' href='$gamesBack'><img src='./SITE/IMG/GAMES.png'></a>
+						<a class='leftimg' href='$gamesBack'><img src='./SITE/IMG/GAMES.png?$TIME'></a>
 						<h1 style="color:#ff0000">Здесь вы можете поиграть в различные игры.</h1>
-						<img class='lineimg' src='./SITE/IMG/LINE.png'>
-						<a class='btn btn-primary' href='?page=GAMES&game=0'><img src='./SITE/GAMES/IMG/0.png'></a>
+						<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
+						<a class='btn btn-primary' href='?page=GAMES&game=0&$TIME'><img src='./SITE/GAMES/IMG/0.png?$TIME'></a>
 					</td>
 				</tr>
 			</table>			

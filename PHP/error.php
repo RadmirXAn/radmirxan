@@ -1,6 +1,6 @@
 <?php
-$CSS_PATH = $SITE.'SITE/DEFAULT/CSS/BG.css';
-$ICO_PATH = $SITE.'SITE/IMG/LOGO.png';
+$CSS_PATH = $SITE."SITE/DEFAULT/CSS/BG.css?".$TIME;
+$ICO_PATH = $SITE."SITE/IMG/LOGO.png?".$TIME;
 echo <<<END
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@ echo <<<END
 		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 		<meta name="author" content="RadMirXAN">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<meta http-equiv="Content-Script-Type" content="application/javascript">
+
 		<title>ERROR</title>
 		
 		<link rel="shortcut icon" href="$ICO_PATH" type="image/png">		

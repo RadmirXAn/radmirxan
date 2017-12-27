@@ -1,5 +1,5 @@
 <?php
-$contactsBack = $SITE;
+$contactsBack = $SITE."?".$TIME;
 echo <<<END
 	<!DOCTYPE html>
 	<html>
@@ -10,12 +10,11 @@ echo <<<END
 			<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 			<meta name="author" content="RadMirXAN">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-			<meta http-equiv="Content-Script-Type" content="application/javascript">
 			
 			<title>Главная</title>
 			
-			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png" type="image/png">		
-			<link rel="stylesheet" href="./SITE/CSS/BG.css">
+			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png?$TIME" type="image/png">		
+			<link rel="stylesheet" href="./SITE/CSS/BG.css?$TIME">
 			
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<script>
@@ -31,13 +30,13 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">
-							<a class='leftimg' href='$contactsBack'><img src='./SITE/IMG/CONTACTS.png'></a>
+							<a class='leftimg' href='$contactsBack'><img src='./SITE/IMG/CONTACTS.png?$TIME'></a>
 							<h1 style="color:#ff0000">Здесь вы можете связаться со мной удобным для вас способом.</h1>
-							<img class='lineimg' src='./SITE/IMG/LINE.png'>
-							<a class='btn btn-primary' href='https://vk.com/radmirxan'><img src='./SITE/CONTACTS/IMG/VK.png'></a>
-							<a class='btn btn-primary' href='mailto:rrradmirrr@mail.ru'><img src='./SITE/CONTACTS/IMG/MAIL.png'></a>
-							<a class='btn btn-primary' href='https://my.mail.ru/mail/rrradmirrr/'><img src='./SITE/CONTACTS/IMG/MYMAIL.png'></a>
-							<a class='btn btn-primary' href='https://www.facebook.com/radmir.jumagugin'><img src='./SITE/CONTACTS/IMG/FB.png'></a>
+							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
+							<a class='btn btn-primary' href='https://vk.com/radmirxan?$TIME'><img src='./SITE/CONTACTS/IMG/VK.png?$TIME'></a>
+							<a class='btn btn-primary' href='mailto:rrradmirrr@mail.ru'><img src='./SITE/CONTACTS/IMG/MAIL.png?$TIME'></a>
+							<a class='btn btn-primary' href='https://my.mail.ru/mail/rrradmirrr/?$TIME'><img src='./SITE/CONTACTS/IMG/MYMAIL.png?$TIME'></a>
+							<a class='btn btn-primary' href='https://www.facebook.com/radmir.jumagugin?$TIME'><img src='./SITE/CONTACTS/IMG/FB.png?$TIME'></a>
 						</td>
 					</tr>
 			</table>

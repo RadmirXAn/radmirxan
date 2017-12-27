@@ -18,7 +18,7 @@ const ImageLoader = (function () {
 			console.log('ImageLoader: Загрузка файла [%d/%d:%s]', ImageLoader_Index, ImageLoader_URLs.length, ImageLoader_URL);
 			if (ImageLoader_Included[ImageLoader_URL] === undefined) {
 				let ImageLoader_Img = new Image();
-				ImageLoader_Img.src = ImageLoader_URL;
+				ImageLoader_Img.src = ImageLoader_URL+antiCache;
 				ImageLoader_Img.onload = function () {
 					ImageLoader_Next(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress, ImageLoader_NextIndex);
 				}

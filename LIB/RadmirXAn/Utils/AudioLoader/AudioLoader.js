@@ -18,7 +18,7 @@ const AudioLoader = (function () {
 			console.log('AudioLoader: Загрузка файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_URLs.length, AudioLoader_URL);
 			if (AudioLoader_Included[AudioLoader_URL] === undefined) {
 				let AudioLoader_Audio = new Audio();
-				AudioLoader_Audio.src = AudioLoader_URL;
+				AudioLoader_Audio.src = AudioLoader_URL+antiCache;
 				
 				AudioLoader_Audio.onloadeddata = function() 
 				{

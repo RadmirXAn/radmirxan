@@ -10,7 +10,6 @@ const Bitmap = function() {
 	let Bitmap_Started = false;
 	
 	let Bitmap_Context = Canvas.getVisibleContext();
-	let Bitmap_Buff = Canvas.getUnVisibleContext();
 
 	let Bitmap_EnterFrame = function(){
 		Bitmap_Context.drawImage(Bitmap_Image, x, y);
@@ -24,15 +23,6 @@ const Bitmap = function() {
 	current.stop = function (){
 		EnterFrame.removeFunction(Bitmap_EnterFrame);
 		Bitmap_Started = false;
-	};
-	
-	current.getPixel = function(x, y){
-			Bitmap_Buff.clearRect(0, 0, Canvas.width(), Canvas.height());
-			Bitmap_Buff.drawImage(Bitmap_Image, 0, 0);
-			let pixel = Bitmap_Buff.getImageData(x, y, 1, 1);
-			return rgba = pixel.data;
-			//let data = pixel.data;
-			//let rgba = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + (data[3] / 255) + ')';
 	};
 	
 	Object.defineProperty(current, "layer", {

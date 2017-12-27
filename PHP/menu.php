@@ -13,8 +13,8 @@ echo <<<END
 			
 			<title>Главная</title>
 			
-			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png" type="image/png">		
-			<link rel="stylesheet" href="./SITE/CSS/BG.css">
+			<link rel="shortcut icon" href="./SITE/IMG/LOGO.png?$TIME" type="image/png">		
+			<link rel="stylesheet" href="./SITE/CSS/BG.css?$TIME">
 			
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<script>
@@ -30,12 +30,12 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">							
-							<a class='leftimg'><img src='./SITE/IMG/LOGO.png'></a>
+							<a class='leftimg'><img src='./SITE/IMG/LOGO.png?$TIME'></a>
 							<h1 style="color:#ff0000; font-size: 40pt">RadMirXAn.RU</h1>
-							<img class='lineimg' src='./SITE/IMG/LINE.png'>
-							<a class='btn btn-primary' href='?page=GAMES'><img src='./SITE/IMG/GAMES.png'></a>
-							<a class='btn btn-primary' href='?page=CONTACTS'><img src='./SITE/IMG/CONTACTS.png'></a>
-							<a class='btn btn-primary' href='?page=BROWSER'><img src='./SITE/IMG/BROWSER.png'></a>							
+							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
+							<a class='btn btn-primary' href='?page=GAMES&$TIME'><img src='./SITE/IMG/GAMES.png?$TIME'></a>
+							<a class='btn btn-primary' href='?page=CONTACTS&$TIME'><img src='./SITE/IMG/CONTACTS.png?$TIME'></a>
+							<a class='btn btn-primary' href='?page=BROWSER&$TIME'><img src='./SITE/IMG/BROWSER.png?$TIME'></a>							
 						</td>
 					</tr>
 			</table>
