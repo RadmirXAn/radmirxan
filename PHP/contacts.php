@@ -24,7 +24,7 @@ echo <<<END
 						<td class="mytd">
 							<a class='leftimg' href='$contactsBack'><img src='./SITE/IMG/CONTACTS.png?$TIME'></a>
 							<h1>$contactsTitle</h1>
-							<p>По всем вопросам. Прям по всем по всем.</p>
+							<b>По всем вопросам. Прям по всем по всем.</b>
 							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<a class='btn btn-primary' href='https://vk.com/radmirxan?$TIME'><img src='./SITE/CONTACTS/IMG/VK.png?$TIME'></a>
 							<a class='btn btn-primary' href='mailto:rrradmirrr@mail.ru'><img src='./SITE/CONTACTS/IMG/MAIL.png?$TIME'></a>

@@ -40,7 +40,7 @@ table{
 }
 
 p{
-   color: #f00;
+   color: #ffd900;
 }
 
 p white{
@@ -48,5 +48,9 @@ p white{
 }
 
 h1{
-   color: #f00;
+   color: #fff;
+}
+
+b{
+	color: #aaf;
 }

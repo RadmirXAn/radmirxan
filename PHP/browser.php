@@ -24,7 +24,7 @@ echo <<<END
 						<td>
 							<a class='leftimg' href='$browserBack'><img src='./SITE/IMG/BROWSER.png?$TIME'></a>
 							<h1>$browserTitle</h1>
-							<p>Проверка функциональных возможностей вашего браузера.</p>
+							<b>Проверка функциональных возможностей вашего браузера.</b>
 							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<div id="info"></div>
 						</td>

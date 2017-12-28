@@ -37,7 +37,7 @@ echo <<<END
 						<td class="mytd">
 							<a class="leftimg" href='$appBack'><img src='$appICO' onerror="this.src='./SITE/DEFAULT/IMG/APP_ICO.png?$TIME'" ></a>
 							<h1>$appTitle</h1>
-							<p>$appDescription</p>
+							<b>$appDescription</b>
 							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<canvas id="game" width="550" height="400">
 								<p>Ваш браузер не поддерживает рисование.</p>
