@@ -1,7 +1,7 @@
 <?php
 	$TIME = "time=".time();
-	//$SITE = "http://localhost:8080/MySite/";
-	$SITE = "https://www.radmirxan.ru/";
+	$SITE = "http://localhost:8080/MySite/";
+	//$SITE = "https://www.radmirxan.ru/";
 	$LIB = $SITE."LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js?".$TIME;
 	
 	$DEFAULT = "

@@ -22,8 +22,8 @@ echo <<<END
 				<tr>
 					<td>
 						<a class='leftimg' href='$appsBack'><img src='./SITE/IMG/APPS.png?$TIME'></a>
-						<h1 style="color:#ff0000">$appsTitle</h1>
-						<p style="color:#ff0000">Всем не угодишь.</p>
+						<h1>$appsTitle</h1>
+						<p>Всем не угодишь.</p>
 						<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 						<a class='btn btn-primary' href='?page=APPS&app=0&$TIME'><img src='./SITE/APPS/IMG/0.png?$TIME'></a>
 					</td>

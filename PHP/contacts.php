@@ -23,8 +23,8 @@ echo <<<END
 					<tr>
 						<td class="mytd">
 							<a class='leftimg' href='$contactsBack'><img src='./SITE/IMG/CONTACTS.png?$TIME'></a>
-							<h1 style="color:#ff0000">$contactsTitle</h1>
-							<p style="color:#ff0000">По всем вопросам. Прям по всем по всем.</p>
+							<h1>$contactsTitle</h1>
+							<p>По всем вопросам. Прям по всем по всем.</p>
 							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<a class='btn btn-primary' href='https://vk.com/radmirxan?$TIME'><img src='./SITE/CONTACTS/IMG/VK.png?$TIME'></a>
 							<a class='btn btn-primary' href='mailto:rrradmirrr@mail.ru'><img src='./SITE/CONTACTS/IMG/MAIL.png?$TIME'></a>

@@ -16,7 +16,6 @@ echo <<<END
 		
 		<link rel="shortcut icon" href="$ICO_PATH" type="image/png">		
 		<link rel="stylesheet" href="$CSS_PATH">
-
 	</head>
 	<body>
 	</body>

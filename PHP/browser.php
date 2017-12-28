@@ -23,8 +23,8 @@ echo <<<END
 					<tr>
 						<td>
 							<a class='leftimg' href='$browserBack'><img src='./SITE/IMG/BROWSER.png?$TIME'></a>
-							<h1 style="color:#ff0000">$browserTitle</h1>
-							<p style="color:#ff0000">Проверка функциональных возможностей вашего браузера.</p>
+							<h1>$browserTitle</h1>
+							<p>Проверка функциональных возможностей вашего браузера.</p>
 							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<div id="info"></div>
 						</td>
