@@ -1,9 +1,11 @@
 <?php
-$gamesBack = $SITE."?".$TIME;
+$appsBack = $SITE."?".$TIME;
+$appsTitle = "Приложения для души.";
 echo <<<END
 	<!DOCTYPE html>
 	<html>
 		<head>
+			<title>$appsTitle</title>
 			$DEFAULT
 			
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -19,10 +21,11 @@ echo <<<END
 			<table>
 				<tr>
 					<td>
-						<a class='leftimg' href='$gamesBack'><img src='./SITE/IMG/GAMES.png?$TIME'></a>
-						<h1 style="color:#ff0000">Здесь вы можете поиграть в различные игры.</h1>
+						<a class='leftimg' href='$appsBack'><img src='./SITE/IMG/APPS.png?$TIME'></a>
+						<h1 style="color:#ff0000">$appsTitle</h1>
+						<p style="color:#ff0000">Всем не угодишь.</p>
 						<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
-						<a class='btn btn-primary' href='?page=GAMES&game=0&$TIME'><img src='./SITE/GAMES/IMG/0.png?$TIME'></a>
+						<a class='btn btn-primary' href='?page=APPS&app=0&$TIME'><img src='./SITE/APPS/IMG/0.png?$TIME'></a>
 					</td>
 				</tr>
 			</table>			

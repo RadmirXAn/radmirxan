@@ -3,8 +3,8 @@ const Classes = (function(){
 		console.log("ClassesList init...");
 		let current = this;
 		const Images_All = [
-			gamePath+"/Game/Classes/Shirt/Shirt.js",
-			gamePath+"/Game/Classes/Main.js"
+			appPath+"/App/Classes/Shirt/Shirt.js",
+			appPath+"/App/Classes/Main.js"
 		];
 		current.All = Images_All;
 	}

@@ -61,9 +61,9 @@ const Preloader = function() {
 	};
 
 	let MainClasses = [
-		gamePath+'/Game/Images.js',
-		gamePath+'/Game/Sounds.js',
-		gamePath+'/Game/Classes.js'
+		appPath+'/App/Images.js',
+		appPath+'/App/Sounds.js',
+		appPath+'/App/Classes.js'
 	];
 	
 	ImageLoader.load(Preloader_ImageURLs, Preloader_Start);

@@ -1,16 +1,24 @@
 <?php
-$gameID = (string)(@$_GET["game"]);
-$gamePath = "./SITE/GAMES/GAME_".$gameID;
-$gameURL = $gamePath."/frame.php?".$TIME;
-$gameICO = "./SITE/GAMES/IMG/".$gameID.".png?".$TIME;
-$gameDescriptionPath = $gamePath."/description.txt";
-$gameDescription = @file_get_contents($gameDescriptionPath);
-$gameBack = $SITE.'?page=GAMES&'.$TIME;
-if (!$gameDescription) $gameDescription = @file_get_contents('./SITE/DEFAULT/TXT/game_description.txt');
+$appID = (string)(@$_GET["app"]);
+$appPath = "./SITE/APPS/APP_".$appID;
+$appURL = $appPath."/frame.php?".$TIME;
+$appICO = "./SITE/APPS/IMG/".$appID.".png?".$TIME;
+$appDescriptionPath = $appPath."/description.xml";
+$xml;
+if (file_exists($appDescriptionPath)) {
+    $xml = simplexml_load_file($appDescriptionPath);
+} else {
+    $xml = simplexml_load_file("./SITE/DEFAULT/XML/app_description.xml");
+}
+$appName = $xml->name;
+$appDescription = $xml->description;
+$appBack = $SITE.'?page=APPS&'.$TIME;
+$appTitle = $appName;
 echo <<<END
 	<!DOCTYPE html>
 	<html>
 		<head>
+			<title>$appTitle</title>
 			$DEFAULT
 			
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -27,8 +35,9 @@ echo <<<END
 			<table class="mytable">
 					<tr>
 						<td class="mytd">
-							<a class="leftimg" href='$gameBack'><img src='$gameICO' onerror="this.src='./SITE/DEFAULT/IMG/GAME_ICO.png?$TIME'" ></a>
-							$gameDescription
+							<a class="leftimg" href='$appBack'><img src='$appICO' onerror="this.src='./SITE/DEFAULT/IMG/APP_ICO.png?$TIME'" ></a>
+							<h1 style="color:#ff0000">$appTitle</h1>
+							<p style="color:#ff0000">$appDescription</p>
 							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
 							<canvas id="game" width="550" height="400">
 								<p>Ваш браузер не поддерживает рисование.</p>
@@ -38,7 +47,7 @@ echo <<<END
 			</table>
 			
 			<script type="application/javascript">
-				var gamePath = '$gamePath';
+				var appPath = '$appPath';
 				var antiCache = '?$TIME';
 				const StartClasses = [
 					'./LIB/RadmirXAn/Utils/ImageLoader/ImageLoader.js',
