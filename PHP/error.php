@@ -8,7 +8,7 @@ echo <<<END
 		<meta charset="utf-8">
 		<meta name="description" content="Тестирование возможностей Canvas">
 		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
-		<meta name="author" content="RadMirXAN">
+		<meta name="author" content="RadMirXAn">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
 		<title>ERROR</title>
