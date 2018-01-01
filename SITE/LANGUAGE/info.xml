@@ -1,0 +1,15 @@
+<?xml version='1.0' standalone='yes'?>
+<info>
+	<BA>
+		<title>Тел.</title>
+		<description>Үҙ телегеҙҙе һайлағыҙ.</description>
+	</BA>
+	<RU>
+		<title>Язык.</title>
+		<description>Выберите ваш язык.</description>
+	</RU>
+	<EN>
+		<title>Language.</title>
+		<description>Select your language.</description>
+	</EN>
+</info>

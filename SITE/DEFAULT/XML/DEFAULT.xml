@@ -1,0 +1,15 @@
+<?xml version='1.0' standalone='yes'?>
+<info>
+	<BA>
+		<title>Исем.</title>
+		<description>Тасуирлама.</description>
+	</BA>
+	<RU>
+		<title>Заглавие.</title>
+		<description>Описание.</description>
+	</RU>
+	<EN>
+		<title>Title.</title>
+		<description>Description.</description>
+	</EN>
+</info>

@@ -1,37 +1,10 @@
 <?php
-echo <<<END
-	<!DOCTYPE html>
-	<html>
-		<head>
-			<title>$DEFAULT_TITLE</title>
-			$DEFAULT
-
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<script>
-			  (adsbygoogle = window.adsbygoogle || []).push({
-				google_ad_client: "ca-pub-3942502673062513",
-				enable_page_level_ads: true
-			  });
-			</script>
-			
-		</head>
-		<body>
-		
-			<table class="mytable">
-					<tr>
-						<td class="mytd">							
-							<a class='leftimg'><img src='./SITE/IMG/LOGO.png?$TIME'></a>
-							<h1>RadMirXAn.RU</h1>
-							<b>Мир. Труд. Март.</b>
-							<img class='lineimg' src='./SITE/IMG/LINE.png?$TIME'>
-							<a class='btn btn-primary' href='?page=APPS&$TIME'><img src='./SITE/IMG/APPS.png?$TIME'></a>
-							<a class='btn btn-primary' href='?page=CONTACTS&$TIME'><img src='./SITE/IMG/CONTACTS.png?$TIME'></a>
-							<a class='btn btn-primary' href='?page=BROWSER&$TIME'><img src='./SITE/IMG/BROWSER.png?$TIME'></a>							
-						</td>
-					</tr>
-			</table>
-		
-		</body>
-	</html>
-END;
+$content = "
+<a class='btn btn-primary' href='?page=APPS&$TIME'><img src='$SITE/SITE/IMG/APPS.png?$TIME'></a>
+<a class='btn btn-primary' href='?page=CONTACTS&$TIME'><img src='$SITE/SITE/IMG/CONTACTS.png?$TIME'></a>
+<a class='btn btn-primary' href='?page=BROWSER&$TIME'><img src='$SITE/SITE/IMG/BROWSER.png?$TIME'></a>
+<a class='btn btn-primary' href='?page=LANGUAGE&$TIME'><img src='$SITE/SITE/IMG/LANGUAGE.png?$TIME'></a>
+";
+setInfo('SITE/MENU/','','SITE/IMG/LOGO.png',$content);
+echo $PAGE;
 ?>
