@@ -3,13 +3,28 @@
 	<BA>
 		<title>RadMirXAn.RU</title>
 		<description>Рәхим итегеҙ.</description>
+		<applications>Ҡушымталар</applications>
+		<cantacts>Бәйләнеш</cantacts>
+		<browser>Браузер</browser>
+		<language>Тел</language>
+		<back>кире</back>
 	</BA>
 	<RU>
 		<title>RadMirXAn.RU</title>
 		<description>Добро пожаловать.</description>
+		<applications>Приложения</applications>
+		<cantacts>Контакты</cantacts>
+		<browser>Браузер</browser>
+		<language>Язык</language>
+		<back>назад</back>
 	</RU>
 	<EN>
 		<title>RadMirXAn.RU</title>
 		<description>Welcome.</description>
+		<applications>Applications</applications>
+		<cantacts>Feedback</cantacts>
+		<browser>Browser</browser>
+		<language>Language</language>
+		<back>back</back>
 	</EN>
 </info>

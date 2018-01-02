@@ -1,7 +1,6 @@
 <?php
-$content = "
-<a class='btn btn-primary' href='?page=APPS&app=0&$TIME'><img src='$SITE/SITE/APPS/IMG/0.png?$TIME'></a>
-";
-setInfo('SITE/APPS/','','SITE/IMG/APPS.png',$content);
-echo $PAGE;
+getInfo('SITE/APPS/');
+$btn_1 = createButton('page=APPS&app=0','SITE/APPS/IMG/0.png','memorian');
+$content = "$btn_1";
+echo setInfo('','SITE/IMG/APPS.png','back',$content);
 ?>

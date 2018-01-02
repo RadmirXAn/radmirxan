@@ -1,4 +1,5 @@
 <?php
+getInfo('SITE/BROWSER/');
 $content = "
 <canvas id='game' width='0' height='0'>
 	<p>Canvas: <white>Браузер не поддерживает рисование.</white></p>
@@ -8,6 +9,5 @@ $content = "
 	<p>JavaScript: <white>Заблокирован или не поддерживается браузером.</white></p>
 </noscript>
 ";
-setInfo('SITE/BROWSER/','','SITE/IMG/BROWSER.png',$content);
-echo $PAGE;
+echo setInfo('','SITE/IMG/BROWSER.png','back',$content);
 ?>

@@ -7,7 +7,7 @@
 	$TIME = "time=".time();
 	$SITE = "http://localhost/";
 	//$SITE = "http://localhost:8080/MySite/";
-	//$SITE = "https://www.radmirxan.ru/";
+	//$SITE = "http://radmirxan.ru/";
 	$ROOT = "./";
 	$LIB = $SITE."LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js?".$TIME;
 		
@@ -21,10 +21,10 @@
 	}
 	
 	$LANGUAGE = $_SESSION['language'];
-	$PAGE = "";
+	$InfoXml;
 	
-	function setInfo($path, $back, $img, $content){
-		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $PAGE;
+	function getInfo($path){
+		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $InfoXml;
 		$infoURL = $ROOT.$path."info.xml";
 
 		if (file_exists($infoURL)) {
@@ -32,51 +32,73 @@
 		} else {
 			$InfoXml = simplexml_load_file($SITE."SITE/DEFAULT/XML/DEFAULT.xml?".$TIME);
 		}
+	}
+	
+	function setInfo($back, $img, $caption, $content){
+		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $InfoXml;
 		
 		$Title = $InfoXml->$LANGUAGE->title;
 		$Description = $InfoXml->$LANGUAGE->description;
 		
-$PAGE = "<!DOCTYPE html>
-<html>
-<head>
-<meta charset=\"utf-8\">
-<meta name=\"description\" content=\"RadMirXAn\">
-<meta name=\"keywords\" content=\"RadMirXAn,HTML,CSS,XML,JavaScript\">
-<meta name=\"author\" content=\"RadMirXAn\">
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\" />
-
-<title>$Title</title>
-
-<link rel=\"icon\" href=\"./SITE/IMG/LOGO.png?$TIME\" type=\"image/png\">		
-<link rel=\"stylesheet\" href=\"./SITE/CSS/BG.css?$TIME\">
-
-<script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-google_ad_client: 'ca-pub-3942502673062513',
-enable_page_level_ads: true
-});
-</script>
-
-<script type='application/javascript' src='$LIB'></script>
-
-</head>
-<body>				
-<table class='mytable'>
-<tr>
-<td class='mytd'>
-<header>
-<a class='leftimg' href='$SITE?$TIME$back'><img src='$SITE$img?$TIME' onerror=\"this.src='$SITE/SITE/DEFAULT/IMG/DEFAULT.png?$TIME'\"></a>
-<h1>$Title</h1>
-<b>$Description</b>
-<img class='lineimg' src='$SITE/SITE/IMG/LINE.png?$TIME'>
-</header>
-$content
-</td>
-</tr>
-</table>				
-</body>
-</html>";
+		$btn_1 = createButton($back,$img,$caption);
+		
+		$PAGE = "
+		<!DOCTYPE html>
+		<html>
+		
+		<head>
+		<meta charset=\"utf-8\">
+		<meta name=\"description\" content=\"RadMirXAn\">
+		<meta name=\"keywords\" content=\"RadMirXAn,HTML,CSS,XML,JavaScript\">
+		<meta name=\"author\" content=\"RadMirXAn\">
+		<title>$Title</title>
+		<link rel=\"icon\" href=\"./SITE/IMG/LOGO.png?$TIME\" type=\"image/png\">		
+		<link rel=\"stylesheet\" href=\"./SITE/CSS/BG.css?$TIME\">
+		<script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: 'ca-pub-3942502673062513',
+		enable_page_level_ads: true
+		});
+		</script>
+		<script type='application/javascript' src='$LIB'></script>
+		</head>
+		
+		<body>				
+		<div class='centerG'>
+		<div class='centerV'></div>
+		<div class='content'>
+		
+		$btn_1
+		<div class='title'>
+		<h1>$Title</h1>
+		<b>$Description</b>
+		</div>
+		<hr>
+		<div class='content'>
+		$content
+		</div>
+				
+		</div>
+		</div>
+		</body>
+		
+		</html>";
+		return $PAGE;
+	}
+	
+	function createButton($url, $image, $caption){
+		global $SITE, $TIME, $InfoXml, $LANGUAGE;
+		if($caption!=''){
+			$caption = $InfoXml->$LANGUAGE->$caption;
+		}
+		$block = "<div class='caption'>
+		<a href='?$TIME&$url'>
+		<img src='$SITE$image?$TIME' onerror=\"this.src='$SITE/SITE/DEFAULT/IMG/DEFAULT.png?$TIME'\">
+		<p class='caption'>$caption</p>
+		</a>
+		</div>";
+		return $block;
 	}
 	
 	switch(@$_GET['page']){

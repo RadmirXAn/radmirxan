@@ -23,20 +23,29 @@ const Preloader = function() {
 		}		
 	};
 
-	let Preloader_EnterFrame = function(){		
+	let Preloader_EnterFrame = function(){
+		
+		Preloader_Context.beginPath();
+		Preloader_Context.lineWidth = 0;
+		Preloader_Context.fillStyle = '#111111';
+		Preloader_Context.strokeStyle = '#111111';
+		Preloader_Context.rect(0, 0, Canvas.width(), Canvas.height());		
+		Preloader_Context.fill();
+		Preloader_Context.stroke();
+		
 		let Y = Preloader_ImageLogo.y+Preloader_ImageLogo.height+15;
 		let X = Canvas.width()*Preloader_Percent;
 		
 		Preloader_Context.beginPath();
-		Preloader_Context.lineWidth = 4;
+		Preloader_Context.lineWidth = 7;
 		Preloader_Context.strokeStyle = '#ffffff';
 		Preloader_Context.moveTo(0, Y);
 		Preloader_Context.lineTo(X, Y);
 		Preloader_Context.stroke();
 		
 		Preloader_Context.beginPath();
-		Preloader_Context.lineWidth = 4;
-		Preloader_Context.strokeStyle = '#ff0000';
+		Preloader_Context.lineWidth = 7;
+		Preloader_Context.strokeStyle = '#aaf';
 		Preloader_Context.moveTo(X, Y);
 		Preloader_Context.lineTo(Canvas.width(), Y);		
 		Preloader_Context.stroke();
@@ -51,7 +60,7 @@ const Preloader = function() {
 		Preloader_ImageLogo.start();
 		
 		Mouse.addDownFunction(Preloader_OnMouseDown, 1);
-		EnterFrame.addFunction(Preloader_EnterFrame, 1);
+		EnterFrame.addFunction(Preloader_EnterFrame, 2);
 	};
 
 	Preloader_Stop = function (){

@@ -3,13 +3,19 @@
 	<BA>
 		<title>Ҡушымталар.</title>
 		<description>Күңел өсөн өҫтәмә.</description>
+		<back>кире</back>
+		<memorian>Меморина</memorian>
 	</BA>
 	<RU>
 		<title>Приложения.</title>
 		<description>Приложения для души.</description>
+		<back>назад</back>
+		<memorian>Меморина</memorian>
 	</RU>
 	<EN>
 		<title>Applications.</title>
 		<description>Applications for the soul.</description>
+		<back>back</back>
+		<memorian>Memorina</memorian>
 	</EN>
 </info>

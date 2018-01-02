@@ -3,13 +3,16 @@
 	<BA>
 		<title>Меморина.</title>
 		<description>Парлы һүрәттәрҙе табыгыҙ.</description>
+		<back>кире</back>
 	</BA>
 	<RU>
 		<title>Меморина.</title>
 		<description>Найди пару. Кликакй и запоминай.</description>
+		<back>назад</back>
 	</RU>
 	<EN>
 		<title>Memorina.</title>
 		<description>Find a pair. Click and remember.</description>
+		<back>back</back>
 	</EN>
 </info>

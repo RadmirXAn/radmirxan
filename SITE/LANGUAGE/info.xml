@@ -3,13 +3,25 @@
 	<BA>
 		<title>Тел.</title>
 		<description>Үҙ телегеҙҙе һайлағыҙ.</description>
+		<back>кире</back>
+		<language_ba>Башҡортса</language_ba>
+		<language_ru>Русский</language_ru>
+		<language_en>English</language_en>
 	</BA>
 	<RU>
 		<title>Язык.</title>
 		<description>Выберите ваш язык.</description>
+		<back>назад</back>
+		<language_ba>Башҡортса</language_ba>
+		<language_ru>Русский</language_ru>
+		<language_en>English</language_en>
 	</RU>
 	<EN>
 		<title>Language.</title>
 		<description>Select your language.</description>
+		<back>back</back>
+		<language_ba>Башҡортса</language_ba>
+		<language_ru>Русский</language_ru>
+		<language_en>English</language_en>
 	</EN>
 </info>

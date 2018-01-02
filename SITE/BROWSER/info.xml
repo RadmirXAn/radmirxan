@@ -1,15 +1,18 @@
 <?xml version='1.0' standalone='yes'?>
 <info>
 	<BA>
-		<title>Һеҙҙең браузер.</title>
+		<title>Браузер.</title>
 		<description>Бында браузерҙың эшләмәгән сифаттарын күрергә мөмкин.</description>
+		<back>кире</back>
 	</BA>
 	<RU>
-		<title>Ваш браузер.</title>
+		<title>Браузер.</title>
 		<description>Здесь можно увидеть неподдерживаемые опции браузера.</description>
+		<back>назад</back>
 	</RU>
 	<EN>
-		<title>Your browser.</title>
+		<title>Browser.</title>
 		<description>Here you can see the unsupported browser options.</description>
+		<back>back</back>
 	</EN>
 </info>

@@ -1,9 +1,8 @@
 <?php
-$content = "
-<a class='btn btn-primary' href='?page=LANGUAGE&language=BA&$TIME'><img src='$SITE/SITE/LANGUAGE/IMG/BA.png?$TIME'></a>
-<a class='btn btn-primary' href='?page=LANGUAGE&language=RU&$TIME'><img src='$SITE/SITE/LANGUAGE/IMG/RU.png?$TIME'></a>
-<a class='btn btn-primary' href='?page=LANGUAGE&language=EN&$TIME'><img src='$SITE/SITE/LANGUAGE/IMG/EN.png?$TIME'></a>
-";
-setInfo('SITE/LANGUAGE/', '', 'SITE/IMG/LANGUAGE.png',$content);
-echo $PAGE;
+getInfo('SITE/LANGUAGE/');
+$btn_1 = createButton('page=LANGUAGE&language=RU','SITE/LANGUAGE/IMG/RU.png','language_ru');
+$btn_2 = createButton('page=LANGUAGE&language=BA','SITE/LANGUAGE/IMG/BA.png','language_ba');
+$btn_3 = createButton('page=LANGUAGE&language=EN','SITE/LANGUAGE/IMG/EN.png','language_en');
+$content = "$btn_1$btn_2$btn_3";
+echo setInfo('', 'SITE/IMG/LANGUAGE.png','back',$content);
 ?>

@@ -1,15 +1,18 @@
 <?xml version='1.0' standalone='yes'?>
 <info>
 	<BA>
-		<title>Кире бәйләнеш.</title>
+		<title>Бәйләнеш.</title>
 		<description>Бөтә һорауҙар буйынса.</description>
+		<back>кире</back>
 	</BA>
 	<RU>
-		<title>Обратная связь.</title>
+		<title>Контакты.</title>
 		<description>По всем вопросам. Прям по всем по всем.</description>
+		<back>назад</back>
 	</RU>
 	<EN>
 		<title>Feedback.</title>
 		<description>For all questions.</description>
+		<back>back</back>
 	</EN>
 </info>

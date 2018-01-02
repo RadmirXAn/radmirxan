@@ -2,6 +2,7 @@
 $appID = (string)(@$_GET["app"]);
 $appPath = "SITE/APPS/APP_".$appID."/";
 $appICO = "SITE/APPS/IMG/".$appID.".png";
+getInfo($appPath);
 $content = "
 <canvas id='game' width='550' height='400'>
 	<p>Ваш браузер не поддерживает рисование.</p>
@@ -28,6 +29,5 @@ $content = "
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
 </script>	
 ";
-setInfo($appPath, '&page=APPS', $appICO, $content);
-echo $PAGE;
+echo setInfo('&page=APPS', $appICO,'back',$content);
 ?>

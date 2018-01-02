@@ -1,10 +1,9 @@
 <?php
-$content = "
-<a class='btn btn-primary' href='?page=APPS&$TIME'><img src='$SITE/SITE/IMG/APPS.png?$TIME'></a>
-<a class='btn btn-primary' href='?page=CONTACTS&$TIME'><img src='$SITE/SITE/IMG/CONTACTS.png?$TIME'></a>
-<a class='btn btn-primary' href='?page=BROWSER&$TIME'><img src='$SITE/SITE/IMG/BROWSER.png?$TIME'></a>
-<a class='btn btn-primary' href='?page=LANGUAGE&$TIME'><img src='$SITE/SITE/IMG/LANGUAGE.png?$TIME'></a>
-";
-setInfo('SITE/MENU/','','SITE/IMG/LOGO.png',$content);
-echo $PAGE;
+getInfo('SITE/MENU/');
+$btn_1 = createButton('page=APPS','SITE/IMG/APPS.png','applications');
+$btn_2 = createButton('page=CONTACTS','SITE/IMG/CONTACTS.png','cantacts');
+$btn_3 = createButton('page=BROWSER&','SITE/IMG/BROWSER.png','browser');
+$btn_4 = createButton('page=LANGUAGE','SITE/IMG/LANGUAGE.png','language');
+$content = "$btn_1$btn_2$btn_3$btn_4";
+echo setInfo('','SITE/IMG/LOGO.png','',$content);
 ?>

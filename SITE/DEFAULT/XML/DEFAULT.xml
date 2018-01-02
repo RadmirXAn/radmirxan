@@ -3,13 +3,16 @@
 	<BA>
 		<title>Исем.</title>
 		<description>Тасуирлама.</description>
+		<back>кире</back>
 	</BA>
 	<RU>
 		<title>Заглавие.</title>
 		<description>Описание.</description>
+		<back>назад</back>
 	</RU>
 	<EN>
 		<title>Title.</title>
 		<description>Description.</description>
+		<back>back</back>
 	</EN>
 </info>
