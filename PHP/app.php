@@ -3,12 +3,31 @@ $appID = intval($_GET["app"]);
 $appPath = "SITE/APPS/APP_".$appID."/";
 $appICO = "SITE/APPS/IMG/".$appID.".png";
 getInfo($appPath);
+$btn_1 = createButton('page=APPS','SITE/IMG/FULLSCREEN.png','applications');
 $content = "
 <canvas id='game' width='550' height='400'>
 	<p>Ваш браузер не поддерживает рисование.</p>
 </canvas>
 
+<div class='fullScreenButton'>
+	<img src='$SITE"."SITE/IMG/FULLSCREEN.png"."?$TIME' onclick=\"fullScreenOn()\" />
+</div>
+
 <script type='application/javascript'>
+	//---
+	function fullScreenOn(){
+		let element = document.getElementById('game');
+		if(element.requestFullscreen){
+			element.requestFullscreen();
+		}else if(element.mozRequestFullScreen){
+			element.mozRequestFullScreen();
+		}else if(element.webkitRequestFullScreen){
+			element.webkitRequestFullScreen();
+		}else if(element.msRequestFullscreen){
+			element.msRequestFullscreen();
+		}
+	}
+	//---
 	var appPath = '$appPath';
 	var antiCache = '?$TIME';
 	const StartClasses = [
@@ -28,7 +47,7 @@ $content = "
 		'./LIB/RadmirXAn/Preloader/Preloader.js'
 	];
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
-</script>	
+</script>
 ";
 echo setInfo('page=APPS', $appICO,'back',$content);
 ?>
