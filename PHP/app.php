@@ -1,5 +1,5 @@
 <?php
-$appID = (string)(@$_GET["app"]);
+$appID = intval($_GET["app"]);
 $appPath = "SITE/APPS/APP_".$appID."/";
 $appICO = "SITE/APPS/IMG/".$appID.".png";
 getInfo($appPath);
@@ -29,5 +29,5 @@ $content = "
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
 </script>	
 ";
-echo setInfo('&page=APPS', $appICO,'back',$content);
+echo setInfo('page=APPS', $appICO,'back',$content);
 ?>

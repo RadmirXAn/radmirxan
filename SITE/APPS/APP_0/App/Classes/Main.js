@@ -1,8 +1,8 @@
 console.log("Running Game.");
 var Shirts = [];
 var ShirtsStatus = [];
-var Max_X = 5;
-var Max_Y = 3;
+var Max_X = 10;
+var Max_Y = 7;
 var Clicked = 0;
 var Animated = 0;
 var Shirt_1 = -1;
@@ -58,8 +58,8 @@ for(var i = 0; i<Max_X; i++){
 	for(var j = 0; j<Max_Y; j++){
 		let index = i+j*Max_X;
 		Shirts[index] = new Shirt(index);
-		Shirts[index].x = (550-Max_X*Shirt_Width+(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i;
-		Shirts[index].y = (400-Max_Y*Shirt_Height+(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j;
+		Shirts[index].x = (550-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i;
+		Shirts[index].y = (400-Max_Y*Shirt_Height-(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j;
 		Shirts[index].layer = 1;
 		Shirts[index].ClickCallBack = ClickCallBack;
 		Shirts[index].OpennedCalback = OpennedCalback;
