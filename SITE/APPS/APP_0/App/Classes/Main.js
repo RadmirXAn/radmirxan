@@ -1,8 +1,12 @@
 console.log("Running Game.");
+
+var Cards = [];
 var Shirts = [];
 var ShirtsStatus = [];
 var Max_X = 10;
 var Max_Y = 7;
+var Total = Max_X*Max_Y;
+var Half = Total/2;
 var Clicked = 0;
 var Animated = 0;
 var Shirt_1 = -1;
@@ -11,8 +15,12 @@ var Shirt_Width = 50;
 var Shirt_Height = 50;
 var Shirt_Distance = -1;
 
+var Card_Width = 48;
+var Card_Height = 48;
+var Card_Distance = 1;
+
 var BackGround = new Bitmap();
-BackGround.image = ImageLoader.getImage(Images.BackGround[0]);
+BackGround.image = ImageLoader.getImage(Images.BackGround[getRandomInt(0,7)]);
 BackGround.layer = 2;
 BackGround.start();
 
@@ -37,13 +45,20 @@ function OpennedCalback(index){
 	}
 }
 
-function action(){	
-	ShirtsStatus[Shirt_1]=false;
-	Shirts[Shirt_1].close();
-	Shirt_1 = -1;
-	
-	ShirtsStatus[Shirt_2]=false;
-	Shirts[Shirt_2].close();
+function action(){
+	if(Cards[Shirt_1].image != Cards[Shirt_2].image){
+		ShirtsStatus[Shirt_1]=false;
+		Shirts[Shirt_1].close();
+		ShirtsStatus[Shirt_2]=false;
+		Shirts[Shirt_2].close();
+	}else{
+		Cards[Shirt_1].stop();
+		Cards[Shirt_2].stop();
+		Shirts[Shirt_1].stop();
+		Shirts[Shirt_2].stop();
+	}
+			
+	Shirt_1 = -1;	
 	Shirt_2 = -1;
 	
 	Clicked = 0;
@@ -54,9 +69,17 @@ function ClosedCalback(index){
 	//ShirtsStatus[index]=false;
 }
 
-for(var i = 0; i<Max_X; i++){
-	for(var j = 0; j<Max_Y; j++){
+for(let i = 0; i<Max_X; i++){
+	for(let j = 0; j<Max_Y; j++){
 		let index = i+j*Max_X;
+		
+		Cards[index] = new Bitmap();
+		Cards[index].x = (550-Max_X*Card_Width-(Max_X-1)*Card_Distance)/2+(Card_Width+Card_Distance)*i;
+		Cards[index].y = (400-Max_Y*Card_Height-(Max_Y-1)*Card_Distance)/2+(Card_Height+Card_Distance)*j;
+		Cards[index].layer = 2;
+		Cards[index].image = ImageLoader.getImage(Images.CardImage[Math.floor(index/2)]);
+		Cards[index].start();
+
 		Shirts[index] = new Shirt(index);
 		Shirts[index].x = (550-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i;
 		Shirts[index].y = (400-Max_Y*Shirt_Height-(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j;
@@ -64,6 +87,16 @@ for(var i = 0; i<Max_X; i++){
 		Shirts[index].ClickCallBack = ClickCallBack;
 		Shirts[index].OpennedCalback = OpennedCalback;
 		Shirts[index].ClosedCalback = ClosedCalback;
+		Shirts[index].start();		
 	}
 }
+
+for(let i = 0; i<100; i++){
+	let v1 = getRandomInt(0, Half);
+	let v2 = getRandomInt(Half, Total);
+	let img = Cards[v1].image;
+	Cards[v1].image = Cards[v2].image;
+	Cards[v2].image = img;
+}
+
 console.log("Game is Runnning.");

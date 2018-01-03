@@ -14,6 +14,7 @@ $content = "
 	const StartClasses = [
 		'./LIB/RadmirXAn/Utils/ImageLoader/ImageLoader.js',
 		'./LIB/RadmirXAn/Utils/AudioLoader/AudioLoader.js',
+		'./LIB/RadmirXAn/Utils/Functions/Functions.js',
 	
 		'./LIB/RadmirXAn/Canvas/Canvas.js',
 		'./LIB/RadmirXAn/Canvas/Bitmap/Bitmap.js',

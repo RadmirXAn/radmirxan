@@ -14,9 +14,8 @@ const Shirt = function(index){
 		_animation_1.playWith(0,0);
 		_animation_1.x = x;
 		_animation_1.y = y;		
-		_animation_1.start();		
 		//--------------------
-		Shirt_OnMouseDown = function(eventData){
+		let Shirt_OnMouseDown = function(eventData){
 			switch(eventData.which){
 				case 1:{
 					let _mX =  Mouse.getX() - x;
@@ -29,7 +28,14 @@ const Shirt = function(index){
 			}		
 		};
 		//--------------------
-		Mouse.addDownFunction(Shirt_OnMouseDown, 0);
+		current.start = function (){
+			Mouse.addDownFunction(Shirt_OnMouseDown, 0);
+			_animation_1.start();
+		}
+		current.stop = function (){
+			Mouse.removeDownFunction(Shirt_OnMouseDown);
+			_animation_1.stop();
+		}
 		//--------------------
 		current.open = function(){
 			_animation_1.playTo(1, Images.ShirtAnimation.length-1,function(){Shirt_OpennedCalback(index)});
