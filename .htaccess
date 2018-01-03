@@ -1,2 +1,9 @@
+<FilesMatch "\.(xml)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+Options All -Indexes
+
 ErrorDocument 404 /index.php?page=ERROR
 ErrorDocument 403 /index.php?page=ERROR
