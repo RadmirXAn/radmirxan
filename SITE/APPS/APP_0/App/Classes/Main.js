@@ -1,5 +1,5 @@
 console.log("Running Game.");
-
+var GameStarted = false;
 var Cards = [];
 var Shirts = [];
 var ShirtsStatus = [];
@@ -7,6 +7,7 @@ var Max_X = 10;
 var Max_Y = 7;
 var Total = Max_X*Max_Y;
 var Half = Total/2;
+var Found = 0;
 var Clicked = 0;
 var Animated = 0;
 var Shirt_1 = -1;
@@ -52,10 +53,14 @@ function action(){
 		ShirtsStatus[Shirt_2]=false;
 		Shirts[Shirt_2].close();
 	}else{
+		Found++;
 		Cards[Shirt_1].stop();
 		Cards[Shirt_2].stop();
 		Shirts[Shirt_1].stop();
-		Shirts[Shirt_2].stop();
+		Shirts[Shirt_2].stop();		
+		if(Found==Half){
+			GameStarted = false;
+		}	
 	}
 			
 	Shirt_1 = -1;	
@@ -69,34 +74,82 @@ function ClosedCalback(index){
 	//ShirtsStatus[index]=false;
 }
 
-for(let i = 0; i<Max_X; i++){
-	for(let j = 0; j<Max_Y; j++){
-		let index = i+j*Max_X;
-		
-		Cards[index] = new Bitmap();
-		Cards[index].x = (550-Max_X*Card_Width-(Max_X-1)*Card_Distance)/2+(Card_Width+Card_Distance)*i;
-		Cards[index].y = (400-Max_Y*Card_Height-(Max_Y-1)*Card_Distance)/2+(Card_Height+Card_Distance)*j;
-		Cards[index].layer = 2;
-		Cards[index].image = ImageLoader.getImage(Images.CardImage[Math.floor(index/2)]);
-		Cards[index].start();
+function StartGame(){
+	if(GameStarted==false){
+		Found = 0;
+		GameStarted = true;
+		for(let i = 0; i<Max_X; i++){
+			for(let j = 0; j<Max_Y; j++){
+				let index = i+j*Max_X;
+				
+				Cards[index] = new Bitmap();
+				Cards[index].x = (550-Max_X*Card_Width-(Max_X-1)*Card_Distance)/2+(Card_Width+Card_Distance)*i;
+				Cards[index].y = (400-Max_Y*Card_Height-(Max_Y-1)*Card_Distance)/2+(Card_Height+Card_Distance)*j;
+				Cards[index].layer = 2;
+				Cards[index].image = ImageLoader.getImage(Images.CardImage[Math.floor(index/2)]);
+				Cards[index].start();
 
-		Shirts[index] = new Shirt(index);
-		Shirts[index].x = (550-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i;
-		Shirts[index].y = (400-Max_Y*Shirt_Height-(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j;
-		Shirts[index].layer = 1;
-		Shirts[index].ClickCallBack = ClickCallBack;
-		Shirts[index].OpennedCalback = OpennedCalback;
-		Shirts[index].ClosedCalback = ClosedCalback;
-		Shirts[index].start();		
+				Shirts[index] = new Shirt(index);
+				Shirts[index].x = (550-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i;
+				Shirts[index].y = (400-Max_Y*Shirt_Height-(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j;
+				Shirts[index].layer = 1;
+				Shirts[index].ClickCallBack = ClickCallBack;
+				Shirts[index].OpennedCalback = OpennedCalback;
+				Shirts[index].ClosedCalback = ClosedCalback;
+				Shirts[index].start();
+				Shirts[index].close();
+				ShirtsStatus[index]=false;				
+			}
+		}
+
+		for(let i = 0; i<100; i++){
+			let v1 = getRandomInt(0, Half);
+			let v2 = getRandomInt(Half, Total);
+			let img = Cards[v1].image;
+			Cards[v1].image = Cards[v2].image;
+			Cards[v2].image = img;
+		}
+		
+		BackGround.image = ImageLoader.getImage(Images.BackGround[getRandomInt(0,7)]);
 	}
 }
 
-for(let i = 0; i<100; i++){
-	let v1 = getRandomInt(0, Half);
-	let v2 = getRandomInt(Half, Total);
-	let img = Cards[v1].image;
-	Cards[v1].image = Cards[v2].image;
-	Cards[v2].image = img;
+function ReStartGame(){
+	if(GameStarted==false){
+		Found = 0;
+		GameStarted = true;
+		for(let i = 0; i<Max_X; i++){
+			for(let j = 0; j<Max_Y; j++){
+				let index = i+j*Max_X;
+				Cards[index].start();
+				Shirts[index].start();
+				Shirts[index].close();
+				ShirtsStatus[index]=false;				
+			}
+		}
+
+		for(let i = 0; i<100; i++){
+			let v1 = getRandomInt(0, Half);
+			let v2 = getRandomInt(Half, Total);
+			let img = Cards[v1].image;
+			Cards[v1].image = Cards[v2].image;
+			Cards[v2].image = img;
+		}
+		
+		BackGround.image = ImageLoader.getImage(Images.BackGround[getRandomInt(0,7)]);
+	}
 }
+
+let BG_OnMouseDown = function(eventData){
+	switch(eventData.which){
+		case 1:{
+			ReStartGame();
+			break;
+		}
+	}		
+};
+Mouse.addDownFunction(BG_OnMouseDown, 0);
+
+StartGame();
 
 console.log("Game is Runnning.");
