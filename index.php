@@ -8,7 +8,10 @@
 	//$SITE = "http://localhost/";
 	//$SITE = "http://localhost:8080/MySite/";
 	$SITE = "http://radmirxan.ru/";
-	$ALTERNATE = "http://radmirxan.ru/";
+	if($_SERVER['HTTPS']){
+		$SITE = "https://radmirxan.ru/";
+	}
+	$ALTERNATE = $SITE;
 	$ROOT = "./";
 	$LIB = $SITE."LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js?".$TIME;
 		
