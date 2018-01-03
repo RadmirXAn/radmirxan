@@ -71,20 +71,23 @@
 		
 		<body>				
 		<div class='centerG'>
-		<div class='centerV'></div>
-		<div class='content'>
+		<div class='centerV'></div>		
+		<div class='page'>
 		
+		<div class='head'>
 		$btn_1
 		<div class='title'>
 		<h1>$Title</h1>
 		<b>$Description</b>
 		</div>
+		</div>
+		
 		<hr>
 		<div class='content'>
 		$content
+		</div>			
 		</div>
-				
-		</div>
+		
 		</div>
 		</body>
 		
