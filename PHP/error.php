@@ -1,15 +1,14 @@
 <?php
 $CSS_PATH = $SITE."SITE/DEFAULT/CSS/BG.css?".$TIME;
 $ICO_PATH = $SITE."SITE/IMG/LOGO.png?".$TIME;
-$errorTitle = "Не переходи границ дозволенного.";
 echo <<<END
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>$errorTitle</title>
+		<title>ERROR</title>
 		
 		<meta charset="utf-8">
-		<meta name="description" content="Тестирование возможностей Canvas">
+		<meta name="description" content="RadMirXAn">
 		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 		<meta name="author" content="RadMirXAn">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -18,6 +17,13 @@ echo <<<END
 		<link rel="stylesheet" href="$CSS_PATH">
 	</head>
 	<body>
+		<body>				
+		<div class='centerG'>
+			<div class='centerV'></div>		
+			<div class='page'>
+				<a id="link-img" href="$ALTERNATE"></a>
+			</div>
+		</div>
 	</body>
 </html>
 END;

@@ -6,9 +6,8 @@
 
 	$TIME = "time=".time();
 	//$SITE = "http://localhost/";
-	//$SITE = "http://localhost:8080/MySite/";
 	$SITE = "http://radmirxan.ru/";
-	if($_SERVER['HTTPS']){
+	if(@$_SERVER['HTTPS']){
 		$SITE = "https://radmirxan.ru/";
 	}
 	$ALTERNATE = $SITE;
@@ -76,7 +75,7 @@
 		<div class='centerG'>
 		<div class='centerV'></div>		
 		<div class='page'>
-		
+
 		<div class='head'>
 		$btn_1
 		<div class='title'>

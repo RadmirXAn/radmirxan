@@ -106,3 +106,10 @@ p.caption {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+#link-img {
+	display: block;
+	width: 550px;
+	height: 278px;
+	background:url(../../SITE/IMG/SHARE.png) no-repeat;
+}
