@@ -1,0 +1,13 @@
+html {
+	height: 100%;
+}
+
+body {
+	background: url(../../IMG/LOGO.png) #000000 fixed no-repeat center center;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #000000;
+	height: 100%;
+	margin:0px;
+	padding:0px;
+}

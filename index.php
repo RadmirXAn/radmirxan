@@ -25,20 +25,20 @@
 	
 	function getInfo($path){
 		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $InfoXml;
-		$infoURL = $ROOT.$path."info.xml";
+		$infoURL = $ROOT.$path."INFO/info_".$LANGUAGE.".xml";
 
 		if (file_exists($infoURL)) {
 			$InfoXml = simplexml_load_file($infoURL);
 		} else {
-			$InfoXml = simplexml_load_file($SITE."SITE/DEFAULT/XML/DEFAULT.xml?".$TIME);
+			$InfoXml = simplexml_load_file($ROOT."SITE/DEFAULT/INFO/info_".$LANGUAGE.".xml");
 		}
 	}
 	
 	function setInfo($back, $img, $caption, $content){
-		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $InfoXml;
+		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml;
 		
-		$Title = $InfoXml->$LANGUAGE->title;
-		$Description = $InfoXml->$LANGUAGE->description;
+		$Title = $InfoXml->title;
+		$Description = $InfoXml->description;
 		
 		$btn_1 = createButton($back,$img,$caption);
 		
@@ -88,9 +88,9 @@
 	}
 	
 	function createButton($url, $image, $caption){
-		global $SITE, $TIME, $InfoXml, $LANGUAGE;
+		global $SITE, $TIME, $InfoXml;
 		if($caption!=''){
-			$caption = $InfoXml->$LANGUAGE->$caption;
+			$caption = $InfoXml->$caption;
 		}
 		$block = "<div class='caption'>
 		<a href='?$TIME&$url'>
