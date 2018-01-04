@@ -1,6 +1,5 @@
 const Classes = (function(){
 	function Classes_Action() {
-		console.log("ClassesList init...");
 		let current = this;
 		const Images_All = [
 			appPath+"/App/Classes/Shirt/Shirt.js",

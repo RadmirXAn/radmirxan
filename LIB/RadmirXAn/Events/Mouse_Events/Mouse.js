@@ -13,7 +13,7 @@ const Mouse = (function(){
 		current.getY = function(){
 			return Mouse_Y;
 		}
-		Canvas.getVisible().oncontextmenu = onContextMenu;
+		Canvas.element().oncontextmenu = onContextMenu;
 		let Mouse_OnClicklayers = [];
 		let Mouse_OnClickFunctions = [];
 		let Mouse_OnClickFunctionsLayer = [];
@@ -43,7 +43,7 @@ const Mouse = (function(){
 			}
 		}
 		let Mouse_OnUp = function(eventData){
-			let Mouse_Rect = Canvas.getVisible().getBoundingClientRect();
+			let Mouse_Rect = Canvas.element().getBoundingClientRect();
 			Mouse_X = eventData.clientX - Mouse_Rect.left;
 			Mouse_Y = eventData.clientY - Mouse_Rect.top;
 			stoppropagation = false;
@@ -62,7 +62,7 @@ const Mouse = (function(){
 		current.stopPropagation = function(){
 			stoppropagation = true;
 		}
-		Canvas.getVisible().onclick = Mouse_OnUp;
+		Canvas.element().onclick = Mouse_OnUp;
 	}
 	return new Mouse_Action();
 })();

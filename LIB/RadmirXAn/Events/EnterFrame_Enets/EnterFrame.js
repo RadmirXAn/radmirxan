@@ -1,11 +1,10 @@
 const EnterFrame = (function () {
     function EnterFrame_Action() {
 		let current = this;
-		console.log('EnterFrame: --------------------------------- init');
 		let EnterFrame_Timer;
 		let EnterFrame_StartTime = -1;
 		let EnterFrame_SustemTime = -1;
-		let EnterFrame_Context = Canvas.getVisibleContext();
+		let EnterFrame_Context = Canvas.context2D();
 		let EnterFrame_Width = Canvas.width();
 		let EnterFrame_Height = Canvas.height();
 		

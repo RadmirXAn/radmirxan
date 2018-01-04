@@ -9,7 +9,7 @@ const Bitmap = function() {
 	
 	let Bitmap_Started = false;
 	
-	let Bitmap_Context = Canvas.getVisibleContext();
+	let Bitmap_Context = Canvas.context2D();
 
 	let Bitmap_EnterFrame = function(){
 		Bitmap_Context.drawImage(Bitmap_Image, x, y);

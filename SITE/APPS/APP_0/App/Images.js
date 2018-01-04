@@ -1,6 +1,5 @@
 const Images = (function(){
 	function Images_Action() {
-		console.log("ImagesList init...");
 		let current = this;
 		const Images_ShirtAnimation = [
 		appPath+"/App/Resources/Images/Animations/0/0.png",

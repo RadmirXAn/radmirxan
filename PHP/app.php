@@ -70,21 +70,21 @@ $content = "
 		}
 	}
 	//---
+	var root = '$ROOT';
 	var appPath = '$appPath';
 	var antiCache = '?$TIME';
 	const StartClasses = [
-		'./LIB/RadmirXAn/Utils/ImageLoader/ImageLoader.js',
-		'./LIB/RadmirXAn/Utils/Functions/Functions.js',
+		'$ROOT"."LIB/RadmirXAn/Utils/ImageLoader/ImageLoader.js',
+		'$ROOT"."LIB/RadmirXAn/Utils/Functions/Functions.js',
 	
-		'./LIB/RadmirXAn/Canvas/Canvas.js',
-		'./LIB/RadmirXAn/Canvas/Bitmap/Bitmap.js',
-		'./LIB/RadmirXAn/Canvas/Animation/Animation.js',
+		'$ROOT"."LIB/RadmirXAn/Canvas/Canvas.js',
+		'$ROOT"."LIB/RadmirXAn/Canvas/Bitmap/Bitmap.js',
+		'$ROOT"."LIB/RadmirXAn/Canvas/Animation/Animation.js',
 
-		'./LIB/RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',	
-		'./LIB/RadmirXAn/Events/Keyboard_Events/Keyboard.js',
-		'./LIB/RadmirXAn/Events/Mouse_Events/Mouse.js',
+		'$ROOT"."LIB/RadmirXAn/Events/EnterFrame_Enets/EnterFrame.js',
+		'$ROOT"."LIB/RadmirXAn/Events/Mouse_Events/Mouse.js',
 		
-		'./LIB/RadmirXAn/Preloader/Preloader.js'
+		'$ROOT"."LIB/RadmirXAn/Preloader/Preloader.js'
 	];
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
 </script>

@@ -1,20 +1,19 @@
 const Canvas = (function(){
 	function Canvas_Action() {
 		let current = this;
-		console.log('Canvas: --------------------------------- init');
-		let Canvas_Visible = document.getElementById("game");
-		let Canvas_VisibleContext = Canvas_Visible.getContext("2d");
+		let Canvas_Element = document.getElementById("game");
+		let Canvas_Context2D = Canvas_Element.getContext("2d");
 		current.width = function(){
-			return Canvas_Visible.width;
+			return Canvas_Element.width;
 		}
 		current.height = function(){
-			return Canvas_Visible.height;
+			return Canvas_Element.height;
 		}	
-		current.getVisibleContext = function(){
-			return Canvas_VisibleContext;
+		current.context2D = function(){
+			return Canvas_Context2D;
 		}
-		current.getVisible = function(){
-			return Canvas_Visible;
+		current.element = function(){
+			return Canvas_Element;
 		}
 	}
 	return new Canvas_Action();

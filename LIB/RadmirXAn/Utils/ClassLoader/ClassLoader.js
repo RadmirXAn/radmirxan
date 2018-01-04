@@ -1,7 +1,6 @@
 const ClassLoader = (function () {
     function ClassLoader_Action() {
 		let current = this;
-		console.log('ClassLoader_Action: --------------------------------- init');
 		let ClassLoader_Included = {};
 		current.load = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress) {
 			ClassLoader_Next(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress, 0);
@@ -9,7 +8,6 @@ const ClassLoader = (function () {
 		let ClassLoader_NextObject = function (ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress, ClassLoader_Index) {
 			let ClassLoader_NextIndex = ClassLoader_Index + 1;
 			let ClassLoader_URL = ClassLoader_URLs[ClassLoader_Index];
-			console.log('ClassLoader: Загрузка файла [%d/%d:%s]', ClassLoader_Index, ClassLoader_URLs.length, ClassLoader_URL);
 			if (ClassLoader_Included[ClassLoader_URL] === undefined) {
 				let ClassLoader_Script = document.createElement('script');
 				ClassLoader_Script.src = ClassLoader_URL+antiCache;

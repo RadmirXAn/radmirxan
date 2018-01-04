@@ -7,7 +7,6 @@ const Shirt = function(index){
 		let Shirt_ClickCallBack = function(){return false;};
 		let Shirt_OpennedCalback = function(value){return false;};
 		let Shirt_ClosedCalback = function(value){return false;};
-		console.log('Shirt_Action: --------------------------------- init('+index+')');	
 		let _animation_1 = new Animation();		
 		_animation_1.useList(Images.ShirtAnimation);
 		_animation_1.frameRate = 24;

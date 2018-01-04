@@ -1,11 +1,11 @@
 const Preloader = function() {
 	let current = this;
-	let Preloader_ImageURL_0 = './LIB/RadmirXAn/Preloader/Images/LOGO.png';
+	let Preloader_ImageURL_0 = root+'LIB/RadmirXAn/Preloader/Images/LOGO.png';
 	let Preloader_ImageURLs = [Preloader_ImageURL_0];
 	let Preloader_ImageLogo;
 	let Preloader_Step = 0;
 	let Preloader_Percent = 0;
-	let Preloader_Context = Canvas.getVisibleContext();
+	let Preloader_Context = Canvas.context2D();
 
 	Preloader_OnMouseUp = function(eventData){
 		StartAction();
@@ -34,13 +34,6 @@ const Preloader = function() {
 		Preloader_Context.moveTo(7, Y);
 		Preloader_Context.lineTo(X, Y);
 		Preloader_Context.stroke();
-		
-		Preloader_Context.beginPath();
-		Preloader_Context.lineWidth = 7;
-		Preloader_Context.strokeStyle = '#000000';
-		Preloader_Context.moveTo(X, Y);
-		Preloader_Context.lineTo(Canvas.width()-7, Y);		
-		Preloader_Context.stroke();
 	};
 	
 	Preloader_Start = function (){
@@ -63,7 +56,6 @@ const Preloader = function() {
 
 	let MainClasses = [
 		appPath+'/App/Images.js',
-		appPath+'/App/Sounds.js',
 		appPath+'/App/Classes.js'
 	];
 	

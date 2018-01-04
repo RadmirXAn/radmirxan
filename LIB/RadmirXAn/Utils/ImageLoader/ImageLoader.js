@@ -1,7 +1,6 @@
 const ImageLoader = (function () {
     function ImageLoader_Action() {
 		let current = this;
-		console.log('ImageLoader: --------------------------------- init');
 		let ImageLoader_Included = {};
 		current.load = function (ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress) {
 			ImageLoader_Next(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress, 0);
@@ -15,7 +14,6 @@ const ImageLoader = (function () {
 		let ImageLoader_NextObject = function (ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress, ImageLoader_Index) {
 			let ImageLoader_NextIndex = ImageLoader_Index + 1;
 			let ImageLoader_URL = ImageLoader_URLs[ImageLoader_Index];
-			console.log('ImageLoader: Загрузка файла [%d/%d:%s]', ImageLoader_Index, ImageLoader_URLs.length, ImageLoader_URL);
 			if (ImageLoader_Included[ImageLoader_URL] === undefined) {
 				let ImageLoader_Img = new Image();
 				ImageLoader_Img.src = ImageLoader_URL+antiCache;

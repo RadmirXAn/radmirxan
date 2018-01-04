@@ -1,4 +1,3 @@
-console.log("Running Game.");
 var GameStarted = false;
 var Cards = [];
 var Shirts = [];
@@ -26,7 +25,6 @@ BackGround.layer = 2;
 BackGround.start();
 
 function ClickCallBack(index){
-	console.log(index+' = '+ShirtsStatus[index]);
 	if(Clicked<2 && ShirtsStatus[index]!=true){
 		Clicked++;
 		ShirtsStatus[index] = true;
@@ -149,5 +147,3 @@ let BG_OnMouseDown = function(eventData){
 Mouse.addOnClickFunction(BG_OnMouseDown, 0);
 
 StartGame();
-
-console.log("Game is Runnning.");
