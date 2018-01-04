@@ -33,8 +33,10 @@ function ClickCallBack(index){
 		Shirts[index].open();		
 		if(Shirt_1==-1){
 			Shirt_1 = index;
+			Cards[index].start();
 		}else if(Shirt_2==-1){
 			Shirt_2 = index;
+			Cards[index].start();
 		}
 	}
 }
@@ -71,11 +73,15 @@ function action(){
 }
 
 function ClosedCalback(index){
+	Cards[index].stop();
 	//ShirtsStatus[index]=false;
 }
 
 function StartGame(){
 	if(GameStarted==false){
+		let SOUND = AudioLoader.getAudio(Sounds.BackGround[0]);
+		SOUND.play();
+		SOUND.loop = true;
 		Found = 0;
 		GameStarted = true;
 		for(let i = 0; i<Max_X; i++){
@@ -83,15 +89,15 @@ function StartGame(){
 				let index = i+j*Max_X;
 				
 				Cards[index] = new Bitmap();
-				Cards[index].x = (550-Max_X*Card_Width-(Max_X-1)*Card_Distance)/2+(Card_Width+Card_Distance)*i;
-				Cards[index].y = (400-Max_Y*Card_Height-(Max_Y-1)*Card_Distance)/2+(Card_Height+Card_Distance)*j;
+				Cards[index].x = Math.floor((550-Max_X*Card_Width-(Max_X-1)*Card_Distance)/2+(Card_Width+Card_Distance)*i);
+				Cards[index].y = Math.floor((400-Max_Y*Card_Height-(Max_Y-1)*Card_Distance)/2+(Card_Height+Card_Distance)*j);
 				Cards[index].layer = 2;
 				Cards[index].image = ImageLoader.getImage(Images.CardImage[Math.floor(index/2)]);
-				Cards[index].start();
+				//Cards[index].start();
 
 				Shirts[index] = new Shirt(index);
-				Shirts[index].x = (550-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i;
-				Shirts[index].y = (400-Max_Y*Shirt_Height-(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j;
+				Shirts[index].x = Math.floor((550-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i);
+				Shirts[index].y = Math.floor((400-Max_Y*Shirt_Height-(Max_Y-1)*Shirt_Distance)/2+(Shirt_Height+Shirt_Distance)*j);
 				Shirts[index].layer = 1;
 				Shirts[index].ClickCallBack = ClickCallBack;
 				Shirts[index].OpennedCalback = OpennedCalback;

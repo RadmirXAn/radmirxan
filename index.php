@@ -5,8 +5,8 @@
 	}
 
 	$TIME = "time=".time();
-	//$SITE = "http://localhost/";
-	$SITE = "http://radmirxan.ru/";
+	$SITE = "http://localhost/";
+	//$SITE = "http://radmirxan.ru/";
 	if(@$_SERVER['HTTPS']){
 		$SITE = "https://radmirxan.ru/";
 	}

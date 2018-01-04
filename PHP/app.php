@@ -9,11 +9,19 @@ $content = "
 	<p>Ваш браузер не поддерживает рисование.</p>
 </canvas>
 
-<div class='fullScreenButton'>
+<div class='appButton'>
 	<img src='$SITE"."SITE/IMG/FULLSCREEN.png"."?$TIME' onclick=\"fullScreenOn()\" />
 </div>
 
+<div class='appButton'>
+	<img src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\" />
+</div>
+
 <script type='application/javascript'>
+	//---
+	function information(){
+
+	}
 	//---
 	function fullScreenOn(){
 		let element = document.getElementById('game');
