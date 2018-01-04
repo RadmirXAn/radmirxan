@@ -5,6 +5,7 @@ $appICO = "SITE/APPS/IMG/".$appID.".png";
 getInfo($appPath);
 $btn_1 = createButton('page=APPS','SITE/IMG/FULLSCREEN.png','applications');
 $content = "
+<div class=\"appInformation\" id=\"info\"></div>
 <canvas id='game' width='550' height='400'>
 	<p>Ваш браузер не поддерживает рисование.</p>
 </canvas>
@@ -18,13 +19,34 @@ $content = "
 </div>
 
 <script type='application/javascript'>
+	let element = document.getElementById('game');
+	let element_info = document.getElementById('info');
+	let info = '';
+	info += '<p>Develop by:<br><white>RadMirXAn</white></p>';
+	info += '<p>Background music:<br><white>https://www.bensound.com</white></p>';
+	info += '<p>Background picture:<br><white>https://www.pexels.com/</white></p>';
+	info += '<p>Game Icons:<br><white>http://icones.pro/</white></p>';
+	info += '<p>04.01.2018</p>';
 	//---
-	function information(){
-
+	function information(){		
+		if(element.style.visibility == 'visible' || element.style.visibility==''){
+			element.style.height = \"0px\";
+			element.style.width = \"0px\";
+			element.style.visibility = 'hidden';
+			element_info.innerHTML = info;
+		}else{
+			hideInformation();
+		}
+	}
+	function hideInformation(){
+		element.style.height = \"400px\";
+		element.style.width = \"550px\";
+		element.style.visibility = 'visible';		
+		element_info.innerHTML = '';
 	}
 	//---
 	function fullScreenOn(){
-		let element = document.getElementById('game');
+		hideInformation();
 		if(element.requestFullscreen){
 			element.requestFullscreen();
 		}else if(element.mozRequestFullScreen){

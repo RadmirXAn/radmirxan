@@ -116,6 +116,14 @@ div.appButton {
 	cursor:pointer;
 }
 
+div.appInformation {
+	margin: 0px;
+	padding: 0px;
+	width: 550px;
+	text-align: center;
+	font-size: 24pt;
+}
+
 #link-img {
 	display: block;
 	width: 550px;
