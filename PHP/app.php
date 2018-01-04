@@ -5,8 +5,10 @@ $appICO = "SITE/APPS/IMG/".$appID.".png";
 getInfo($appPath);
 $btn_1 = createButton('page=APPS','SITE/IMG/FULLSCREEN.png','applications');
 $content = "
+<audio src=\"$appPath"."App/Resources/Sounds/0.mp3\" type='audio/mpeg; codecs=\"mp3\"' id=\"myaudio\" preload=\"auto\" loop=\"loop\"></audio>
+
 <div class=\"appInformation\" id=\"info\"></div>
-<canvas id='game' width='550' height='400'>
+<canvas id='game' width='550' height='400' >
 	<p>Ваш браузер не поддерживает рисование.</p>
 </canvas>
 
@@ -15,10 +17,11 @@ $content = "
 </div>
 
 <div class='appButton'>
-	<img src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\" />
+	<img src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\"/>
 </div>
 
 <script type='application/javascript'>
+	var maudio = document.getElementById('myaudio');
 	let element = document.getElementById('game');
 	let element_info = document.getElementById('info');
 	let info = '';
@@ -28,7 +31,16 @@ $content = "
 	info += '<p>Game Icons:<br><white>http://icones.pro/</white></p>';
 	info += '<p>04.01.2018</p>';
 	//---
-	function information(){		
+	function StartAction(){
+		PlayMAudio();
+	}
+	//---
+	function PlayMAudio(){
+		maudio.play();
+		element.removeAttribute(\"onclick\");
+	}
+	//---
+	function information(){
 		if(element.style.visibility == 'visible' || element.style.visibility==''){
 			element.style.height = \"0px\";
 			element.style.width = \"0px\";
@@ -62,7 +74,6 @@ $content = "
 	var antiCache = '?$TIME';
 	const StartClasses = [
 		'./LIB/RadmirXAn/Utils/ImageLoader/ImageLoader.js',
-		'./LIB/RadmirXAn/Utils/AudioLoader/AudioLoader.js',
 		'./LIB/RadmirXAn/Utils/Functions/Functions.js',
 	
 		'./LIB/RadmirXAn/Canvas/Canvas.js',
@@ -73,7 +84,6 @@ $content = "
 		'./LIB/RadmirXAn/Events/Keyboard_Events/Keyboard.js',
 		'./LIB/RadmirXAn/Events/Mouse_Events/Mouse.js',
 		
-		'./LIB/RadmirXAn/Cursor/Cursor.js',
 		'./LIB/RadmirXAn/Preloader/Preloader.js'
 	];
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});

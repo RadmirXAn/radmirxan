@@ -16,7 +16,6 @@ const Canvas = (function(){
 		current.getVisible = function(){
 			return Canvas_Visible;
 		}
-		Canvas_Visible.style.cursor = "none";
 	}
 	return new Canvas_Action();
 })();

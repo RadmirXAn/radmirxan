@@ -7,20 +7,12 @@ const Preloader = function() {
 	let Preloader_Percent = 0;
 	let Preloader_Context = Canvas.getVisibleContext();
 
-	Preloader_OnMouseDown = function(eventData){
-		switch(eventData.which){
-			case 1:{
-				let mX =  Mouse.getX() - Preloader_ImageLogo.x;
-				let mY =  Mouse.getY() - Preloader_ImageLogo.y;
-				if((0<mX && mX<Preloader_ImageLogo.width) &&  (0<mY && mY<Preloader_ImageLogo.height)){					
-					Mouse.removeDownFunction(Preloader_OnMouseDown);
-					ClassLoader.load(MainClasses, function(){
-						Preloader_LoadResources();
-					});							
-				}				
-				break;
-			}
-		}		
+	Preloader_OnMouseUp = function(eventData){
+		StartAction();
+		Mouse.removeUpFunction(Preloader_OnMouseUp);
+		ClassLoader.load(MainClasses, function(){
+			Preloader_LoadResources();			
+		});							
 	};
 
 	let Preloader_EnterFrame = function(){
@@ -59,13 +51,13 @@ const Preloader = function() {
 		Preloader_ImageLogo.y = Math.floor((Canvas.height()-Preloader_ImageLogo.height)/2);
 		Preloader_ImageLogo.start();
 		
-		Mouse.addDownFunction(Preloader_OnMouseDown, 1);
+		Mouse.addUpFunction(Preloader_OnMouseUp, 1);
 		EnterFrame.addFunction(Preloader_EnterFrame, 2);
 	};
 
 	Preloader_Stop = function (){
 		Preloader_ImageLogo.stop();
-		Mouse.removeDownFunction(Preloader_OnMouseDown);
+		Mouse.removeUpFunction(Preloader_OnMouseUp);
 		EnterFrame.removeFunction(Preloader_EnterFrame);
 	};
 
@@ -78,16 +70,13 @@ const Preloader = function() {
 	ImageLoader.load(Preloader_ImageURLs, Preloader_Start);
 	
 	let Preloader_Progress = function(value){
-		Preloader_Percent = (Preloader_Step+value)/3;
+		Preloader_Percent = (Preloader_Step+value)/2;
 	}
 	
 	let Preloader_LoadResources = function(){
-		AudioLoader.load(Sounds.All, function(){
+		ImageLoader.load(Images.All, function(){
 			Preloader_Step = 1;
-			ImageLoader.load(Images.All, function(){
-				Preloader_Step = 2;
-				ClassLoader.load(Classes.All, Preloader_Stop, Preloader_Progress);
-			}, Preloader_Progress);
+			ClassLoader.load(Classes.All, Preloader_Stop, Preloader_Progress);
 		}, Preloader_Progress);
 	}
 }();

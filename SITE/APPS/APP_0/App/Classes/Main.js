@@ -79,9 +79,6 @@ function ClosedCalback(index){
 
 function StartGame(){
 	if(GameStarted==false){
-		let SOUND = AudioLoader.getAudio(Sounds.BackGround[0]);
-		SOUND.play();
-		SOUND.loop = true;
 		Found = 0;
 		GameStarted = true;
 		for(let i = 0; i<Max_X; i++){
@@ -147,14 +144,9 @@ function ReStartGame(){
 }
 
 let BG_OnMouseDown = function(eventData){
-	switch(eventData.which){
-		case 1:{
-			ReStartGame();
-			break;
-		}
-	}		
+	ReStartGame();		
 };
-Mouse.addDownFunction(BG_OnMouseDown, 0);
+Mouse.addUpFunction(BG_OnMouseDown, 0);
 
 StartGame();
 

@@ -15,25 +15,20 @@ const Shirt = function(index){
 		_animation_1.x = x;
 		_animation_1.y = y;		
 		//--------------------
-		let Shirt_OnMouseDown = function(eventData){
-			switch(eventData.which){
-				case 1:{
-					let _mX =  Mouse.getX() - x;
-					let _mY =  Mouse.getY() - y;
-					if((0<_mX && _mX<50) &&  (0<_mY && _mY<50)){
-						Shirt_ClickCallBack(index);						
-					}
-					break;
-				}
+		let Shirt_OnMouseUp = function(eventData){
+			let _mX =  Mouse.getX() - x;
+			let _mY =  Mouse.getY() - y;
+			if((0<_mX && _mX<50) &&  (0<_mY && _mY<50)){
+				Shirt_ClickCallBack(index);						
 			}		
 		};
 		//--------------------
 		current.start = function (){
-			Mouse.addDownFunction(Shirt_OnMouseDown, 0);
+			Mouse.addUpFunction(Shirt_OnMouseUp, 0);
 			_animation_1.start();
 		}
 		current.stop = function (){
-			Mouse.removeDownFunction(Shirt_OnMouseDown);
+			Mouse.removeUpFunction(Shirt_OnMouseUp);
 			_animation_1.stop();
 		}
 		//--------------------
