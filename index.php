@@ -54,6 +54,7 @@
 		<meta name=\"description\" content=\"RadMirXAn\">
 		<meta name=\"keywords\" content=\"RadMirXAn,HTML,CSS,XML,JavaScript\">
 		<meta name=\"author\" content=\"RadMirXAn\">
+		
 		<title>$Title</title>
 		<link rel=\"icon\" href=\"./SITE/IMG/LOGO.png?$TIME\" type=\"image/png\">		
 		<link rel=\"stylesheet\" href=\"./SITE/CSS/BG.css?$TIME\">

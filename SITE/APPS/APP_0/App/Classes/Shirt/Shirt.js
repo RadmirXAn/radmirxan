@@ -24,11 +24,11 @@ const Shirt = function(index){
 		};
 		//--------------------
 		current.start = function (){
-			Mouse.addUpFunction(Shirt_OnMouseUp, 0);
+			Mouse.addOnClickFunction(Shirt_OnMouseUp, 0);
 			_animation_1.start();
 		}
 		current.stop = function (){
-			Mouse.removeUpFunction(Shirt_OnMouseUp);
+			Mouse.removeOnClickFunction(Shirt_OnMouseUp);
 			_animation_1.stop();
 		}
 		//--------------------

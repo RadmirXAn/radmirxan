@@ -146,7 +146,7 @@ function ReStartGame(){
 let BG_OnMouseDown = function(eventData){
 	ReStartGame();		
 };
-Mouse.addUpFunction(BG_OnMouseDown, 0);
+Mouse.addOnClickFunction(BG_OnMouseDown, 0);
 
 StartGame();
 

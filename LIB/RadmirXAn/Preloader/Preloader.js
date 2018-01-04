@@ -9,7 +9,7 @@ const Preloader = function() {
 
 	Preloader_OnMouseUp = function(eventData){
 		StartAction();
-		Mouse.removeUpFunction(Preloader_OnMouseUp);
+		Mouse.removeOnClickFunction(Preloader_OnMouseUp);
 		ClassLoader.load(MainClasses, function(){
 			Preloader_LoadResources();			
 		});							
@@ -19,27 +19,27 @@ const Preloader = function() {
 		
 		Preloader_Context.beginPath();
 		Preloader_Context.lineWidth = 0;
-		Preloader_Context.fillStyle = '#111111';
+		Preloader_Context.fillStyle = '#000000';
 		Preloader_Context.strokeStyle = '#111111';
 		Preloader_Context.rect(0, 0, Canvas.width(), Canvas.height());		
 		Preloader_Context.fill();
 		Preloader_Context.stroke();
 		
 		let Y = Preloader_ImageLogo.y+Preloader_ImageLogo.height+15;
-		let X = Canvas.width()*Preloader_Percent;
+		let X = 7+(Canvas.width()-7)*Preloader_Percent;
 		
 		Preloader_Context.beginPath();
 		Preloader_Context.lineWidth = 7;
-		Preloader_Context.strokeStyle = '#ffffff';
-		Preloader_Context.moveTo(0, Y);
+		Preloader_Context.strokeStyle = '#ffd900';
+		Preloader_Context.moveTo(7, Y);
 		Preloader_Context.lineTo(X, Y);
 		Preloader_Context.stroke();
 		
 		Preloader_Context.beginPath();
 		Preloader_Context.lineWidth = 7;
-		Preloader_Context.strokeStyle = '#aaf';
+		Preloader_Context.strokeStyle = '#000000';
 		Preloader_Context.moveTo(X, Y);
-		Preloader_Context.lineTo(Canvas.width(), Y);		
+		Preloader_Context.lineTo(Canvas.width()-7, Y);		
 		Preloader_Context.stroke();
 	};
 	
@@ -51,13 +51,13 @@ const Preloader = function() {
 		Preloader_ImageLogo.y = Math.floor((Canvas.height()-Preloader_ImageLogo.height)/2);
 		Preloader_ImageLogo.start();
 		
-		Mouse.addUpFunction(Preloader_OnMouseUp, 1);
+		Mouse.addOnClickFunction(Preloader_OnMouseUp, 1);
 		EnterFrame.addFunction(Preloader_EnterFrame, 2);
 	};
 
 	Preloader_Stop = function (){
 		Preloader_ImageLogo.stop();
-		Mouse.removeUpFunction(Preloader_OnMouseUp);
+		Mouse.removeOnClickFunction(Preloader_OnMouseUp);
 		EnterFrame.removeFunction(Preloader_EnterFrame);
 	};
 

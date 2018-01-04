@@ -27,7 +27,7 @@ $content = "
 	let info = '';
 	info += '<p>Develop by:<br><white>RadMirXAn</white></p>';
 	info += '<p>Background music:<br><white>https://www.bensound.com</white></p>';
-	info += '<p>Background picture:<br><white>https://www.pexels.com/</white></p>';
+	info += '<p>Background pictures:<br><white>https://www.pexels.com/</white></p>';
 	info += '<p>Game Icons:<br><white>http://icones.pro/</white></p>';
 	info += '<p>04.01.2018</p>';
 	//---
