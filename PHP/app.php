@@ -1,4 +1,6 @@
 <?php
+$appWidth = 800;
+$appHeight = 480;
 $appID = intval($_GET["app"]);
 $appPath = "SITE/APPS/APP_".$appID."/";
 $appICO = "SITE/APPS/IMG/".$appID.".png";
@@ -8,7 +10,7 @@ $content = "
 <audio src=\"$appPath"."App/Resources/Sounds/0.mp3\" type='audio/mpeg; codecs=\"mp3\"' id=\"myaudio\" preload=\"auto\" loop=\"loop\"></audio>
 
 <div class=\"appInformation\" id=\"info\"></div>
-<canvas id='game' width='550' height='400' >
+<canvas id='game' width='$appWidth' height='$appHeight' >
 	<p>Ваш браузер не поддерживает рисование.</p>
 </canvas>
 
@@ -51,8 +53,8 @@ $content = "
 		}
 	}
 	function hideInformation(){
-		element.style.height = \"400px\";
-		element.style.width = \"550px\";
+		element.style.height = \"$appHeight"."px\";
+		element.style.width = \"$appWidth"."px\";
 		element.style.visibility = 'visible';		
 		element_info.innerHTML = '';
 	}

@@ -38,7 +38,7 @@ div.page {
 	padding: 0px;
 	vertical-align: middle;
 	text-align: center;
-	width: 550px;
+	width: 800px;
 	min-height: 139px;
 }
 
@@ -50,18 +50,19 @@ div.head {
 	padding: 0px;
 	vertical-align: middle;
 	text-align: center;
-	width: 550px;
+	width: 800px;
 	min-height: 139px;
 }
 
 div.content {
 	background: url(../../SITE/IMG/1.png) no-repeat;
+	background-position: top;
 	display: inline-block;
 	margin: 0px;
 	padding: 0px;
 	vertical-align: middle;
 	text-align: center;
-	width: 550px;
+	width: 800px;
 	min-height: 139px;
 }
 
@@ -119,14 +120,14 @@ div.appButton {
 div.appInformation {
 	margin: 0px;
 	padding: 0px;
-	width: 550px;
+	width: 800px;
 	text-align: center;
 	font-size: 24pt;
 }
 
 #link-img {
 	display: block;
-	width: 550px;
+	width: 800px;
 	height: 278px;
 	background:url(../../SITE/IMG/SHARE.png) no-repeat;
 }
