@@ -85,7 +85,7 @@
 		</div>
 		</div>
 		
-		<hr>
+		<hr width='550'>
 		<div class='content'>
 		$content
 		</div>			
