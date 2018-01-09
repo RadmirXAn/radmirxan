@@ -9,7 +9,7 @@ const AudioLoader = (function () {
 		current.load = function (AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress) {
 			AudioLoader_Next(AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress, 0);
 		}
-		current.playAudio = function (AudioLoader_URL) {
+		current.playAudio = function (AudioLoader_URL, AudioLoader_Loop) {
 			if (AudioLoader_Buffer[AudioLoader_URL] === undefined) {
 				console.error('Ошибка при получение файла [%s]', AudioLoader_URL);
 			}
@@ -20,6 +20,9 @@ const AudioLoader = (function () {
 			AudioLoader_Source[AudioLoader_URL].buffer = AudioLoader_Buffer[AudioLoader_URL];
 			AudioLoader_Source[AudioLoader_URL].connect(AudioContext.destination());
 			AudioLoader_Source[AudioLoader_URL].start(0);
+			if(AudioLoader_Loop){
+				AudioLoader_Source[AudioLoader_URL].loop = AudioLoader_Loop;
+			}			
 		}
 		current.stopAudio = function (AudioLoader_URL) {
 			if (AudioLoader_Buffer[AudioLoader_URL] === undefined) {
@@ -34,23 +37,29 @@ const AudioLoader = (function () {
 			let AudioLoader_NextIndex = AudioLoader_Index + 1;
 			let AudioLoader_URL = AudioLoader_URLs[AudioLoader_Index];
 			if (AudioLoader_Buffer[AudioLoader_URL] === undefined) {
-				let xhr = new XMLHttpRequest();
-				xhr.open('GET', AudioLoader_URL, true);
-				xhr.responseType = 'arraybuffer';
-				xhr.onload = function(e) {
-					AudioLoader_Context.decodeAudioData(this.response,
+				let AudioLoader_XHR = new XMLHttpRequest();
+				AudioLoader_XHR.open('GET', AudioLoader_URL, true);
+				AudioLoader_XHR.responseType = 'arraybuffer';
+				AudioLoader_XHR.onload = function(e) {
+					let audioData = AudioLoader_XHR.response;
+					AudioLoader_Context.decodeAudioData(audioData,
 					function(decodedArrayBuffer) {
 						AudioLoader_Buffer[AudioLoader_URL] = decodedArrayBuffer;
 						AudioLoader_Next(AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress, AudioLoader_NextIndex);
 					}, function(e) {
 						console.error('AudioLoader: Ошибка при декодирование файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_URLs.length, AudioLoader_URL);
-					});
-					console.log('loaded');
+					});					
 				};
-				xhr.onerror = function () {
+				AudioLoader_XHR.onerror = function () {
 						console.error('AudioLoader: Ошибка при загрузке файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_URLs.length, AudioLoader_URL);
 				}
-				xhr.send();
+				AudioLoader_XHR.onprogress = function(e) {
+				  	if(AudioLoader_Progress!== undefined){
+						let p = e.loaded/e.total;
+						AudioLoader_Progress((AudioLoader_Index+p)/AudioLoader_URLs.length);
+					}
+				}
+				AudioLoader_XHR.send();
 
 				if(AudioLoader_Progress!== undefined){
 					AudioLoader_Progress(AudioLoader_Index/AudioLoader_URLs.length);

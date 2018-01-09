@@ -26,6 +26,7 @@ BackGround.start();
 
 function ClickCallBack(index){
 	if(Clicked<2 && ShirtsStatus[index]!=true){
+		AudioLoader.playAudio(Sounds.Click[0]);
 		Clicked++;
 		ShirtsStatus[index] = true;
 		Shirts[index].open();		
@@ -77,7 +78,7 @@ function ClosedCalback(index){
 
 function StartGame(){
 	if(GameStarted==false){
-		AudioLoader.playAudio(Sounds.BackGround[0]);
+		AudioLoader.playAudio(Sounds.BackGround[0], true);
 		Found = 0;
 		GameStarted = true;
 		for(let i = 0; i<Max_X; i++){

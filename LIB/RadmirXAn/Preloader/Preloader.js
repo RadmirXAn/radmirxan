@@ -8,18 +8,14 @@ const Preloader = function() {
 	let Preloader_Context = Canvas.context2D();
 
 	Preloader_OnMouseUp = function(eventData){
+		//Подтверждаем что звук активирован пользователем 1
 		let Preloader_Context = AudioContext.context();
-		// create empty buffer
 		let buffer = Preloader_Context.createBuffer(1, 1, 22050);
 		let source = Preloader_Context.createBufferSource();
 		source.buffer = buffer;
-
-		// connect to output (your speakers)
 		source.connect(AudioContext.destination());
-
-		// play the file
 		source.start(0);
-
+		//Подтверждаем что звук активирован пользователем 0
 		
 		Mouse.removeOnClickFunction(Preloader_OnMouseUp);
 		ClassLoader.load(MainClasses, function(){
