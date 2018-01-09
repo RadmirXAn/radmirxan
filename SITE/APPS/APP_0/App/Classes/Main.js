@@ -24,7 +24,10 @@ BackGround.image = ImageLoader.getImage(Images.BackGround[getRandomInt(0,7)]);
 BackGround.layer = 2;
 BackGround.start();
 
+var BackGroundSound;
+
 function ClickCallBack(index){
+	BackGroundSound.play();
 	if(Clicked<2 && ShirtsStatus[index]!=true){
 		Clicked++;
 		ShirtsStatus[index] = true;
@@ -77,6 +80,7 @@ function ClosedCalback(index){
 
 function StartGame(){
 	if(GameStarted==false){
+		BackGroundSound = AudioLoader.getAudio(Sounds.BackGround[0]);
 		Found = 0;
 		GameStarted = true;
 		for(let i = 0; i<Max_X; i++){

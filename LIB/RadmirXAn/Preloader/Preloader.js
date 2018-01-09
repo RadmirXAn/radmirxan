@@ -8,7 +8,6 @@ const Preloader = function() {
 	let Preloader_Context = Canvas.context2D();
 
 	Preloader_OnMouseUp = function(eventData){
-		StartAction();
 		Mouse.removeOnClickFunction(Preloader_OnMouseUp);
 		ClassLoader.load(MainClasses, function(){
 			Preloader_LoadResources();			
@@ -56,19 +55,23 @@ const Preloader = function() {
 
 	let MainClasses = [
 		appPath+'/App/Images.js',
+		appPath+'/App/Sounds.js',
 		appPath+'/App/Classes.js'
 	];
 	
 	ImageLoader.load(Preloader_ImageURLs, Preloader_Start);
 	
 	let Preloader_Progress = function(value){
-		Preloader_Percent = (Preloader_Step+value)/2;
+		Preloader_Percent = (Preloader_Step+value)/3;
 	}
 	
 	let Preloader_LoadResources = function(){
 		ImageLoader.load(Images.All, function(){
 			Preloader_Step = 1;
-			ClassLoader.load(Classes.All, Preloader_Stop, Preloader_Progress);
+			AudioLoader.load(Sounds.All, function(){
+				Preloader_Step = 2;
+				ClassLoader.load(Classes.All, Preloader_Stop, Preloader_Progress);
+			}, Preloader_Progress);
 		}, Preloader_Progress);
 	}
 }();

@@ -5,8 +5,8 @@
 	}
 
 	$TIME = "time=".time();
-	$SITE = "http://localhost/";
-	//$SITE = "http://radmirxan.ru/";
+	//$SITE = "http://localhost/";
+	$SITE = "http://radmirxan.ru/";
 	if(@$_SERVER['HTTPS']){
 		$SITE = "https://radmirxan.ru/";
 	}
@@ -61,14 +61,7 @@
 		<link rel=\"alternate\" hreflang=\"x-default\" href=\"$SITE\" />
 		<link rel=\"alternate\" hreflang=\"ba\" href=\"$ALTERNATE"."language=BA\" />
 		<link rel=\"alternate\" hreflang=\"ru\" href=\"$ALTERNATE"."language=RU\" />
-		<link rel=\"alternate\" hreflang=\"en-us\" href=\"$ALTERNATE"."language=EN\" />		
-		<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-		<script>
-		  (adsbygoogle = window.adsbygoogle || []).push({
-			google_ad_client: \"ca-pub-3942502673062513\",
-			enable_page_level_ads: true
-		  });
-		</script>
+		<link rel=\"alternate\" hreflang=\"en-us\" href=\"$ALTERNATE"."language=EN\" />
 		<script type='application/javascript' src='$LIB'></script>
 		</head>
 		
