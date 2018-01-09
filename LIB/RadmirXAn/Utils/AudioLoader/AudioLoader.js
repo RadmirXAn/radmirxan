@@ -2,13 +2,8 @@ const AudioLoader = (function () {
     function AudioLoader_Action() {
 		let current = this;
 		let AudioLoader_Included = {};
-
-		let AudioLoader_Context;
-		if(window.AudioContext){
-			AudioLoader_Context = new window.AudioContext();
-		}else{
-			AudioLoader_Context = new window.webkitAudioContext();
-		}
+		let AudioLoader_ContextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
+		let AudioLoader_Context = new AudioLoader_ContextClass;
 		let AudioLoader_Destination;
 		let AudioLoader_Buffer = {};
 		let AudioLoader_Source = {};
