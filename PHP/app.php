@@ -65,6 +65,7 @@ $content = "
 	var antiCache = '?$TIME';
 	const StartClasses = [
 		'$ROOT"."LIB/RadmirXAn/Utils/ImageLoader/ImageLoader.js',
+		'$ROOT"."LIB/RadmirXAn/AudioContext/AudioContext.js',
 		'$ROOT"."LIB/RadmirXAn/Utils/AudioLoader/AudioLoader.js',
 		'$ROOT"."LIB/RadmirXAn/Utils/Functions/Functions.js',
 	

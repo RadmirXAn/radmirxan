@@ -2,9 +2,7 @@ const AudioLoader = (function () {
     function AudioLoader_Action() {
 		let current = this;
 		let AudioLoader_Included = {};
-		let AudioLoader_ContextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
-		let AudioLoader_Context = new AudioLoader_ContextClass;
-		let AudioLoader_Destination;
+		let AudioLoader_Context = AudioContext.context();
 		let AudioLoader_Buffer = {};
 		let AudioLoader_Source = {};
 		
@@ -20,8 +18,7 @@ const AudioLoader = (function () {
 			}
 			AudioLoader_Source[AudioLoader_URL] = AudioLoader_Context.createBufferSource();			
 			AudioLoader_Source[AudioLoader_URL].buffer = AudioLoader_Buffer[AudioLoader_URL];
-			AudioLoader_Destination = AudioLoader_Context.destination;
-			AudioLoader_Source[AudioLoader_URL].connect(AudioLoader_Destination);
+			AudioLoader_Source[AudioLoader_URL].connect(AudioContext.destination());
 			AudioLoader_Source[AudioLoader_URL].start(0);
 		}
 		current.stopAudio = function (AudioLoader_URL) {
