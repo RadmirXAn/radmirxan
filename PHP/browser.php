@@ -32,6 +32,18 @@ $content = "
 			info += '<p>element: <white>msRequestFullscreen</white></p>';
 		}
 		//---
+		if(typeof XMLHttpRequest === 'undefined'){
+			info += '<p>XMLHttpRequest: <white>undefined</white></p>';
+		}
+		//---
+		if(!window.AudioContext){
+			info += '<p>window: <white>AudioContext</white></p>';
+		}
+		//---
+		if(!window.webkitAudioContext){
+			info += '<p>window: <white>webkitAudioContext</white></p>';
+		}
+		//---
 		document.getElementById('info').innerHTML = info;
 	}
 </script>
