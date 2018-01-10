@@ -5,14 +5,15 @@
 	}
 
 	$TIME = "time=".time();
+	$ROOT = "./";
 	//$SITE = "http://localhost/";
 	//$SITE = "http://localhost:8080/MySite/";
 	$SITE = "http://radmirxan.ru/";
+	
 	if(@$_SERVER['HTTPS']){
 		$SITE = "https://radmirxan.ru/";
 	}
 	$ALTERNATE = $SITE;
-	$ROOT = "./";
 	$LIB = $SITE."LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js?".$TIME;
 		
 	$Title = "RadMirXAn.RU";
@@ -37,9 +38,15 @@
 			$InfoXml = simplexml_load_file($ROOT."SITE/DEFAULT/INFO/info_".$LANGUAGE.".xml");
 		}
 	}
+
+	$OG_Image = "SITE/IMG/SHARE.png";
 	
-	function setInfo($back, $img, $caption, $content){
-		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE;
+	function setInfo($back, $img, $caption, $content, $og_img){
+		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $OG_Image, $OG_ImageType;
+		
+		if($og_img){
+			$OG_Image = $og_img;
+		}
 		
 		$Title = $InfoXml->title;
 		$Description = $InfoXml->description;
@@ -55,6 +62,12 @@
 		<meta name=\"description\" content=\"RadMirXAn\">
 		<meta name=\"keywords\" content=\"RadMirXAn,HTML,CSS,XML,JavaScript\">
 		<meta name=\"author\" content=\"RadMirXAn\">
+		
+		<meta property=\"og:image\" content=\"http://radmirxan.ru/$OG_Image\" />
+		<meta property=\"og:image:secure_url\" content=\"https://radmirxan.ru/$OG_Image\" />
+		<meta property=\"og:image:type\" content=\"image/png\" />
+		<meta property=\"og:image:width\" content=\"800\" />
+		<meta property=\"og:image:height\" content=\"480\" />
 	
 		<title>$Title</title>
 		<link rel=\"icon\" href=\"./SITE/IMG/LOGO.png?$TIME\" type=\"image/png\">		

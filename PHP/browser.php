@@ -60,5 +60,5 @@ $content = "
 	}
 </script>
 ";
-echo setInfo('','SITE/IMG/BROWSER.png','back',$content);
+echo setInfo('','SITE/IMG/BROWSER.png','back',$content,'');
 ?>

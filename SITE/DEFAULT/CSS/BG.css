@@ -40,4 +40,5 @@ div.page {
 	width: 550px;
 	height: 278px;
 	background:url(../../IMG/SHARE.png) no-repeat;
+	background-position: center;
 }

@@ -4,6 +4,7 @@ $appHeight = 480;
 $appID = intval($_GET["app"]);
 $appPath = "SITE/APPS/APP_".$appID."/";
 $appICO = "SITE/APPS/IMG/".$appID.".png";
+$appSHARE = $appPath."SHARE.png";
 getInfo($appPath);
 $btn_1 = createButton('page=APPS','SITE/IMG/FULLSCREEN.png','applications');
 $content = "
@@ -82,5 +83,5 @@ $content = "
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
 </script>
 ";
-echo setInfo('page=APPS', $appICO,'back',$content);
+echo setInfo('page=APPS',$appICO,'back',$content,$appSHARE);
 ?>

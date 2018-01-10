@@ -6,5 +6,5 @@ $content = "
 <a class='btn btn-primary' href='https://my.mail.ru/mail/rrradmirrr/?$TIME'><img src='$SITE/SITE/CONTACTS/IMG/MYMAIL.png?$TIME'></a>
 <a class='btn btn-primary' href='https://www.facebook.com/radmir.jumagugin?$TIME'><img src='$SITE/SITE/CONTACTS/IMG/FB.png?$TIME'></a>
 ";
-echo setInfo('','SITE/IMG/CONTACTS.png','back',$content);
+echo setInfo('','SITE/IMG/CONTACTS.png','back',$content,'');
 ?>
