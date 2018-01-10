@@ -11,7 +11,7 @@ const AudioLoader = (function () {
 		}
 		current.playAudio = function (AudioLoader_URL, AudioLoader_Loop) {
 			if (AudioLoader_Buffer[AudioLoader_URL] === undefined) {
-				console.error('Ошибка при получение файла [%s]', AudioLoader_URL);
+				alert('Ошибка при получение файла '+AudioLoader_URL);
 			}
 			if(AudioLoader_Source[AudioLoader_URL]!=undefined){
 				AudioLoader_Source[AudioLoader_URL].stop(0);
@@ -26,7 +26,7 @@ const AudioLoader = (function () {
 		}
 		current.stopAudio = function (AudioLoader_URL) {
 			if (AudioLoader_Buffer[AudioLoader_URL] === undefined) {
-				console.error('Ошибка при получение файла [%s]', AudioLoader_URL);
+				alert('Ошибка при получение файла '+AudioLoader_URL);
 			}
 			if(AudioLoader_Source[AudioLoader_URL]!=undefined){
 				AudioLoader_Source[AudioLoader_URL].stop(0);
@@ -38,7 +38,7 @@ const AudioLoader = (function () {
 			let AudioLoader_URL = AudioLoader_URLs[AudioLoader_Index];
 			if (AudioLoader_Buffer[AudioLoader_URL] === undefined) {
 				let AudioLoader_XHR = new XMLHttpRequest();
-				AudioLoader_XHR.open('GET', AudioLoader_URL, true);
+				AudioLoader_XHR.open('GET', AudioLoader_URL+antiCache, true);
 				AudioLoader_XHR.responseType = 'arraybuffer';
 				AudioLoader_XHR.onload = function(e) {
 					let audioData = AudioLoader_XHR.response;
@@ -47,11 +47,11 @@ const AudioLoader = (function () {
 						AudioLoader_Buffer[AudioLoader_URL] = decodedArrayBuffer;
 						AudioLoader_Next(AudioLoader_URLs, AudioLoader_Callback, AudioLoader_Progress, AudioLoader_NextIndex);
 					}, function(e) {
-						console.error('AudioLoader: Ошибка при декодирование файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_URLs.length, AudioLoader_URL);
+						alert('Ошибка при декодирование файла '+AudioLoader_Index+'/'+AudioLoader_URLs.length+':'+AudioLoader_URL);
 					});					
 				};
 				AudioLoader_XHR.onerror = function () {
-						console.error('AudioLoader: Ошибка при загрузке файла [%d/%d:%s]', AudioLoader_Index, AudioLoader_URLs.length, AudioLoader_URL);
+						alert('Ошибка при загрузке файла '+AudioLoader_Index+'/'+AudioLoader_URLs.length+':'+AudioLoader_URL);
 				}
 				AudioLoader_XHR.onprogress = function(e) {
 				  	if(AudioLoader_Progress!== undefined){

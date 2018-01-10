@@ -7,7 +7,7 @@ const ImageLoader = (function () {
 		}
 		current.getImage = function (ImageLoader_URL) {
 			if (ImageLoader_Included[ImageLoader_URL] === undefined) {
-				console.error('Ошибка при получение файла [%s]', ImageLoader_URL);
+				alert('Ошибка при получение файла '+ImageLoader_URL);
 			}
 			return ImageLoader_Included[ImageLoader_URL];
 		}
@@ -21,7 +21,7 @@ const ImageLoader = (function () {
 					ImageLoader_Next(ImageLoader_URLs, ImageLoader_Callback, ImageLoader_Progress, ImageLoader_NextIndex);
 				}
 				ImageLoader_Img.onerror = function () {
-					console.error('ImageLoader: Ошибка при загрузке файла [%d/%d:%s]', ImageLoader_Index, ImageLoader_URLs.length, ImageLoader_URL);
+					alert('Ошибка при загрузке файла '+ImageLoader_Index+'/'+ImageLoader_URLs.length+':'+ImageLoader_URL);
 				}
 				if(ImageLoader_Progress!== undefined){
 					ImageLoader_Progress(ImageLoader_Index/ImageLoader_URLs.length);

@@ -16,7 +16,7 @@ const ClassLoader = (function () {
 					ClassLoader_Next(ClassLoader_URLs, ClassLoader_Callback, ClassLoader_Progress, ClassLoader_NextIndex);
 				}
 				ClassLoader_Script.onerror = function () {
-					console.error('ClassLoader: Ошибка при загрузке файла [%d/%d:%s]', ClassLoader_Index, ClassLoader_URLs.length, ClassLoader_URL);
+					alert('Ошибка при загрузке файла '+ClassLoader_Index+'/'+ClassLoader_URLs.length+':'+ClassLoader_URL);
 				}
 				if(ClassLoader_Progress!== undefined){
 					ClassLoader_Progress(ClassLoader_Index/ClassLoader_URLs.length);

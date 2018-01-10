@@ -1,7 +1,7 @@
 const AudioContext = (function(){
 	function AudioContext_Action() {
 		let current = this;
-		let AudioContext_ContextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
+		let AudioContext_ContextClass = (window.AudioContext || window.webkitAudioContext || alert('AudioContext не поддерживаеться данным браузером.'));
 		let AudioContext_Context = new AudioContext_ContextClass;
 		let AudioContext_Destination = AudioContext_Context.destination;
 		current.context = function(){
