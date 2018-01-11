@@ -6,6 +6,7 @@ $appPath = "SITE/APPS/APP_".$appID."/";
 $appICO = "SITE/APPS/IMG/".$appID.".png";
 $appSHARE = $appPath."SHARE.png";
 getInfo($appPath);
+$About = $InfoXml->about;
 $btn_1 = createButton('page=APPS','SITE/IMG/FULLSCREEN.png','applications');
 $content = "
 <div class=\"appInformation\" id=\"info\"></div>
@@ -24,13 +25,7 @@ $content = "
 <script type='application/javascript'>
 	let element = document.getElementById('game');
 	let element_info = document.getElementById('info');
-	let info = '';
-	info += '<p>Develop by:<br><white>RadMirXAn</white></p>';
-	info += '<p>Background music:<br><white>https://producergrind.com/</white></p>';
-	info += '<p>Click sound:<br><white>https://www.zapsplat.com/</white></p>';
-	info += '<p>Background pictures:<br><white>https://www.pexels.com/</white></p>';
-	info += '<p>Game Icons:<br><white>http://icones.pro/</white></p>';
-	info += '<p>04.01.2018</p>';
+	let info = '$About';
 	//---
 	function information(){
 		if(element.style.visibility == 'visible' || element.style.visibility==''){
