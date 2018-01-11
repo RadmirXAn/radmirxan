@@ -14,11 +14,11 @@ $content = "
 </canvas>
 
 <div class='appButton'>
-	<img src='$SITE"."SITE/IMG/FULLSCREEN.png"."?$TIME' onclick=\"fullScreenOn()\" />
+	<img alt='img_fullScreenOn' src='$SITE"."SITE/IMG/FULLSCREEN.png"."?$TIME' onclick=\"fullScreenOn()\" />
 </div>
 
 <div class='appButton'>
-	<img src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\"/>
+	<img alt='img_information' src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\"/>
 </div>
 
 <script type='application/javascript'>

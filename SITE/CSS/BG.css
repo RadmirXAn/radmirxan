@@ -82,6 +82,10 @@ b{
 	color: #aaf;
 }
 
+hr{
+	width: 550px;
+}
+
 div.title {
 	margin: 0px;
 	padding: 0px;

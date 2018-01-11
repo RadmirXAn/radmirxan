@@ -92,7 +92,7 @@
 		</div>
 		</div>
 		
-		<hr width='550'>
+		<hr>
 		<div class='content'>
 		$content
 		</div>			
@@ -117,7 +117,7 @@
 		}
 		$block = "<div class='caption'>
 		<a href='$url'>
-		<img src='$SITE$image?$TIME' onerror=\"this.src='$SITE/SITE/DEFAULT/IMG/DEFAULT.png?$TIME'\">
+		<img alt='img' src='$SITE$image?$TIME' onerror=\"this.src='$SITE/SITE/DEFAULT/IMG/DEFAULT.png?$TIME'\">
 		<p class='caption'>$caption</p>
 		</a>
 		</div>";
@@ -146,6 +146,9 @@
 		case "LANGUAGE":{
 			$ALTERNATE = $ALTERNATE."?page=LANGUAGE&";
 			include_once("PHP/language.php");break;
+			};
+		case "SITEMAP":{
+			include_once("PHP/sitemap.php");break;
 			};
 		case "ERROR":{include_once("PHP/error.php");break;};
 		default:{

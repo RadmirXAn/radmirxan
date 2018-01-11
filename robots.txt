@@ -1,0 +1,3 @@
+User-Agent: *
+Host: https://radmirxan.ru/
+Sitemap: https://radmirxan.ru/?page=SITEMAP
