@@ -44,18 +44,6 @@ $content = "
 			info += '<p>window: <white>webkitAudioContext</white></p>';
 		}
 		//---
-		if(!window.mozAudioContext){
-			info += '<p>window: <white>mozAudioContext</white></p>';
-		}
-		//---
-		if(!window.oAudioContext){
-			info += '<p>window: <white>oAudioContext</white></p>';
-		}
-		//---
-		if(!window.msAudioContext){
-			info += '<p>window: <white>msAudioContext</white></p>';
-		}
-		//---	
 		document.getElementById('info').innerHTML = info;
 	}
 </script>
