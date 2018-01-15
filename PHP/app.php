@@ -7,7 +7,11 @@ $appICO = "SITE/APPS/IMG/".$appID.".png";
 $appSHARE = $appPath."SHARE.png";
 getInfo($appPath);
 $About = $InfoXml->about;
-$btn_1 = createButton('page=APPS','SITE/IMG/FULLSCREEN.png','applications');
+
+$Scripts = "
+		<script type='application/javascript' src='LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js'></script>
+";
+
 $content = "
 <div class=\"appInformation\" id=\"info\"></div>
 <canvas id='game' width='$appWidth' height='$appHeight' >
@@ -78,5 +82,6 @@ $content = "
 	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
 </script>
 ";
+
 echo setInfo('page=APPS',$appICO,'back',$content,$appSHARE);
 ?>

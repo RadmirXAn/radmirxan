@@ -14,7 +14,7 @@
 		$SITE = "https://radmirxan.ru/";
 	}
 	$ALTERNATE = $SITE;
-	$LIB = $SITE."LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js?".$TIME;
+	
 		
 	$Title = "RadMirXAn.RU";
 	$Description = "RadMirXAn";
@@ -29,7 +29,7 @@
 	$InfoXml;
 	
 	function getInfo($path){
-		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $InfoXml;
+		global $ROOT, $Title, $Description, $SITE, $TIME, $LANGUAGE, $InfoXml;
 		$infoURL = $ROOT.$path."INFO/info_".$LANGUAGE.".xml";
 
 		if (file_exists($infoURL)) {
@@ -41,8 +41,10 @@
 
 	$OG_Image = "SITE/IMG/SHARE.png";
 	
+	$Scripts = "";
+
 	function setInfo($back, $img, $caption, $content, $og_img){
-		global $LIB, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $OG_Image, $OG_ImageType;
+		global $Scripts, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $OG_Image, $OG_ImageType;
 		
 		if($og_img){
 			$OG_Image = $og_img;
@@ -68,6 +70,8 @@
 		<meta property=\"og:image:type\" content=\"image/png\" />
 		<meta property=\"og:image:width\" content=\"800\" />
 		<meta property=\"og:image:height\" content=\"480\" />
+		
+		<meta name=\"viewport\" content=\"maximum-scale=1\">
 	
 		<title>$Title</title>
 		<link rel=\"icon\" href=\"./SITE/IMG/LOGO.png?$TIME\" type=\"image/png\">		
@@ -75,11 +79,11 @@
 		<link rel=\"alternate\" hreflang=\"x-default\" href=\"$SITE\" />
 		<link rel=\"alternate\" hreflang=\"ba\" href=\"$ALTERNATE"."language=BA\" />
 		<link rel=\"alternate\" hreflang=\"ru\" href=\"$ALTERNATE"."language=RU\" />
-		<link rel=\"alternate\" hreflang=\"en-us\" href=\"$ALTERNATE"."language=EN\" />
-		<script type='application/javascript' src='$LIB'></script>
+		<link rel=\"alternate\" hreflang=\"en-us\" href=\"$ALTERNATE"."language=EN\" />		
+		$Scripts		
 		</head>
 		
-		<body onresize=\"onResize()\">				
+		<body onresize=\"onResize()\">			
 		<div id='page' class='page'>
 		<div class='head'>
 		$btn_1

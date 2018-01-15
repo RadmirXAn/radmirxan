@@ -19,6 +19,7 @@ div.page {
 	text-align: center;
 	width: 800px;
 	min-height: 139px;
+	max-width: 800px;
 }
 
 div.head {
