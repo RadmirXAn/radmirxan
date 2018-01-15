@@ -1,12 +1,7 @@
-html {
-	height: 100%;
-}
-
 body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-color: #000000;
-	height: 100%;
 	margin:0px;
 	padding:0px;
 }
@@ -16,27 +11,11 @@ img{
 	padding: 0px;
 }
 
-div.centerG {
-	margin: 0px;
-	padding: 0px;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-div.centerV {
-	display: inline-block;
-	margin: 0px;
-	padding: 0px;
-	height: 50%;
-	width: 0%;
-}
-
 div.page {
+	position: absolute;
 	display: inline-block;
 	margin: 0px;
 	padding: 0px;
-	vertical-align: middle;
 	text-align: center;
 	width: 800px;
 	min-height: 139px;

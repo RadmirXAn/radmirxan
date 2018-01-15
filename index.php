@@ -79,11 +79,8 @@
 		<script type='application/javascript' src='$LIB'></script>
 		</head>
 		
-		<body>				
-		<div class='centerG'>
-		<div class='centerV'></div>		
-		<div class='page'>
-
+		<body onresize=\"onResize()\">				
+		<div id='page' class='page'>
 		<div class='head'>
 		$btn_1
 		<div class='title'>
@@ -98,7 +95,34 @@
 		</div>			
 		</div>
 		
-		</div>
+		<script>
+		var content = document.getElementById('page');
+		var contentWidth = 0;
+		var contentHeight = 0;
+		var windowHeight = 0;
+		var windowWidth = 0;
+		function onResize(){
+		windowHeight = window.innerHeight;
+		windowWidth = window.innerWidth;
+		if(windowHeight>contentHeight){
+		content.style.top = (windowHeight-contentHeight)/2+'px';
+		}else{
+		content.style.top = '0px';
+		}
+		if(windowWidth>contentWidth){
+		content.style.left = (windowWidth-contentWidth)/2+'px';
+		}else{
+		content.style.left = '0px';
+		}	
+		}
+		function pageLoaded(){
+		contentWidth = content.offsetWidth;
+		contentHeight = content.offsetHeight;
+		onResize();
+		}
+		document.addEventListener(\"DOMContentLoaded\", pageLoaded);
+		</script>
+
 		</body>
 		
 		</html>";
