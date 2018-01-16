@@ -92,23 +92,6 @@ p.caption {
 	text-overflow: ellipsis;
 }
 
-div.appButton {
-	margin: 0px;
-	padding: 0px;
-	width: 48px;
-	display: inline-block;
-	text-align: center;
-	cursor:pointer;
-}
-
-div.appInformation {
-	margin: 0px;
-	padding: 0px;
-	width: 800px;
-	text-align: center;
-	font-size: 24pt;
-}
-
 #link-img {
 	display: block;
 	width: 800px;

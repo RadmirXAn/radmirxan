@@ -6,9 +6,9 @@
 
 	$TIME = "time=".time();
 	$ROOT = "./";
-	//$SITE = "http://localhost/";
+	$SITE = "http://localhost/";
 	//$SITE = "http://localhost:8080/MySite/";
-	$SITE = "http://radmirxan.ru/";
+	//$SITE = "http://radmirxan.ru/";
 	
 	if(@$_SERVER['HTTPS']){
 		$SITE = "https://radmirxan.ru/";
@@ -39,27 +39,30 @@
 		}
 	}
 
-	$OG_Image = "SITE/IMG/SHARE.png";
-	
+	$Back_URL = "";
+	$Back_IMG = "";
+	$Back_CAPACITION = "";
+	$Сontent = "";
+	$OG_Image = "SITE/IMG/SHARE.png";	
 	$Scripts = "";
+	
+	$OnLoadAction = "contentWidth = content.offsetWidth;contentHeight = content.offsetHeight;onResize();";
+	$OnResizeAction = "windowHeight = window.innerHeight;windowWidth = window.innerWidth;if(windowHeight>contentHeight){content.style.top = (windowHeight-contentHeight)/2+'px';}else{content.style.top = '0px';}if(windowWidth>contentWidth){content.style.left = (windowWidth-contentWidth)/2+'px';}else{content.style.left = '0px';}";
 
-	function setInfo($back, $img, $caption, $content, $og_img){
-		global $Scripts, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $OG_Image, $OG_ImageType;
-		
-		if($og_img){
-			$OG_Image = $og_img;
-		}
+	function setInfo(){
+		global $Scripts, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $Back_URL, $Back_IMG, $Back_CAPACITION, $Сontent, $OG_Image, $OnLoadAction, $OnResizeAction;
 		
 		$Title = $InfoXml->title;
 		$Description = $InfoXml->description;
 		
-		$btn_1 = createButton($back,$img,$caption);
+		$btn_1 = createButton($Back_URL,$Back_IMG,$Back_CAPACITION);
 		
 		$PAGE = "
 		<!DOCTYPE html>
 		<html>
 		
 		<head>
+		
 		<meta charset=\"utf-8\">
 		<meta name=\"description\" content=\"RadMirXAn\">
 		<meta name=\"keywords\" content=\"RadMirXAn,HTML,CSS,XML,JavaScript\">
@@ -74,13 +77,16 @@
 		<meta name=\"viewport\" content=\"maximum-scale=1\">
 	
 		<title>$Title</title>
+		
 		<link rel=\"icon\" href=\"./SITE/IMG/LOGO.png?$TIME\" type=\"image/png\">		
 		<link rel=\"stylesheet\" href=\"./SITE/CSS/BG.css?$TIME\">
 		<link rel=\"alternate\" hreflang=\"x-default\" href=\"$SITE\" />
 		<link rel=\"alternate\" hreflang=\"ba\" href=\"$ALTERNATE"."language=BA\" />
 		<link rel=\"alternate\" hreflang=\"ru\" href=\"$ALTERNATE"."language=RU\" />
-		<link rel=\"alternate\" hreflang=\"en-us\" href=\"$ALTERNATE"."language=EN\" />		
-		$Scripts		
+		<link rel=\"alternate\" hreflang=\"en-us\" href=\"$ALTERNATE"."language=EN\" />
+		
+		$Scripts
+		
 		</head>
 		
 		<body onresize=\"onResize()\">			
@@ -95,7 +101,7 @@
 		
 		<hr>
 		<div class='content'>
-		$content
+		$Сontent
 		</div>			
 		</div>
 		
@@ -106,23 +112,10 @@
 		var windowHeight = 0;
 		var windowWidth = 0;
 		function onResize(){
-		windowHeight = window.innerHeight;
-		windowWidth = window.innerWidth;
-		if(windowHeight>contentHeight){
-		content.style.top = (windowHeight-contentHeight)/2+'px';
-		}else{
-		content.style.top = '0px';
-		}
-		if(windowWidth>contentWidth){
-		content.style.left = (windowWidth-contentWidth)/2+'px';
-		}else{
-		content.style.left = '0px';
-		}	
+		$OnResizeAction
 		}
 		function pageLoaded(){
-		contentWidth = content.offsetWidth;
-		contentHeight = content.offsetHeight;
-		onResize();
+		$OnLoadAction
 		}
 		document.addEventListener(\"DOMContentLoaded\", pageLoaded);
 		</script>
@@ -133,10 +126,10 @@
 		return $PAGE;
 	}
 	
-	function createButton($url, $image, $caption){
+	function createButton($url, $image, $Back_CAPACITION){
 		global $SITE, $TIME, $InfoXml;
-		if($caption!=''){
-			$caption = $InfoXml->$caption;
+		if($Back_CAPACITION!=''){
+			$Back_CAPACITION = $InfoXml->$Back_CAPACITION;
 		}
 		if($url!=''){
 			$url = "?".$TIME."&".$url;
@@ -146,7 +139,7 @@
 		$block = "<div class='caption'>
 		<a href='$url'>
 		<img alt='img' src='$SITE$image?$TIME' onerror=\"this.src='$SITE/SITE/DEFAULT/IMG/DEFAULT.png?$TIME'\">
-		<p class='caption'>$caption</p>
+		<p class='caption'>$Back_CAPACITION</p>
 		</a>
 		</div>";
 		return $block;

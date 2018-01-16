@@ -3,8 +3,8 @@ $appWidth = 800;
 $appHeight = 480;
 $appID = intval($_GET["app"]);
 $appPath = "SITE/APPS/APP_".$appID."/";
-$appICO = "SITE/APPS/IMG/".$appID.".png";
-$appSHARE = $appPath."SHARE.png";
+$Back_IMG = "SITE/APPS/IMG/".$appID.".png";
+$OG_Image = $appPath."SHARE.png";
 getInfo($appPath);
 $About = $InfoXml->about;
 
@@ -12,21 +12,25 @@ $Scripts = "
 		<script type='application/javascript' src='LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js'></script>
 ";
 
-$content = "
-<div class=\"appInformation\" id=\"info\"></div>
+$Сontent = "
+<div class=\"appInformation\" style=\"width: 800px; text-align: center; font-size: 24pt;\" id=\"info\"></div>
 <canvas id='game' width='$appWidth' height='$appHeight' >
 	<p>Ваш браузер не поддерживает рисование.</p>
 </canvas>
 
-<div class='appButton'>
+<div id='fullScreenBtn'>
 	<img alt='img_fullScreenOn' src='$SITE"."SITE/IMG/FULLSCREEN.png"."?$TIME' onclick=\"fullScreenOn()\" />
 </div>
 
-<div class='appButton'>
+<div id='informationButton'>
 	<img alt='img_information' src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\"/>
 </div>
 
 <script type='application/javascript'>
+	let fullScreenBtn = document.getElementById('fullScreenBtn');
+	fullScreenBtn.style.position = 'absolute';
+	let informationButton = document.getElementById('informationButton');
+	informationButton.style.position = 'absolute';
 	let element = document.getElementById('game');
 	let element_info = document.getElementById('info');
 	let info = '$About';
@@ -78,10 +82,17 @@ $content = "
 		'$ROOT"."LIB/RadmirXAn/Events/Mouse_Events/Mouse.js',
 		
 		'$ROOT"."LIB/RadmirXAn/Preloader/Preloader.js'
-	];
-	ClassLoader.load(StartClasses, function(){EnterFrame.start()});
+	];	
 </script>
 ";
-
-echo setInfo('page=APPS',$appICO,'back',$content,$appSHARE);
+$OnResizeAction = $OnResizeAction."
+fullScreenBtn.style.top = '120px';
+fullScreenBtn.style.left = '752px';
+informationButton.style.top = '120px';
+informationButton.style.left = '690px';
+";
+$OnLoadAction = $OnLoadAction."ClassLoader.load(StartClasses, function(){EnterFrame.start()});";
+$Back_CAPACITION = "back";
+$Back_URL = "page=APPS";
+echo setInfo();
 ?>

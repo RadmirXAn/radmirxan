@@ -1,6 +1,6 @@
 <?php
 getInfo('SITE/BROWSER/');
-$content = "
+$Сontent = "
 <canvas id='game' width='0' height='0'>
 	<p>Canvas: <white>undefined</white></p>
 </canvas>
@@ -48,5 +48,7 @@ $content = "
 	}
 </script>
 ";
-echo setInfo('','SITE/IMG/BROWSER.png','back',$content,'');
+$Back_CAPACITION = "back";
+$Back_IMG = "SITE/IMG/BROWSER.png";
+echo setInfo();
 ?>
