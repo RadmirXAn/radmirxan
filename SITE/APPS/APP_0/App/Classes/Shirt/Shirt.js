@@ -12,7 +12,7 @@ const Shirt = function(index){
 		let _animation_1 = new Animation();		
 		_animation_1.useList(Images.ShirtAnimation);
 		_animation_1.frameRate = 24;
-		_animation_1.playWith(0,0);
+		_animation_1.playWithTo(0,0,function(){});
 		_animation_1.x = x;
 		_animation_1.y = y;		
 		//--------------------
@@ -34,19 +34,19 @@ const Shirt = function(index){
 		}
 		//--------------------
 		current.showAndHide = function(){
-			_animation_1.playWithTo(-1, 12, 0, function(){Shirt_ClosedCalback(index)});
+			_animation_1.playWithTo(12, 0, function(){Shirt_ClosedCalback(index)});
 		};
 		current.open = function(){
-			_animation_1.playTo(1, 12,function(){Shirt_OpennedCalback(index)});
+			_animation_1.playWithTo(_animation_1.currentFrame(), 12, function(){Shirt_OpennedCalback(index)});
 		};
 		current.close = function(){
-			_animation_1.playTo(-1, 0, function(){Shirt_ClosedCalback(index)});
+			_animation_1.playWithTo(_animation_1.currentFrame(), 0, function(){Shirt_ClosedCalback(index)});
 		};
 		current.hideImage = function(){
-			_animation_1.playWithTo(1, 13, 21, function(){Shirt_ImageHidedCalback(index)});
+			_animation_1.playWithTo(13, 22, function(){Shirt_ImageHidedCalback(index)});
 		}
 		current.hideShirt = function(){
-			_animation_1.playWithTo(1, 22, 27, function(){Shirt_HidedCalback(index)});
+			_animation_1.playWithTo(21, 13, function(){Shirt_HidedCalback(index)});
 		}
 		//--------------------
 		Object.defineProperty(current, "ImageHidedCalback", {

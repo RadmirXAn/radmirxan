@@ -7,27 +7,27 @@ const Animation = function(){
 	let time = EnterFrame.getTime();
 	let lastTime = EnterFrame.getTime();
 	let frames_count = 0;
-	let currentFrame = 0;
+	let Animation_CurrentFrame = 0;
 	let interval = 0;
 	let x = 0;
 	let y = 0;
 	let Animation_Action = function(){};
 	let Animation_ActionDefault = function(){
-		currentFrame++;
-		if(currentFrame>=frames_count){
-			currentFrame = 0;
+		Animation_CurrentFrame++;
+		if(Animation_CurrentFrame>frames_count){
+			Animation_CurrentFrame = 0;
 		}
-		Animation_Bitmap.image = Animation_List[currentFrame];
+		Animation_Bitmap.image = Animation_List[Animation_CurrentFrame];
 	};
 	let Animation_ActionReverseDefault = function(){
-		currentFrame--;
-		if(currentFrame<0){
-			currentFrame = frames_count-1;
+		Animation_CurrentFrame--;
+		if(Animation_CurrentFrame<0){
+			Animation_CurrentFrame = frames_count;
 		}
-		Animation_Bitmap.image = Animation_List[currentFrame];
+		Animation_Bitmap.image = Animation_List[Animation_CurrentFrame];
 	};
 	let Animation_ActionStop = function(){
-		Animation_Bitmap.image = Animation_List[currentFrame];
+		Animation_Bitmap.image = Animation_List[Animation_CurrentFrame];
 	};
 	let Animation_EnterFrame = function(){
 		time = EnterFrame.getTime();
@@ -37,7 +37,7 @@ const Animation = function(){
 		}
 	};
 	current.start = function (){
-		Animation_Bitmap.image = Animation_List[currentFrame];
+		Animation_Bitmap.image = Animation_List[Animation_CurrentFrame];
 		Animation_Bitmap.start();
 		EnterFrame.addFunction(Animation_EnterFrame, Animation_Index);
 		Animation_Started = true;
@@ -48,72 +48,38 @@ const Animation = function(){
 		Animation_Started = false;
 	};
 	//--------------------------
-	current.playWith = function(direction, startFrame){
-		currentFrame = startFrame;		
-		if(direction>0){
-			Animation_Action = Animation_ActionDefault;
-		}else if(direction<0){
-			Animation_Action = Animation_ActionReverseDefault;
-		}else{
-			Animation_Action = function(){};
-		}		
-	};
-	current.playTo = function(direction, pauseFrame, callBack){
-		if(direction>0){
+	current.playWithTo = function(startFrame, pauseFrame, callBack){
+		Animation_CurrentFrame = startFrame;
+		if(startFrame<pauseFrame){
 			Animation_Action = function(){
-				if(currentFrame==pauseFrame){
+				if(Animation_CurrentFrame==pauseFrame){
 					Animation_Action = Animation_ActionStop;
 					callBack();
 				}else{
 					Animation_ActionDefault();
 				}					
 			}
-		}else if(direction<0){
+		}else{
 			Animation_Action = function(){
-				if(currentFrame==pauseFrame){
+				if(Animation_CurrentFrame==pauseFrame){
 					Animation_Action = Animation_ActionStop;
 					callBack();
 				}else{
 					Animation_ActionReverseDefault();
 				}				
 			}
-		}else{
-			current.playWith(0,pauseFrame);
-			callBack();
-		}
-	};
-	current.playWithTo = function(direction, startFrame, pauseFrame, callBack){
-		currentFrame = startFrame;
-		if(direction>0){
-			Animation_Action = function(){
-				if(currentFrame==pauseFrame){
-					Animation_Action = Animation_ActionStop;
-					callBack();
-				}else{
-					Animation_ActionDefault();
-				}					
-			}
-		}else if(direction<0){
-			Animation_Action = function(){
-				if(currentFrame==pauseFrame){
-					Animation_Action = Animation_ActionStop;
-					callBack();
-				}else{
-					Animation_ActionReverseDefault();
-				}				
-			}
-		}else{
-			current.playWith(0,pauseFrame);
-			callBack();
 		}
 	};
 	current.useList = function(Bitmap_List){
 		Animation_List = [];
-		frames_count = Bitmap_List.length;
+		frames_count = Bitmap_List.length-1;
 		for(let i = 0; i < Bitmap_List.length; i++){
 			Animation_List.push(ImageLoader.getImage(Bitmap_List[i]));
 		}
 	};
+	current.currentFrame = function(){
+		return Animation_CurrentFrame;
+	}
 	Object.defineProperty(current, "layer", {
 		set: function(value){
 			Animation_Index = value;
