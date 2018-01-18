@@ -7,6 +7,8 @@ const Shirt = function(index){
 		let Shirt_ClickCallBack = function(){return false;};
 		let Shirt_OpennedCalback = function(value){return false;};
 		let Shirt_ClosedCalback = function(value){return false;};
+		let Shirt_HidedCalback = function(value){return false;};
+		let Shirt_ImageHidedCalback = function(value){return false;};
 		let _animation_1 = new Animation();		
 		_animation_1.useList(Images.ShirtAnimation);
 		_animation_1.frameRate = 24;
@@ -31,13 +33,38 @@ const Shirt = function(index){
 			_animation_1.stop();
 		}
 		//--------------------
+		current.showAndHide = function(){
+			_animation_1.playWithTo(-1, 12, 0, function(){Shirt_ClosedCalback(index)});
+		};
 		current.open = function(){
-			_animation_1.playTo(1, Images.ShirtAnimation.length-1,function(){Shirt_OpennedCalback(index)});
+			_animation_1.playTo(1, 12,function(){Shirt_OpennedCalback(index)});
 		};
 		current.close = function(){
 			_animation_1.playTo(-1, 0, function(){Shirt_ClosedCalback(index)});
 		};
+		current.hideImage = function(){
+			_animation_1.playWithTo(1, 13, 21, function(){Shirt_ImageHidedCalback(index)});
+		}
+		current.hideShirt = function(){
+			_animation_1.playWithTo(1, 22, 27, function(){Shirt_HidedCalback(index)});
+		}
 		//--------------------
+		Object.defineProperty(current, "ImageHidedCalback", {
+			set: function(value){
+				Shirt_ImageHidedCalback = value;
+			},
+			get: function(){
+				return Shirt_ImageHidedCalback;
+			}
+		});
+		Object.defineProperty(current, "HidedCalback", {
+			set: function(value){
+				Shirt_HidedCalback = value;
+			},
+			get: function(){
+				return Shirt_HidedCalback;
+			}
+		});
 		Object.defineProperty(current, "ClosedCalback", {
 			set: function(value){
 				Shirt_ClosedCalback = value;

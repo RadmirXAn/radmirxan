@@ -26,6 +26,9 @@ const Animation = function(){
 		}
 		Animation_Bitmap.image = Animation_List[currentFrame];
 	};
+	let Animation_ActionStop = function(){
+		Animation_Bitmap.image = Animation_List[currentFrame];
+	};
 	let Animation_EnterFrame = function(){
 		time = EnterFrame.getTime();
 		if( ((time - lastTime) >= interval)){
@@ -34,6 +37,7 @@ const Animation = function(){
 		}
 	};
 	current.start = function (){
+		Animation_Bitmap.image = Animation_List[currentFrame];
 		Animation_Bitmap.start();
 		EnterFrame.addFunction(Animation_EnterFrame, Animation_Index);
 		Animation_Started = true;
@@ -45,8 +49,7 @@ const Animation = function(){
 	};
 	//--------------------------
 	current.playWith = function(direction, startFrame){
-		currentFrame = startFrame;
-		Animation_Bitmap.image = Animation_List[currentFrame];
+		currentFrame = startFrame;		
 		if(direction>0){
 			Animation_Action = Animation_ActionDefault;
 		}else if(direction<0){
@@ -55,11 +58,11 @@ const Animation = function(){
 			Animation_Action = function(){};
 		}		
 	};
-	current.playTo = function(direction, pauseFrame, callBack){		
+	current.playTo = function(direction, pauseFrame, callBack){
 		if(direction>0){
 			Animation_Action = function(){
-				if(currentFrame>=pauseFrame){
-					current.playWith(0,pauseFrame);
+				if(currentFrame==pauseFrame){
+					Animation_Action = Animation_ActionStop;
 					callBack();
 				}else{
 					Animation_ActionDefault();
@@ -67,8 +70,33 @@ const Animation = function(){
 			}
 		}else if(direction<0){
 			Animation_Action = function(){
-				if(currentFrame<=pauseFrame){
-					current.playWith(0,pauseFrame);
+				if(currentFrame==pauseFrame){
+					Animation_Action = Animation_ActionStop;
+					callBack();
+				}else{
+					Animation_ActionReverseDefault();
+				}				
+			}
+		}else{
+			current.playWith(0,pauseFrame);
+			callBack();
+		}
+	};
+	current.playWithTo = function(direction, startFrame, pauseFrame, callBack){
+		currentFrame = startFrame;
+		if(direction>0){
+			Animation_Action = function(){
+				if(currentFrame==pauseFrame){
+					Animation_Action = Animation_ActionStop;
+					callBack();
+				}else{
+					Animation_ActionDefault();
+				}					
+			}
+		}else if(direction<0){
+			Animation_Action = function(){
+				if(currentFrame==pauseFrame){
+					Animation_Action = Animation_ActionStop;
 					callBack();
 				}else{
 					Animation_ActionReverseDefault();

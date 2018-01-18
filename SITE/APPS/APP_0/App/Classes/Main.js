@@ -9,6 +9,7 @@ var Half = Total/2;
 var Found = 0;
 var Clicked = 0;
 var Animated = 0;
+var Hided = 0;
 var Shirt_1 = -1;
 var Shirt_2 = -1;
 var Shirt_Width = 50;
@@ -53,27 +54,40 @@ function action(){
 		Shirts[Shirt_1].close();
 		ShirtsStatus[Shirt_2]=false;
 		Shirts[Shirt_2].close();
+		Shirt_1 = -1;	
+		Shirt_2 = -1;
+		Clicked = 0;
+		Animated = 0;
 	}else{
-		Found++;
-		Cards[Shirt_1].stop();
-		Cards[Shirt_2].stop();
-		Shirts[Shirt_1].stop();
-		Shirts[Shirt_2].stop();		
-		if(Found==Half){
-			GameStarted = false;
-		}	
+		Shirts[Shirt_1].hideImage();
+		Shirts[Shirt_2].hideImage();
 	}
-			
-	Shirt_1 = -1;	
-	Shirt_2 = -1;
-	
-	Clicked = 0;
-	Animated = 0;
 }
 
 function ClosedCalback(index){
 	Cards[index].stop();
-	//ShirtsStatus[index]=false;
+}
+
+function ImageHidedCalback(index){
+	Cards[index].stop();
+	Shirts[index].hideShirt();
+}
+
+function HidedCalback(index){	
+	Cards[index].stop();
+	Shirts[index].stop();
+	Hided++;
+	if(Hided==2){
+		Found++;
+		if(Found==Half){
+			GameStarted = false;
+		}
+		Shirt_1 = -1;	
+		Shirt_2 = -1;
+		Clicked = 0;
+		Animated = 0;
+		Hided = 0;
+	}
 }
 
 function StartGame(){
@@ -90,7 +104,7 @@ function StartGame(){
 				Cards[index].y = Math.floor((480-Max_Y*Card_Height-(Max_Y-1)*Card_Distance)/2+(Card_Height+Card_Distance)*j);
 				Cards[index].layer = 2;
 				Cards[index].image = ImageLoader.getImage(Images.CardImage[Math.floor(index/2)]);
-				//Cards[index].start();
+				Cards[index].start();
 
 				Shirts[index] = new Shirt(index);
 				Shirts[index].x = Math.floor((800-Max_X*Shirt_Width-(Max_X-1)*Shirt_Distance)/2+(Shirt_Width+Shirt_Distance)*i);
@@ -99,8 +113,10 @@ function StartGame(){
 				Shirts[index].ClickCallBack = ClickCallBack;
 				Shirts[index].OpennedCalback = OpennedCalback;
 				Shirts[index].ClosedCalback = ClosedCalback;
+				Shirts[index].HidedCalback = HidedCalback;
+				Shirts[index].ImageHidedCalback = ImageHidedCalback;
 				Shirts[index].start();
-				Shirts[index].close();
+				Shirts[index].showAndHide();
 				ShirtsStatus[index]=false;				
 			}
 		}
@@ -126,7 +142,7 @@ function ReStartGame(){
 				let index = i+j*Max_X;
 				Cards[index].start();
 				Shirts[index].start();
-				Shirts[index].close();
+				Shirts[index].showAndHide();
 				ShirtsStatus[index]=false;				
 			}
 		}

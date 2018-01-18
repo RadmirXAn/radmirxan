@@ -14,7 +14,22 @@ const Images = (function(){
 		appPath+"App/Resources/Images/Animations/0/9.png",
 		appPath+"App/Resources/Images/Animations/0/10.png",
 		appPath+"App/Resources/Images/Animations/0/11.png",
-		appPath+"App/Resources/Images/Animations/0/12.png"
+		appPath+"App/Resources/Images/Animations/0/12.png",
+		appPath+"App/Resources/Images/Animations/1/0.png",
+		appPath+"App/Resources/Images/Animations/1/1.png",
+		appPath+"App/Resources/Images/Animations/1/2.png",
+		appPath+"App/Resources/Images/Animations/1/3.png",
+		appPath+"App/Resources/Images/Animations/1/4.png",
+		appPath+"App/Resources/Images/Animations/1/5.png",
+		appPath+"App/Resources/Images/Animations/1/6.png",
+		appPath+"App/Resources/Images/Animations/1/7.png",
+		appPath+"App/Resources/Images/Animations/1/8.png",
+		appPath+"App/Resources/Images/Animations/1/9.png",
+		appPath+"App/Resources/Images/Animations/1/10.png",
+		appPath+"App/Resources/Images/Animations/1/11.png",
+		appPath+"App/Resources/Images/Animations/1/12.png",
+		appPath+"App/Resources/Images/Animations/1/13.png",
+		appPath+"App/Resources/Images/Animations/1/14.png"
 		];
 		const Images_FrontSideImages = [
 		appPath+"App/Resources/Images/Animals/0.png",
