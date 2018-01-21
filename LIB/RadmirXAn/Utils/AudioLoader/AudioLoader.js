@@ -18,7 +18,7 @@ const AudioLoader = (function () {
 			}
 			AudioLoader_Source[AudioLoader_URL] = AudioLoader_Context.createBufferSource();			
 			AudioLoader_Source[AudioLoader_URL].buffer = AudioLoader_Buffer[AudioLoader_URL];
-			AudioLoader_Source[AudioLoader_URL].connect(AudioContext.destination());
+			AudioLoader_Source[AudioLoader_URL].connect(AudioContext.gain());
 			AudioLoader_Source[AudioLoader_URL].start(0);
 			if(AudioLoader_Loop){
 				AudioLoader_Source[AudioLoader_URL].loop = AudioLoader_Loop;

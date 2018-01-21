@@ -7,7 +7,7 @@ $Back_IMG = "SITE/APPS/IMG/".$appID.".png";
 $OG_Image = $appPath."SHARE.png";
 getInfo($appPath);
 $About = $InfoXml->about;
-
+$Volume = $InfoXml->volume;
 $Scripts = "
 		<script type='application/javascript' src='LIB/RadmirXAn/Utils/ClassLoader/ClassLoader.js'></script>
 ";
@@ -26,17 +26,29 @@ $Сontent = "
 	<img alt='img_information' src='$SITE"."SITE/IMG/INFORMATION.png"."?$TIME' onclick=\"information()\"/>
 </div>
 
+<div id='soundButton'>
+	<img alt='img_sound' src='$SITE"."SITE/IMG/SOUND.png"."?$TIME' onclick=\"soundInformation()\"/>
+</div>
+
 <script type='application/javascript'>
 	let fullScreenBtn = document.getElementById('fullScreenBtn');
 	fullScreenBtn.style.position = 'absolute';
+	fullScreenBtn.style.cursor = 'pointer';
 	let informationButton = document.getElementById('informationButton');
 	informationButton.style.position = 'absolute';
+	informationButton.style.cursor = 'pointer';
+	let soundButton = document.getElementById('soundButton');
+	soundButton.style.position = 'absolute';
+	soundButton.style.cursor = 'pointer';
 	let element = document.getElementById('game');
 	let element_info = document.getElementById('info');
 	let info = '$About';
 	//---
+	let tabName = '';
 	function information(){
-		if(element.style.visibility == 'visible' || element.style.visibility==''){
+		let thisTabName = 'information';
+		if(tabName != thisTabName || element.style.visibility == 'visible' || element.style.visibility==''){
+			tabName = thisTabName;
 			element.style.height = \"0px\";
 			element.style.width = \"0px\";
 			element.style.visibility = 'hidden';
@@ -46,10 +58,32 @@ $Сontent = "
 		}
 	}
 	function hideInformation(){
+		tabName = '';
 		element.style.height = \"$appHeight"."px\";
 		element.style.width = \"$appWidth"."px\";
 		element.style.visibility = 'visible';		
 		element_info.innerHTML = '';
+	}
+	//---
+	let currentSoundVolume = 1;
+	function setSoundVolume(value){
+		currentSoundVolume = value;
+		if(AudioContext){
+			AudioContext.setVolume(value);
+		}
+	}
+	function soundInformation(){
+		let thisTabName = 'soundInformation';
+		if(tabName != thisTabName || element.style.visibility == 'visible' || element.style.visibility==''){
+			tabName = thisTabName;
+			let soundInfo = '<p>$Volume</p><input id=\"soundSlider\" type=\"range\" min=\"0\" max=\"1\" step=\"0.1\" value =\"'+currentSoundVolume+'\" oninput=\"setSoundVolume(this.value)\"/>';
+			element.style.height = \"0px\";
+			element.style.width = \"0px\";
+			element.style.visibility = 'hidden';
+			element_info.innerHTML = soundInfo;
+		}else{
+			hideInformation();
+		}
 	}
 	//---
 	function fullScreenOn(){
@@ -90,6 +124,8 @@ fullScreenBtn.style.top = '120px';
 fullScreenBtn.style.left = '752px';
 informationButton.style.top = '120px';
 informationButton.style.left = '690px';
+soundButton.style.top = '120px';
+soundButton.style.left = '0px';
 ";
 $OnLoadAction = $OnLoadAction."ClassLoader.load(StartClasses, function(){EnterFrame.start()});";
 $Back_CAPACITION = "back";
