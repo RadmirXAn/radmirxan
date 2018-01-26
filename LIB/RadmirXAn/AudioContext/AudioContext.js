@@ -6,6 +6,7 @@ const AudioContext = (function(){
 		let AudioContext_Destination = AudioContext_Context.destination;
 		let AudioContext_Gain = AudioContext_Context.createGain();
 		AudioContext_Gain.connect(AudioContext_Destination);
+		AudioContext_Gain.gain.setTargetAtTime(currentSoundVolume, AudioContext_Context.currentTime, 0.1);
 		current.context = function(){
 			return AudioContext_Context;
 		}

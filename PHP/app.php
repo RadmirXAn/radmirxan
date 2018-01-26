@@ -65,7 +65,7 @@ $Сontent = "
 		element_info.innerHTML = '';
 	}
 	//---
-	let currentSoundVolume = 1;
+	let currentSoundVolume = 0.5;
 	function setSoundVolume(value){
 		currentSoundVolume = value;
 		if(AudioContext){
