@@ -42,7 +42,7 @@
 	$Back_URL = "";
 	$Back_IMG = "";
 	$Back_CAPACITION = "";
-	$Сontent = "";
+	$Content = "";
 	$OG_Image = "SITE/IMG/SHARE.png";	
 	$Scripts = "";
 	
@@ -50,7 +50,7 @@
 	$OnResizeAction = "windowHeight = window.innerHeight;windowWidth = window.innerWidth;if(windowHeight>contentHeight){content.style.top = (windowHeight-contentHeight)/2+'px';}else{content.style.top = '0px';}if(windowWidth>contentWidth){content.style.left = (windowWidth-contentWidth)/2+'px';}else{content.style.left = '0px';}";
 
 	function setInfo(){
-		global $Scripts, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $Back_URL, $Back_IMG, $Back_CAPACITION, $Сontent, $OG_Image, $OnLoadAction, $OnResizeAction;
+		global $Scripts, $ROOT, $Title, $Description, $SITE, $TIME, $InfoXml, $ALTERNATE, $Back_URL, $Back_IMG, $Back_CAPACITION, $Content, $OG_Image, $OnLoadAction, $OnResizeAction;
 		
 		$Title = $InfoXml->title;
 		$Description = $InfoXml->description;
@@ -101,7 +101,7 @@
 		
 		<hr>
 		<div class='content'>
-		$Сontent
+		$Content
 		</div>			
 		</div>
 		
